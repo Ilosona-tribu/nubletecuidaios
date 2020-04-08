@@ -15,6 +15,7 @@ class ConsejosVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     override func viewDidLoad() {
 //        tabla.delegate = self
 //        tabla.dataSource = self
+        //dele
 
         super.viewDidLoad()
     
