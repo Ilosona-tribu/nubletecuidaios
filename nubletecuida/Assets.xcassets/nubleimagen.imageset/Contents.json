@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "LOGO-REGION-NUBLE.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "LOGO-REGION-NUBLE@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "LOGO-REGION-NUBLE@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

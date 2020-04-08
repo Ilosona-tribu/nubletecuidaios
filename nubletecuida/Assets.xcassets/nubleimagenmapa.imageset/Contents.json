@@ -1,0 +1,23 @@
+{
+  "images" : [
+    {
+      "filename" : "ÑUBLE-IMAGEN-MAPA.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "ÑUBLE-IMAGEN-MAPA@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "ÑUBLE-IMAGEN-MAPA@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
