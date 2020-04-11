@@ -1,23 +1,24 @@
 //
-//  ContactoVC.swift
+//  DetalleTestVC.swift
 //  nubletecuida
 //
-//  Created by Arturo Sanhueza on 05-04-20.
+//  Created by Arturo Sanhueza on 11-04-20.
 //  Copyright © 2020 Arturo Sanhueza. All rights reserved.
 //
 
 import UIKit
 
-class ContactoVC: UIViewController {
+class DetalleTestVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Do any additional setup after loading the view.
     }
     
 
     /*
-    // MARK: - Navigationdww
+    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

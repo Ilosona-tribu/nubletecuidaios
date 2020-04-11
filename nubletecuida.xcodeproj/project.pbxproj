@@ -13,6 +13,10 @@
 		C349D133243A421300851BC6 /* NoticiasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349D132243A421300851BC6 /* NoticiasVC.swift */; };
 		C349D135243A424600851BC6 /* MapaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349D134243A424600851BC6 /* MapaVC.swift */; };
 		C349D137243A427D00851BC6 /* ContactoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349D136243A427D00851BC6 /* ContactoVC.swift */; };
+		C34B6EF024416E2D000AA950 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B6EEF24416E2D000AA950 /* TableViewCell.swift */; };
+		C34B6EFC2441C13B000AA950 /* partesApp in Resources */ = {isa = PBXBuildFile; fileRef = C34B6EFB2441C13B000AA950 /* partesApp */; };
+		C34B6EFE2441C5E6000AA950 /* DetalleTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B6EFD2441C5E6000AA950 /* DetalleTestVC.swift */; };
+		C34B6F002441C7FD000AA950 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B6EFF2441C7FD000AA950 /* CollectionViewCell.swift */; };
 		C374089624396DD100D28C13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374089524396DD100D28C13 /* AppDelegate.swift */; };
 		C374089824396DD100D28C13 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374089724396DD100D28C13 /* SceneDelegate.swift */; };
 		C374089A24396DD100D28C13 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374089924396DD100D28C13 /* TestVC.swift */; };
@@ -48,6 +52,10 @@
 		C349D132243A421300851BC6 /* NoticiasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticiasVC.swift; sourceTree = "<group>"; };
 		C349D134243A424600851BC6 /* MapaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaVC.swift; sourceTree = "<group>"; };
 		C349D136243A427D00851BC6 /* ContactoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactoVC.swift; sourceTree = "<group>"; };
+		C34B6EEF24416E2D000AA950 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		C34B6EFB2441C13B000AA950 /* partesApp */ = {isa = PBXFileReference; lastKnownFileType = folder; path = partesApp; sourceTree = "<group>"; };
+		C34B6EFD2441C5E6000AA950 /* DetalleTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleTestVC.swift; sourceTree = "<group>"; };
+		C34B6EFF2441C7FD000AA950 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		C374089224396DD100D28C13 /* nubletecuida.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nubletecuida.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C374089524396DD100D28C13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C374089724396DD100D28C13 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -90,6 +98,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C34B6F022441C87C000AA950 /* controladores */ = {
+			isa = PBXGroup;
+			children = (
+				C374089924396DD100D28C13 /* TestVC.swift */,
+				C374089B24396DD100D28C13 /* ConsejosVC.swift */,
+				C349D132243A421300851BC6 /* NoticiasVC.swift */,
+				C349D134243A424600851BC6 /* MapaVC.swift */,
+				C349D136243A427D00851BC6 /* ContactoVC.swift */,
+			);
+			path = controladores;
+			sourceTree = "<group>";
+		};
+		C34B6F032441C897000AA950 /* celdas */ = {
+			isa = PBXGroup;
+			children = (
+				C34B6EEF24416E2D000AA950 /* TableViewCell.swift */,
+				C34B6EFF2441C7FD000AA950 /* CollectionViewCell.swift */,
+			);
+			path = celdas;
+			sourceTree = "<group>";
+		};
 		C374088924396DD000D28C13 = {
 			isa = PBXGroup;
 			children = (
@@ -115,11 +144,9 @@
 			children = (
 				C374089524396DD100D28C13 /* AppDelegate.swift */,
 				C374089724396DD100D28C13 /* SceneDelegate.swift */,
-				C374089924396DD100D28C13 /* TestVC.swift */,
-				C374089B24396DD100D28C13 /* ConsejosVC.swift */,
-				C349D132243A421300851BC6 /* NoticiasVC.swift */,
-				C349D134243A424600851BC6 /* MapaVC.swift */,
-				C349D136243A427D00851BC6 /* ContactoVC.swift */,
+				C34B6EFD2441C5E6000AA950 /* DetalleTestVC.swift */,
+				C34B6F022441C87C000AA950 /* controladores */,
+				C34B6F032441C897000AA950 /* celdas */,
 				C374089D24396DD100D28C13 /* Main.storyboard */,
 				C37408A224396DD200D28C13 /* LaunchScreen.storyboard */,
 				C37408A024396DD200D28C13 /* Assets.xcassets */,
@@ -150,6 +177,7 @@
 		C37408C72439709900D28C13 /* imagenes */ = {
 			isa = PBXGroup;
 			children = (
+				C34B6EFB2441C13B000AA950 /* partesApp */,
 				C349D12D243A3EC300851BC6 /* BOTONES */,
 				C349D12E243A3EC400851BC6 /* ICONOS-TAB-BAR */,
 				C349D12C243A3EC300851BC6 /* SPLASH */,
@@ -264,6 +292,7 @@
 				C37408A424396DD200D28C13 /* LaunchScreen.storyboard in Resources */,
 				C349D131243A3EC400851BC6 /* ICONOS-TAB-BAR in Resources */,
 				C349D12F243A3EC400851BC6 /* SPLASH in Resources */,
+				C34B6EFC2441C13B000AA950 /* partesApp in Resources */,
 				C37408A124396DD200D28C13 /* Assets.xcassets in Resources */,
 				C374089F24396DD100D28C13 /* Main.storyboard in Resources */,
 				C349D130243A3EC400851BC6 /* BOTONES in Resources */,
@@ -291,13 +320,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C34B6F002441C7FD000AA950 /* CollectionViewCell.swift in Sources */,
 				C374089C24396DD100D28C13 /* ConsejosVC.swift in Sources */,
+				C34B6EF024416E2D000AA950 /* TableViewCell.swift in Sources */,
 				C374089A24396DD100D28C13 /* TestVC.swift in Sources */,
 				C374089624396DD100D28C13 /* AppDelegate.swift in Sources */,
 				C349D137243A427D00851BC6 /* ContactoVC.swift in Sources */,
 				C374089824396DD100D28C13 /* SceneDelegate.swift in Sources */,
 				C349D133243A421300851BC6 /* NoticiasVC.swift in Sources */,
 				C349D135243A424600851BC6 /* MapaVC.swift in Sources */,
+				C34B6EFE2441C5E6000AA950 /* DetalleTestVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
