@@ -16,31 +16,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="B4s-1D-hz5">
+                                <rect key="frame" x="53" y="497" width="303" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">Esta herramienta puede ayudarlo a comprender qué hacer  con respecto a COVID-19.
+</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imagenGrandeTest" translatesAutoresizingMaskIntoConstraints="NO" id="bz4-lx-tjA">
                                 <rect key="frame" x="0.0" y="-38" width="414" height="547"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhP-kp-a5y">
-                                <rect key="frame" x="102" y="699" width="211" height="78"/>
+                                <rect key="frame" x="102" y="660" width="205" height="78"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="botoniniciar"/>
+                                <state key="normal" image="botoniniciar"/>
                                 <connections>
                                     <segue destination="bHI-VH-yRe" kind="showDetail" id="fEP-9t-eW8"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imgenChicaTest" translatesAutoresizingMaskIntoConstraints="NO" id="pHQ-2w-XCn">
-                                <rect key="frame" x="20" y="585" width="374" height="64"/>
+                                <rect key="frame" x="96" y="587" width="216" height="64"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="6" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="B4s-1D-hz5">
-                                <rect key="frame" x="40" y="497" width="334" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">Esta herramienta puede ayudarlo a comprender qué hacer  con respecto a COVID-19.
-
-</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.92180317639999998" green="0.93697041270000003" blue="0.94902282950000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
@@ -59,20 +58,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mujer-tosiendo.png" translatesAutoresizingMaskIntoConstraints="NO" id="M6P-Cg-p3Y">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="443"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="mujerTosiendo" translatesAutoresizingMaskIntoConstraints="NO" id="M6P-Cg-p3Y">
+                                <rect key="frame" x="-5" y="-1" width="423" height="509"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.073161669080000005" green="0.80134636159999995" blue="0.90590238570000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GbK-m5-sGL">
-                                <rect key="frame" x="77" y="640" width="260" height="92"/>
+                                <rect key="frame" x="77" y="619" width="260" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="BTN-USO-PARA-ALGUIEN-MAS.png"/>
+                                <state key="normal" title="Button" image="botonTestOtro"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cEm-NO-Sd9">
-                                <rect key="frame" x="77" y="530" width="260" height="112"/>
+                                <rect key="frame" x="76" y="516" width="260" height="95"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="USO-PARA-MI.png"/>
+                                <state key="normal" title="Button" image="botonTestMio"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -91,39 +89,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sD7-bY-eUc">
-                                <rect key="frame" x="0.0" y="230" width="414" height="583"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2xe-vH-XxH">
+                                <rect key="frame" x="0.0" y="269" width="414" height="544"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dUx-qx-MQz">
-                                    <size key="itemSize" width="304" height="224"/>
+                                <color key="backgroundColor" red="0.92180317639999998" green="0.93697041270000003" blue="0.94902282950000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="QAL-DK-DZd">
+                                    <size key="itemSize" width="205" height="175"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="FAE-vg-LPk" customClass="CollectionViewCell" customModule="nubletecuida" customModuleProvider="target">
-                                        <rect key="frame" x="55" y="0.0" width="304" height="224"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="MxQ-L0-TMM">
+                                        <rect key="frame" x="0.0" y="0.0" width="155" height="125"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KR1-hH-h9T">
-                                            <rect key="frame" x="0.0" y="0.0" width="304" height="224"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="8L2-RZ-Hgo">
+                                            <rect key="frame" x="0.0" y="0.0" width="155" height="125"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="celda-pregunta-consejos.png" translatesAutoresizingMaskIntoConstraints="NO" id="KzV-4u-geG">
-                                                    <rect key="frame" x="0.0" y="8" width="162" height="139"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="304" height="224"/>
-                                        <connections>
-                                            <outlet property="imagen" destination="KzV-4u-geG" id="JWG-gG-7W4"/>
-                                        </connections>
+                                        <size key="customSize" width="155" height="125"/>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
-                                    <outlet property="dataSource" destination="8rJ-Kc-sve" id="YyF-Pw-SjP"/>
-                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="oRc-xw-gMw"/>
+                                    <outlet property="dataSource" destination="8rJ-Kc-sve" id="A4t-VK-Oeu"/>
+                                    <outlet property="delegate" destination="8rJ-Kc-sve" id="JKs-id-8TD"/>
                                 </connections>
                             </collectionView>
                         </subviews>
@@ -132,7 +121,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Consejos" image="eye" catalog="system" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="collectionVi" destination="sD7-bY-eUc" id="73O-Ao-QNY"/>
+                        <outlet property="collectionVi" destination="2xe-vH-XxH" id="Lux-1k-JmN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -146,43 +135,10 @@
                     <view key="view" contentMode="scaleToFill" id="FLW-fS-YAw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbG-cj-Vct">
-                                <rect key="frame" x="159" y="591" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="600 000 000"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bhd-1h-rlB">
-                                <rect key="frame" x="132" y="433" width="142" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="+56 9 7373782"/>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contacta para cualquier duda al wsp " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dqq-DN-deF">
-                                <rect key="frame" x="64" y="354" width="284" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Tsh-85-jgF">
-                                <rect key="frame" x="83" y="86" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="O al fono" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gqp-hE-Zwb">
-                                <rect key="frame" x="170" y="527" width="69" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.92180317639999998" green="0.93697041270000003" blue="0.94902282950000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="Mab-Hs-hYx"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Contacto" image="fono" id="lDf-hK-mwV"/>
-                    <connections>
-                        <outlet property="imagenCentral" destination="Tsh-85-jgF" id="I2h-p6-CuA"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Rp-xs-cfi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -243,8 +199,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Xj7-FF-0XF">
-                                                    <rect key="frame" x="312" y="11" width="82" height="84"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imagenConsejo" translatesAutoresizingMaskIntoConstraints="NO" id="Xj7-FF-0XF">
+                                                    <rect key="frame" x="290" y="11" width="104" height="84"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -295,16 +251,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="BTN-USO-PARA-ALGUIEN-MAS.png" width="245" height="90"/>
-        <image name="USO-PARA-MI.png" width="245" height="90"/>
+        <image name="botonTestMio" width="245" height="90"/>
+        <image name="botonTestOtro" width="245" height="90"/>
         <image name="botoniniciar" width="203" height="78"/>
-        <image name="celda-pregunta-consejos.png" width="258" height="144"/>
         <image name="eye" catalog="system" width="128" height="81"/>
         <image name="fono" width="24" height="24"/>
+        <image name="imagenConsejo" width="232.5" height="232.5"/>
         <image name="imagenGrandeTest" width="938" height="1148"/>
         <image name="imgenChicaTest" width="285.5" height="136"/>
         <image name="mapa" width="19" height="23.5"/>
-        <image name="mujer-tosiendo.png" width="194.19999694824219" height="169.80000305175781"/>
+        <image name="mujerTosiendo" width="942.5" height="1132.5"/>
         <image name="noticias" width="25" height="23.5"/>
         <image name="test" width="21.5" height="22.5"/>
     </resources>

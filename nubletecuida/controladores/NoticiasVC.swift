@@ -21,8 +21,7 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //        tabla.dataSource = self
             
             super.viewDidLoad()
-
-            }
+}
         
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,8 +41,6 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             cell.imagen.image = UIImage(named: "nubleimagen")
 
             return cell
-
-        }
-        
+            
     }
-
+}
