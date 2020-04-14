@@ -15,12 +15,13 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         var arrayDescripcionNoticias = Array<Any>()
 
         override func viewDidLoad() {
+            tabla.frame.size = self.view.frame.size
+
             arrayNoticias = ["Cuarentena extendida "," Visita del Presidente Sebastián Piñera","Mascarillas agotadas"]
             arrayDescripcionNoticias = ["Nuestras autoridades han decidido hoy la prolongación de la cuarente...","el presidente ha hecho acto de presencia hoy en el hospital con motiv...","Informamos que las mascarillas se han agotado a lo largo de todo el conti... "]
-    //        tabla.delegate = self
-    //        tabla.dataSource = self
-            
             super.viewDidLoad()
+//            tabla.delegate = self
+//            tabla.dataSource = self
 }
         
         

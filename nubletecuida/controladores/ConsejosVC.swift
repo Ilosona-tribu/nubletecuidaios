@@ -23,6 +23,7 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         imagenFondo.image = UIImage(named: "fondoVerdeAgua")
         let imagenNuble = UIImageView(frame: CGRect(x: CGFloat(view.center.x - 44.1), y: 90.0, width: 88.2, height: 130.8))
         imagenNuble.image = UIImage(named: "nubleTeCuida")
+        collectionVi.frame.size = CGSize(width: view.frame.width, height: view.frame.height - collectionVi.frame.minY)
 
         self.view.addSubview(imagenFondo)
         self.view.addSubview(imagenNuble)

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "call-center-completo.png",
+      "filename" : "BTN-CHECK-LLENO.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "call-center-completo-1.png",
+      "filename" : "BTN-CHECK-LLENO@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "call-center-completo-2.png",
+      "filename" : "BTN-CHECK-LLENO@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

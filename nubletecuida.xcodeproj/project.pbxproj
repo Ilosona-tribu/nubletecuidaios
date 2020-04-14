@@ -14,6 +14,11 @@
 		C34B6EFE2441C5E6000AA950 /* DetalleTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B6EFD2441C5E6000AA950 /* DetalleTestVC.swift */; };
 		C34B6F1724423613000AA950 /* imagenes in Resources */ = {isa = PBXBuildFile; fileRef = C34B6F1624423613000AA950 /* imagenes */; };
 		C34B6F19244238B1000AA950 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C34B6F18244238B0000AA950 /* Assets.xcassets */; };
+		C34B6F2024429E57000AA950 /* gobCL_Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = C34B6F1C24429E57000AA950 /* gobCL_Heavy.otf */; };
+		C34B6F2124429E57000AA950 /* gobCL_Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C34B6F1D24429E57000AA950 /* gobCL_Bold.otf */; };
+		C34B6F2224429E57000AA950 /* gobCL_Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = C34B6F1E24429E57000AA950 /* gobCL_Regular.otf */; };
+		C34B6F2324429E57000AA950 /* gobCL_Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C34B6F1F24429E57000AA950 /* gobCL_Light.otf */; };
+		C34B6F262442B81C000AA950 /* TestCuestionarioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B6F252442B81C000AA950 /* TestCuestionarioVC.swift */; };
 		C374089624396DD100D28C13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374089524396DD100D28C13 /* AppDelegate.swift */; };
 		C374089824396DD100D28C13 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374089724396DD100D28C13 /* SceneDelegate.swift */; };
 		C374089A24396DD100D28C13 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374089924396DD100D28C13 /* TestVC.swift */; };
@@ -49,6 +54,11 @@
 		C34B6EFD2441C5E6000AA950 /* DetalleTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleTestVC.swift; sourceTree = "<group>"; };
 		C34B6F1624423613000AA950 /* imagenes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = imagenes; path = nubletecuida/imagenes; sourceTree = SOURCE_ROOT; };
 		C34B6F18244238B0000AA950 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C34B6F1C24429E57000AA950 /* gobCL_Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gobCL_Heavy.otf; sourceTree = "<group>"; };
+		C34B6F1D24429E57000AA950 /* gobCL_Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gobCL_Bold.otf; sourceTree = "<group>"; };
+		C34B6F1E24429E57000AA950 /* gobCL_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gobCL_Regular.otf; sourceTree = "<group>"; };
+		C34B6F1F24429E57000AA950 /* gobCL_Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gobCL_Light.otf; sourceTree = "<group>"; };
+		C34B6F252442B81C000AA950 /* TestCuestionarioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCuestionarioVC.swift; sourceTree = "<group>"; };
 		C374089224396DD100D28C13 /* nubletecuida.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nubletecuida.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C374089524396DD100D28C13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C374089724396DD100D28C13 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +108,8 @@
 				C349D132243A421300851BC6 /* NoticiasVC.swift */,
 				C349D134243A424600851BC6 /* MapaVC.swift */,
 				C349D136243A427D00851BC6 /* ContactoVC.swift */,
+				C34B6F252442B81C000AA950 /* TestCuestionarioVC.swift */,
+				C34B6F272442B892000AA950 /* Detalles */,
 			);
 			path = controladores;
 			sourceTree = "<group>";
@@ -108,6 +120,25 @@
 				C34B6EEF24416E2D000AA950 /* TableViewCell.swift */,
 			);
 			path = celdas;
+			sourceTree = "<group>";
+		};
+		C34B6F2424429E6D000AA950 /* Fuentes */ = {
+			isa = PBXGroup;
+			children = (
+				C34B6F1D24429E57000AA950 /* gobCL_Bold.otf */,
+				C34B6F1F24429E57000AA950 /* gobCL_Light.otf */,
+				C34B6F1E24429E57000AA950 /* gobCL_Regular.otf */,
+				C34B6F1C24429E57000AA950 /* gobCL_Heavy.otf */,
+			);
+			path = Fuentes;
+			sourceTree = "<group>";
+		};
+		C34B6F272442B892000AA950 /* Detalles */ = {
+			isa = PBXGroup;
+			children = (
+				C34B6EFD2441C5E6000AA950 /* DetalleTestVC.swift */,
+			);
+			path = Detalles;
 			sourceTree = "<group>";
 		};
 		C374088924396DD000D28C13 = {
@@ -135,12 +166,12 @@
 			children = (
 				C374089524396DD100D28C13 /* AppDelegate.swift */,
 				C374089724396DD100D28C13 /* SceneDelegate.swift */,
-				C34B6EFD2441C5E6000AA950 /* DetalleTestVC.swift */,
 				C34B6F022441C87C000AA950 /* controladores */,
 				C34B6F032441C897000AA950 /* celdas */,
 				C374089D24396DD100D28C13 /* Main.storyboard */,
 				C37408A224396DD200D28C13 /* LaunchScreen.storyboard */,
 				C34B6F18244238B0000AA950 /* Assets.xcassets */,
+				C34B6F2424429E6D000AA950 /* Fuentes */,
 				C34B6F1624423613000AA950 /* imagenes */,
 				C37408A524396DD200D28C13 /* Info.plist */,
 			);
@@ -269,6 +300,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C34B6F2024429E57000AA950 /* gobCL_Heavy.otf in Resources */,
+				C34B6F2124429E57000AA950 /* gobCL_Bold.otf in Resources */,
+				C34B6F2224429E57000AA950 /* gobCL_Regular.otf in Resources */,
+				C34B6F2324429E57000AA950 /* gobCL_Light.otf in Resources */,
 				C37408A424396DD200D28C13 /* LaunchScreen.storyboard in Resources */,
 				C34B6F1724423613000AA950 /* imagenes in Resources */,
 				C34B6F19244238B1000AA950 /* Assets.xcassets in Resources */,
@@ -298,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C374089C24396DD100D28C13 /* ConsejosVC.swift in Sources */,
+				C34B6F262442B81C000AA950 /* TestCuestionarioVC.swift in Sources */,
 				C34B6EF024416E2D000AA950 /* TableViewCell.swift in Sources */,
 				C374089A24396DD100D28C13 /* TestVC.swift in Sources */,
 				C374089624396DD100D28C13 /* AppDelegate.swift in Sources */,

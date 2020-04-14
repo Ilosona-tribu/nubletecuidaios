@@ -63,6 +63,13 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>gobCL_Bold.otf</string>
+		<string>gobCL_Heavy.otf</string>
+		<string>gobCL_Light.otf</string>
+		<string>gobCL_Regular.otf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
