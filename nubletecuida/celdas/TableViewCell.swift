@@ -17,6 +17,13 @@ class TableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+//        contentView.backgroundColor = UIColor.white
+//        contentView.layer.cornerRadius = 15.0
+//        contentView.layer.borderWidth = 1
+//        contentView.layer.borderColor = UIColor.clear.cgColor
+//
+
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

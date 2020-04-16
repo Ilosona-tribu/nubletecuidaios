@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "lavado-de-manos@5x.png",
+      "filename" : "BTN-INICIAR-TEST.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "lavado-de-manos@5x-1.png",
+      "filename" : "BTN-INICIAR-TEST@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "lavado-de-manos@5x-2.png",
+      "filename" : "BTN-INICIAR-TEST@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

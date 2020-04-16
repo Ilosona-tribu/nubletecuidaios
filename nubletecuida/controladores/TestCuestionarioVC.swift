@@ -25,8 +25,8 @@ class TestCuestionarioVC: UIViewController {
         
         arrayEncabezados += ["Primera Pregunta","Segunda Pregunta","Tercera Pregunta","Cuarta Pregunta"]
         arrayTipoDeRespuesta += ["unica","unica","multiple","multiple"]
-
-    arrayAlternativas += [["alternativaPrimeraPregunta","alternativa2PrimeraPregunta"],["alternativaSegundaPregunta","alternativa2SegundaPregunta"],["alternativaTerceraPregunta","alternativa2TerceraPregunta","alternativa3TerceraPregunta","alternativa4TerceraPregunta"]
+        
+        arrayAlternativas += [["alternativaPrimeraPregunta","alternativa2PrimeraPregunta"],["alternativaSegundaPregunta","alternativa2SegundaPregunta"],["alternativaTerceraPregunta","alternativa2TerceraPregunta","alternativa3TerceraPregunta","alternativa4TerceraPregunta"]
             ,["alternativaCuartaPregunta","alternativa2CuartaPregunta","alternativa3CuartaPregunta","alternativa4CuartaPregunta"]]
         
         
@@ -120,6 +120,7 @@ class TestCuestionarioVC: UIViewController {
                 vista.addSubview(botonAlernativa)
             }
         }
+        
     if maxYultimoBotonAlternativa == nil{
         maxYultimoBotonAlternativa = labelEncabezado.frame.maxY
         }

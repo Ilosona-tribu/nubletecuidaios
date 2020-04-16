@@ -7,6 +7,11 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="gobCL_Regular.otf">
+            <string>gobCL</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Test-->
         <scene sceneID="hNz-n2-bh7">
@@ -101,6 +106,21 @@
             </objects>
             <point key="canvasLocation" x="511.59420289855075" y="129.91071428571428"/>
         </scene>
+        <!--Detalle ConsejoVC-->
+        <scene sceneID="ctx-Zs-y2Z">
+            <objects>
+                <viewController storyboardIdentifier="DetalleConsejoVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HeU-7f-bzv" customClass="DetalleConsejoVC" customModule="nubletecuida" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i65-Zh-Qlu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="HKj-BO-79N"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vM2-yC-vEQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1355" y="119"/>
+        </scene>
         <!--Contacto-->
         <scene sceneID="q9I-C6-XE1">
             <objects>
@@ -130,7 +150,6 @@
                         <segue destination="9pv-A4-QxB" kind="relationship" relationship="viewControllers" id="u7Y-xg-7CH"/>
                         <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="u1Z-2s-Ns3" kind="relationship" relationship="viewControllers" id="6oM-AU-7Wa"/>
-                        <segue destination="0Dv-10-TdY" kind="relationship" relationship="viewControllers" id="yq0-km-n0Z"/>
                         <segue destination="E6a-q8-1Zb" kind="relationship" relationship="viewControllers" id="vXe-ep-utq"/>
                     </connections>
                 </tabBarController>
@@ -158,29 +177,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="og9-dx-vxc">
-                                                    <rect key="frame" x="20" y="11" width="279" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="og9-dx-vxc">
+                                                    <rect key="frame" x="26" y="11" width="299" height="74"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" name="gobCL" family="gobCL" pointSize="14"/>
+                                                    <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sr3-FF-HAj">
-                                                    <rect key="frame" x="20" y="40" width="262" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="imagenConsejo" translatesAutoresizingMaskIntoConstraints="NO" id="Xj7-FF-0XF">
-                                                    <rect key="frame" x="290" y="11" width="104" height="84"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="descripcion" destination="Sr3-FF-HAj" id="0Sn-C2-jNC"/>
-                                            <outlet property="imagen" destination="Xj7-FF-0XF" id="Hur-ZF-ZCc"/>
                                             <outlet property="titulo" destination="og9-dx-vxc" id="GZT-Uq-0fd"/>
                                         </connections>
                                     </tableViewCell>
@@ -229,7 +235,6 @@
     <resources>
         <image name="eye" catalog="system" width="128" height="81"/>
         <image name="fono" width="24" height="24"/>
-        <image name="imagenConsejo" width="232.5" height="232.5"/>
         <image name="mapa" width="19" height="23.5"/>
         <image name="noticias" width="25" height="23.5"/>
         <image name="test" width="21.5" height="22.5"/>

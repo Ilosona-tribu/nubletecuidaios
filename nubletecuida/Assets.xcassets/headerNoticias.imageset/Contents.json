@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "lavado-de-manos@5x.png",
+      "filename" : "headerNoticias.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "lavado-de-manos@5x-1.png",
+      "filename" : "headerNoticias-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "lavado-de-manos@5x-2.png",
+      "filename" : "headerNoticias-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

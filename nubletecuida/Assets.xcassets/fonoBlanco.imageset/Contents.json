@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "lavado-de-manos@5x.png",
+      "filename" : "FONO.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "lavado-de-manos@5x-1.png",
+      "filename" : "FONO@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "lavado-de-manos@5x-2.png",
+      "filename" : "FONO@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
