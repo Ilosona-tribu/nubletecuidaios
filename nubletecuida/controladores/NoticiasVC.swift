@@ -7,17 +7,23 @@
 //
 
 import UIKit
+import AWSAppSync
 
 class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
+    var appSyncClient: AWSAppSyncClient?
+
     @IBOutlet weak var tabla: UITableView!
-        var arrayNoticias = Array<Any>()
-        var arrayDescripcionNoticias = Array<Any>()
+        var arrayNoticias = Array<String>()
+        var arrayDescripcionNoticias = Array<String>()
         var tamanoCelda = CGFloat()
         override func viewDidLoad() {
 
-            
-            arrayNoticias = ["Habrá disponible $ 200 millones adicionales en asistencia alimentaria de emergencia para hogares de bajos ingresos inscritos en SNAP, por otro lado durante la jornada Nuestras autoridades han tomado  la decisción de prolongar la cuarentena por una semana más.","El presidente ha hecho acto de presencia hoy en el hospital con motiv...","Informamos que las mascarillas se han agotado a lo largo de todo el co...Nuestras autoridades han decidido hoy, la prolongación de la cuarente...","el presidente ha hecho acto de presencia hoy en el hospital con motiv...","Informamos que las mascarillas se han agotado a lo largo de todo el conti..."," Visita del Presidente Sebastián Piñera","Mascarillas agotadas"]
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            appSyncClient = appDelegate.appSyncClient
+            datosConsejos()
         
             arrayDescripcionNoticias = ["Nuestras autoridades han decidido hoy la prolongación de la cuarente...","el presidente ha hecho acto de presencia hoy en el hospital con motiv...","Informamos que las mascarillas se han agotado a lo largo de todo el conti... "]
             
@@ -67,7 +73,7 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             let maximumLabelSizeTitulo = CGSize(width: (self.view.frame.size.width - 30.0), height: 40000.0)
             cell.titulo.sizeThatFits(maximumLabelSizeTitulo)
             cell.titulo.font = UIFont.init(name: "gobCL", size: 16.0)
-            cell.titulo?.text = arrayNoticias[indexPath.row] as? String
+            cell.titulo?.text = arrayNoticias[indexPath.row]
             cell.titulo?.textAlignment = .left
             cell.titulo.numberOfLines = 0
             cell.titulo?.sizeToFit()
@@ -96,13 +102,37 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             cell.contentView.addSubview(whiteRoundedView)
             cell.contentView.sendSubviewToBack(whiteRoundedView)
 
+            
             return cell
             
     }
     
 
-    override func viewDidAppear(_ animated: Bool) {
+//    override func viewDidAppear(_ animated: Bool) {
+//
+//        tabla.reloadData()
+//    }
+func datosConsejos(){
+    
+    let query = ListNewssQuery()
+        self.appSyncClient?.fetch(query: query, cachePolicy: .returnCacheDataElseFetch) { result, error in
+
+        if let error = error {
+            print("Error fetching data: \(error)")
+            return
+        }
         
-        tabla.reloadData()
+            
+        result?.data?.listNewss?.items?.forEach {
+            
+            self.arrayNoticias.append($0!.title)
+            }
+    DispatchQueue.main.async {
+
+        self.tabla.reloadData()
+        
     }
+            
 }
+    
+}}

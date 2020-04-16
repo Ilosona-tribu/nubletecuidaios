@@ -3,12 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		384312E9D3F6E1535CB14FC5 /* Pods_nubletecuida.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 961EFB5563A0BFC2F49703D5 /* Pods_nubletecuida.framework */; };
 		C3456DCB244786C000D4C978 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3456DCA2447863400D4C978 /* Assets.xcassets */; };
 		C3456DCD2447876D00D4C978 /* DetalleConsejoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3456DCC2447876D00D4C978 /* DetalleConsejoVC.swift */; };
+		C3456E1624482CAF00D4C978 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3456E1324482CAF00D4C978 /* API.swift */; };
+		C3456E1724482CAF00D4C978 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = C3456E1424482CAF00D4C978 /* amplifyconfiguration.json */; };
+		C3456E1824482CAF00D4C978 /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = C3456E1524482CAF00D4C978 /* awsconfiguration.json */; };
 		C349D133243A421300851BC6 /* NoticiasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349D132243A421300851BC6 /* NoticiasVC.swift */; };
 		C349D135243A424600851BC6 /* MapaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349D134243A424600851BC6 /* MapaVC.swift */; };
 		C349D137243A427D00851BC6 /* ContactoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349D136243A427D00851BC6 /* ContactoVC.swift */; };
@@ -48,8 +52,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E4DD906EBBA25EB742C4AA0 /* Pods-nubletecuida.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nubletecuida.release.xcconfig"; path = "Target Support Files/Pods-nubletecuida/Pods-nubletecuida.release.xcconfig"; sourceTree = "<group>"; };
+		961EFB5563A0BFC2F49703D5 /* Pods_nubletecuida.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_nubletecuida.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3456DCA2447863400D4C978 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3456DCC2447876D00D4C978 /* DetalleConsejoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleConsejoVC.swift; sourceTree = "<group>"; };
+		C3456E1324482CAF00D4C978 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = SOURCE_ROOT; };
+		C3456E1424482CAF00D4C978 /* amplifyconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = amplifyconfiguration.json; sourceTree = SOURCE_ROOT; };
+		C3456E1524482CAF00D4C978 /* awsconfiguration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = awsconfiguration.json; sourceTree = SOURCE_ROOT; };
 		C349D132243A421300851BC6 /* NoticiasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticiasVC.swift; sourceTree = "<group>"; };
 		C349D134243A424600851BC6 /* MapaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaVC.swift; sourceTree = "<group>"; };
 		C349D136243A427D00851BC6 /* ContactoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactoVC.swift; sourceTree = "<group>"; };
@@ -75,6 +84,7 @@
 		C37408B524396DD300D28C13 /* nubletecuidaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nubletecuidaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37408B924396DD300D28C13 /* nubletecuidaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nubletecuidaUITests.swift; sourceTree = "<group>"; };
 		C37408BB24396DD300D28C13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB4E224978C3EC5AB6AE5256 /* Pods-nubletecuida.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nubletecuida.debug.xcconfig"; path = "Target Support Files/Pods-nubletecuida/Pods-nubletecuida.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				384312E9D3F6E1535CB14FC5 /* Pods_nubletecuida.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +113,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F7D2CAAC3A9A39A5F8DAFEE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CB4E224978C3EC5AB6AE5256 /* Pods-nubletecuida.debug.xcconfig */,
+				0E4DD906EBBA25EB742C4AA0 /* Pods-nubletecuida.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		630A9CA31863380A6480FDD2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				961EFB5563A0BFC2F49703D5 /* Pods_nubletecuida.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C3456E1124482C5800D4C978 /* delegado */ = {
+			isa = PBXGroup;
+			children = (
+				C374089524396DD100D28C13 /* AppDelegate.swift */,
+				C374089724396DD100D28C13 /* SceneDelegate.swift */,
+			);
+			path = delegado;
+			sourceTree = "<group>";
+		};
+		C3456E1224482C9B00D4C978 /* sync */ = {
+			isa = PBXGroup;
+			children = (
+				C3456E1424482CAF00D4C978 /* amplifyconfiguration.json */,
+				C3456E1324482CAF00D4C978 /* API.swift */,
+				C3456E1524482CAF00D4C978 /* awsconfiguration.json */,
+			);
+			path = sync;
+			sourceTree = "<group>";
+		};
 		C34B6F022441C87C000AA950 /* controladores */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,7 +158,6 @@
 				C349D134243A424600851BC6 /* MapaVC.swift */,
 				C349D136243A427D00851BC6 /* ContactoVC.swift */,
 				C34B6F252442B81C000AA950 /* TestCuestionarioVC.swift */,
-				C34B6F272442B892000AA950 /* Detalles */,
 			);
 			path = controladores;
 			sourceTree = "<group>";
@@ -151,6 +197,8 @@
 				C37408AD24396DD300D28C13 /* nubletecuidaTests */,
 				C37408B824396DD300D28C13 /* nubletecuidaUITests */,
 				C374089324396DD100D28C13 /* Products */,
+				1F7D2CAAC3A9A39A5F8DAFEE /* Pods */,
+				630A9CA31863380A6480FDD2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -167,10 +215,11 @@
 		C374089424396DD100D28C13 /* nubletecuida */ = {
 			isa = PBXGroup;
 			children = (
-				C374089524396DD100D28C13 /* AppDelegate.swift */,
-				C374089724396DD100D28C13 /* SceneDelegate.swift */,
+				C3456E1124482C5800D4C978 /* delegado */,
 				C34B6F022441C87C000AA950 /* controladores */,
+				C34B6F272442B892000AA950 /* Detalles */,
 				C34B6F032441C897000AA950 /* celdas */,
+				C3456E1224482C9B00D4C978 /* sync */,
 				C374089D24396DD100D28C13 /* Main.storyboard */,
 				C37408A224396DD200D28C13 /* LaunchScreen.storyboard */,
 				C3456DCA2447863400D4C978 /* Assets.xcassets */,
@@ -206,9 +255,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C37408BE24396DD300D28C13 /* Build configuration list for PBXNativeTarget "nubletecuida" */;
 			buildPhases = (
+				BDE126865F03095AF10AF6B2 /* [CP] Check Pods Manifest.lock */,
 				C374088E24396DD100D28C13 /* Sources */,
 				C374088F24396DD100D28C13 /* Frameworks */,
 				C374089024396DD100D28C13 /* Resources */,
+				38BF68CA4B205C6688CBCC1D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -303,6 +354,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3456E1824482CAF00D4C978 /* awsconfiguration.json in Resources */,
 				C34B6F2024429E57000AA950 /* gobCL_Heavy.otf in Resources */,
 				C34B6F2124429E57000AA950 /* gobCL_Bold.otf in Resources */,
 				C34B6F2224429E57000AA950 /* gobCL_Regular.otf in Resources */,
@@ -310,6 +362,7 @@
 				C37408A424396DD200D28C13 /* LaunchScreen.storyboard in Resources */,
 				C34B6F1724423613000AA950 /* imagenes in Resources */,
 				C3456DCB244786C000D4C978 /* Assets.xcassets in Resources */,
+				C3456E1724482CAF00D4C978 /* amplifyconfiguration.json in Resources */,
 				C374089F24396DD100D28C13 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +383,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		38BF68CA4B205C6688CBCC1D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nubletecuida/Pods-nubletecuida-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-nubletecuida/Pods-nubletecuida-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-nubletecuida/Pods-nubletecuida-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BDE126865F03095AF10AF6B2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-nubletecuida-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C374088E24396DD100D28C13 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -345,6 +440,7 @@
 				C349D133243A421300851BC6 /* NoticiasVC.swift in Sources */,
 				C349D135243A424600851BC6 /* MapaVC.swift in Sources */,
 				C3456DCD2447876D00D4C978 /* DetalleConsejoVC.swift in Sources */,
+				C3456E1624482CAF00D4C978 /* API.swift in Sources */,
 				C34B6EFE2441C5E6000AA950 /* DetalleTestVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +612,7 @@
 		};
 		C37408BF24396DD300D28C13 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB4E224978C3EC5AB6AE5256 /* Pods-nubletecuida.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -533,6 +630,7 @@
 		};
 		C37408C024396DD300D28C13 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0E4DD906EBBA25EB742C4AA0 /* Pods-nubletecuida.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

@@ -12,15 +12,16 @@ class DetalleConsejoVC: UIViewController {
 
     var tituloConsejo:String!
     var imagenConsejo:UIImage!
+    var urlImagenConsejo:URL!
     var descripcionConsejo:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       // guard let imageData2 = try? Data(contentsOf: urlImagenConsejo) else { return }
+
         let vistaImagenConsejo = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 323.0))
-        vistaImagenConsejo.image = imagenConsejo
-        
-        
+        vistaImagenConsejo.downloaded(from: urlImagenConsejo, with: 1.0)
         let vistaImagenFondo = UIImageView(frame: view.frame)
         vistaImagenFondo.image = UIImage(named: "fondoVerdeAgua")
         vistaImagenFondo.alpha = 0.5
@@ -51,4 +52,21 @@ class DetalleConsejoVC: UIViewController {
     }
     */
 
+}
+extension UIImageView {
+    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit, with alpha:CGFloat) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+              
+                else { return }
+            DispatchQueue.main.async() {
+                self.image = image.alpha(alpha)
+            }
+        }.resume()
+    }
 }

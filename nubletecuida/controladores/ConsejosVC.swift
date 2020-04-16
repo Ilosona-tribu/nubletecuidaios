@@ -7,19 +7,32 @@
 //
 
 import UIKit
-
+import AWSAppSync
 
 class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
    
     
+    var appSyncClient: AWSAppSyncClient?
+
 
 @IBOutlet weak var collectionVi: UICollectionView!
-    var arrayConsejos = Array<UIImage>()
+    var arrayConsejos = Array<URL>()
+    var arrayConsejosImagenesDetalle = Array<URL>()
     var arrayDescripcionConsejos = Array<String>()
     var arrayTituloConsejos = Array<String>()
-
     
+    
+    // MARK: - Controller delegates
+
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        appSyncClient = appDelegate.appSyncClient
+    
+
         let imagenFondo = UIImageView(frame: view.frame)
         imagenFondo.image = UIImage(named: "fondoVerdeAgua")
 
@@ -29,25 +42,18 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         collectionVi.frame.origin = CGPoint(x: 0.0, y: imagenNuble.frame.maxY + 35.0)
         collectionVi.frame.size = CGSize(width: view.frame.width, height: view.frame.height - collectionVi.frame.minY)
 
-        print(collectionVi.frame)
         self.view.addSubview(imagenFondo)
         self.view.addSubview(imagenNuble)
 
         self.view.sendSubviewToBack(imagenFondo)
-        arrayConsejos += [UIImage(named: "consejo1")!, UIImage(named: "consejo2")!,UIImage(named: "consejo3")!,UIImage(named: "consejo4")!,UIImage(named: "consejo5")!, UIImage(named: "consejo4")!,UIImage(named: "consejo5")!]
         
-        
-        for object in arrayConsejos{
-            
-            arrayDescripcionConsejos.append("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")
-        }
-        
+        datosConsejos()
         collectionVi.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "collectionCell")
 
         collectionVi.delegate = self
         collectionVi.dataSource = self
         
-        let cellSize = CGSize(width:175.0/1.1 , height:141.0/1.1)
+        let cellSize = CGSize(width:190/1.1 , height:190/1.1)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical //.horizontal
@@ -76,29 +82,92 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
            
         let cell = collectionVi.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath)
         let imagen = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: cell.frame.width, height: cell.frame.height))
-        imagen.image = arrayConsejos[indexPath.row]
+        imagen.layer.cornerRadius = 20.0
+        imagen.backgroundColor  = UIColor(white: 0, alpha: 0.8)
+        let label = UILabel(frame: CGRect(x:22.5, y:imagen.center.x - 20.0, width: imagen.frame.width - 45.0, height: 40.0))
+        label.numberOfLines = 4
+        label.textAlignment = .left
+        label.font = UIFont.init(name: "gobCL-Bold", size: 16.0)
+        label.textColor = UIColor.white
+        label.text = arrayTituloConsejos[indexPath.row]
+        imagen.downloaded(from: arrayConsejos[indexPath.row], with: 0.5)
+
         cell.addSubview(imagen)
+        imagen.addSubview(label)
+        cell.sendSubviewToBack(imagen)
+
         
         return cell
 
-        
-       }
-    
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "DetalleConsejoVC") as? DetalleConsejoVC {
-            viewController.imagenConsejo = arrayConsejos[indexPath.row]
+            
             viewController.descripcionConsejo = arrayDescripcionConsejos[indexPath.row]
+            viewController.urlImagenConsejo = arrayConsejosImagenesDetalle[indexPath.row]
             self.show(viewController, sender: nil)
             
-            
-         //   viewController
         }
-
+    }
+    
+    func datosConsejos(){
         
+        let query = ListAdvicesQuery()
+            self.appSyncClient?.fetch(query: query, cachePolicy: .returnCacheDataElseFetch) { result, error in
+
+            if let error = error {
+                print("Error fetching data: \(error)")
+                return
+            }
+            
+                DispatchQueue.global().async {
+
+            result?.data?.listAdvices?.items?.forEach {
+                
+                self.arrayTituloConsejos.append($0!.title)
+                self.arrayDescripcionConsejos.append($0!.description)
+
+
+                guard let imageURL = URL(string: ($0?.urlThumbnailImage)!) else { return }
+                guard let imageURL2 = URL(string: ($0?.urlBackgroundImage)!) else { return }
+              
+                self.arrayConsejosImagenesDetalle.append(imageURL2)
+                self.arrayConsejos.append(imageURL)
+
+                }
+                    DispatchQueue.main.async {
+                        
+                        self.collectionVi.reloadData()
+
+                    }}
+    }}}
+
+extension UIImage {
+
+    func alpha(_ value:CGFloat) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, false, scale)
+        draw(at: CGPoint.zero, blendMode: .normal, alpha: value)
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
     }
 }
+
+//    func uniq<S : Sequence, T : Hashable>(source: S) -> [T] where S.Iterator.Element == T {
+//        var buffer = [T]()
+//        var added = Set<T>()
+//        for elem in source {
+//            if !added.contains(elem) {
+//                buffer.append(elem)
+//                added.insert(elem)
+//            }
+//        }
+//        return buffer
+//    }
+//
+//}
 
