@@ -32,6 +32,7 @@
 		C37408A424396DD200D28C13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37408A224396DD200D28C13 /* LaunchScreen.storyboard */; };
 		C37408AF24396DD300D28C13 /* nubletecuidaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37408AE24396DD300D28C13 /* nubletecuidaTests.swift */; };
 		C37408BA24396DD300D28C13 /* nubletecuidaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37408B924396DD300D28C13 /* nubletecuidaUITests.swift */; };
+		C3E506722449420400D24540 /* DetalleNoticiasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E506712449420400D24540 /* DetalleNoticiasVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		C37408B524396DD300D28C13 /* nubletecuidaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nubletecuidaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37408B924396DD300D28C13 /* nubletecuidaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nubletecuidaUITests.swift; sourceTree = "<group>"; };
 		C37408BB24396DD300D28C13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3E506712449420400D24540 /* DetalleNoticiasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleNoticiasVC.swift; sourceTree = "<group>"; };
 		CB4E224978C3EC5AB6AE5256 /* Pods-nubletecuida.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nubletecuida.debug.xcconfig"; path = "Target Support Files/Pods-nubletecuida/Pods-nubletecuida.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +186,7 @@
 		C34B6F272442B892000AA950 /* Detalles */ = {
 			isa = PBXGroup;
 			children = (
+				C3E506712449420400D24540 /* DetalleNoticiasVC.swift */,
 				C34B6EFD2441C5E6000AA950 /* DetalleTestVC.swift */,
 				C3456DCC2447876D00D4C978 /* DetalleConsejoVC.swift */,
 			);
@@ -440,6 +443,7 @@
 				C349D133243A421300851BC6 /* NoticiasVC.swift in Sources */,
 				C349D135243A424600851BC6 /* MapaVC.swift in Sources */,
 				C3456DCD2447876D00D4C978 /* DetalleConsejoVC.swift in Sources */,
+				C3E506722449420400D24540 /* DetalleNoticiasVC.swift in Sources */,
 				C3456E1624482CAF00D4C978 /* API.swift in Sources */,
 				C34B6EFE2441C5E6000AA950 /* DetalleTestVC.swift in Sources */,
 			);
@@ -617,6 +621,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = nubletecuida/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -635,6 +640,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = nubletecuida/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

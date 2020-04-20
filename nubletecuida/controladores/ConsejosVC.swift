@@ -21,7 +21,6 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
     var arrayDescripcionConsejos = Array<String>()
     var arrayTituloConsejos = Array<String>()
     
-    
     // MARK: - Controller delegates
 
     override func viewDidLoad() {
@@ -32,10 +31,9 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         }
         appSyncClient = appDelegate.appSyncClient
     
-
         let imagenFondo = UIImageView(frame: view.frame)
         imagenFondo.image = UIImage(named: "fondoVerdeAgua")
-
+        
         let imagenNuble = UIImageView(frame: CGRect(x: CGFloat(view.center.x - 25.0), y: 45, width: 44.1 * 1.25, height: 65.4 * 1.25))
         
         imagenNuble.image = UIImage(named: "nubleTeCuida")
@@ -44,7 +42,6 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
 
         self.view.addSubview(imagenFondo)
         self.view.addSubview(imagenNuble)
-
         self.view.sendSubviewToBack(imagenFondo)
         
         datosConsejos()
@@ -69,12 +66,11 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         
         super.viewDidLoad()
         
-        
     }
 
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+      
         return arrayConsejos.count
     }
     
@@ -96,11 +92,9 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         imagen.addSubview(label)
         cell.sendSubviewToBack(imagen)
 
-        
         return cell
 
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
        
@@ -132,7 +126,7 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
                 self.arrayDescripcionConsejos.append($0!.description)
 
 
-                guard let imageURL = URL(string: ($0?.urlThumbnailImage)!) else { return }
+                guard let imageURL = URL(string:  ($0?.urlThumbnailImage)!) else { return }
                 guard let imageURL2 = URL(string: ($0?.urlBackgroundImage)!) else { return }
               
                 self.arrayConsejosImagenesDetalle.append(imageURL2)
