@@ -11,10 +11,27 @@ import UIKit
 class SplashVC: UIViewController {
 
     override func viewDidLoad() {
-
-
-                super.viewDidLoad()
+        super.viewDidLoad()
     
+        view.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
+        
+        //328 x 243
+
+        let nuvbleImagenMapa = UIImageView(frame: CGRect(x:view.center.x - (view.frame.width - 86)/2, y: view.center.y - (view.frame.height/4 + 19), width: (view.frame.width - 86), height: (view.frame.height/4) + 19))
+        nuvbleImagenMapa.image = UIImage(named: "nubleimagenmapa")
+     
+        let logoNubleImagen = UIImageView(frame:CGRect(x: view.center.x - 60, y: view.frame.height - 130.0, width: 60, height: 48))
+        logoNubleImagen.image = UIImage(named:"nubleimagen")
+        let logoNubleLogoGobierno = UIImageView(frame:CGRect(x: view.center.x + 10, y: view.frame.height - 130.0, width: 48, height: 48))
+        logoNubleLogoGobierno.image = UIImage(named:"nublelogogobierno")
+
+        
+        
+        view.addSubview(nuvbleImagenMapa)
+        view.addSubview(logoNubleImagen)
+        view.addSubview(logoNubleLogoGobierno)
+        
+        
         self.delay(2.4){
             
                 let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
