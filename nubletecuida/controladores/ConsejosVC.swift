@@ -111,7 +111,7 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
     func datosConsejos(){
         
         let query = ListAdvicesQuery()
-            self.appSyncClient?.fetch(query: query, cachePolicy: .returnCacheDataElseFetch) { result, error in
+            self.appSyncClient?.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result, error in
 
             if let error = error {
                 print("Error fetching data: \(error)")

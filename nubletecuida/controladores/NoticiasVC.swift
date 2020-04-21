@@ -32,9 +32,9 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             super.viewDidLoad()
             let imagenNuble = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 280.0))
             imagenNuble.image = UIImage(named: "headerNoticias")
-        tabla.frame = CGRect(x: 0.0, y: imagenNuble.frame.maxY - 41.1, width: view.frame.width, height: view.frame.maxY)
+        tabla.frame = CGRect(x: 0.0, y: imagenNuble.frame.maxY - 41.1, width: view.frame.width, height: view.frame.maxY - (imagenNuble.frame.maxY - 41))
         let iconoNoticiasCircular = UIImageView(frame: CGRect(x: view.center.x - 35.0, y: tabla.frame.origin.y - 35.0, width: 70.0, height: 70.0))
-            
+
         iconoNoticiasCircular.image = UIImage(named: "iconoNoticias")
         iconoNoticiasCircular.layer.cornerRadius = 70.0
         
@@ -60,14 +60,8 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
             
-            if tamanoCelda < 120.0 {
-                return 120.0
-            }
-            else{
-                
-                return tamanoCelda + 15.0
-           }
-        }
+            return 120.0
+    }
     
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let returnedView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 42.0)) //set these values as necessary
@@ -88,7 +82,7 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             cell.titulo?.frame = CGRect(x: 128.0, y: 15.0, width: view.frame.size.width - 143.0, height:0.0)
             let maximumLabelSizeTitulo = CGSize(width: (self.view.frame.size.width - 30.0), height: 40000.0)
             cell.titulo.sizeThatFits(maximumLabelSizeTitulo)
-            cell.titulo.font = UIFont.init(name: "gobCL-Bold", size: 18.0)
+            cell.titulo.font = UIFont.init(name: "gobCL-Bold", size: 16.0)
             cell.titulo?.text = arrayNoticias[indexPath.row]
             cell.titulo?.textAlignment = .left
             cell.titulo.numberOfLines = 0
@@ -102,7 +96,7 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             cell.descripcion.font = UIFont.init(name: "gobCL", size: 14.0)
             cell.descripcion?.text = arrayDescripcionNoticias[indexPath.row]
             cell.descripcion?.textAlignment = .left
-            cell.descripcion.numberOfLines = 0
+            cell.descripcion.numberOfLines = 2
             cell.descripcion?.sizeToFit()
           
             cell.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
@@ -120,7 +114,7 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 tamanoFondo = tamanoCelda - 5.0
 
             }
-            let imagen = UIImageView(frame: CGRect(x: 18.0, y: 15.0, width: tamanoFondo, height: tamanoFondo))
+            let imagen = UIImageView(frame: CGRect(x: 18.0, y: 15.0, width: 100, height: 100))
             imagen.downloaded(from: arrayUrlImagenNoticias[indexPath.row], with: 1.0)
             imagen.layer.cornerRadius = 13.3
             imagen.layer.masksToBounds = true
@@ -159,7 +153,7 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 func datosNoticias(){
     
     let query = ListNewssQuery()
-        self.appSyncClient?.fetch(query: query, cachePolicy: .returnCacheDataElseFetch) { result, error in
+        self.appSyncClient?.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result, error in
 
         if let error = error {
             print("Error fetching data: \(error)")
