@@ -126,9 +126,11 @@ class TestCuestionarioVC: UIViewController {
         }
         maxYultimoBotonAlternativa = arrayBotones.last!.frame.maxY as CGFloat
         
-        botonAvanzar = UIButton(frame: CGRect(x: view.center.x - 101.5, y: maxYultimoBotonAlternativa + 40.0, width: 203.0, height: 78.0))
-
-        botonAvanzar.setImage(UIImage.init(named: "botonIniciar"), for: .normal)
+        botonAvanzar = UIButton(frame: CGRect(x: view.center.x - 92.5, y: maxYultimoBotonAlternativa + 40.0, width: 185.0, height: 59.16))
+        botonAvanzar.backgroundColor = UIColor(red: 0.0, green: 99.0/255.0, blue: 175.0/255.0, alpha: 1.0)
+        botonAvanzar.layer.cornerRadius = 26.9
+        botonAvanzar.setTitle("Siguiente", for: .normal)
+        botonAvanzar.titleLabel?.font = UIFont(name: "gobCL-Bold", size: 18.0)
 
         botonAvanzar.addTarget(self, action: #selector(avanzarPreguntaAction(_:)), for: .touchUpInside)
         vista.addSubview(botonAvanzar)

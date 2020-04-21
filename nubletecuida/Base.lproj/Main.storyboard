@@ -97,7 +97,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="O1u-W8-tvY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Consejos" image="eye" catalog="system" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Consejos" image="chat" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="collectionVi" destination="2xe-vH-XxH" id="Lux-1k-JmN"/>
                     </connections>
@@ -285,7 +285,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="eye" catalog="system" width="128" height="81"/>
+        <image name="chat" width="26" height="23"/>
         <image name="fono" width="24" height="24"/>
         <image name="mapa" width="19" height="23.5"/>
         <image name="noticias" width="25" height="23.5"/>

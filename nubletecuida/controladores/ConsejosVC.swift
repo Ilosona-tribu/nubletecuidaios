@@ -66,7 +66,6 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         super.viewDidLoad()
     }
     
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       
         return arrayConsejos.count
@@ -101,7 +100,9 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "DetalleConsejoVC") as? DetalleConsejoVC {
             
             viewController.descripcionConsejo = arrayDescripcionConsejos[indexPath.row]
-            viewController.urlImagenConsejo = arrayConsejosImagenesDetalle[indexPath.row]
+            viewController.urlImagenConsejo = arrayConsejos[indexPath.row]
+            viewController.urlImagenConsejoChica = arrayConsejosImagenesDetalle[indexPath.row]
+
             self.show(viewController, sender: nil)
             
         }
@@ -125,8 +126,8 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
                 self.arrayDescripcionConsejos.append($0!.detail)
 
 
-                guard let imageURL = URL(string:  ($0?.urlThumbnailImage)!) else { return }
-                guard let imageURL2 = URL(string: ($0?.urlBackgroundImage)!) else { return }
+                guard let imageURL = URL(string:  ($0?.urlBackgroundImage)!) else { return }
+                guard let imageURL2 = URL(string: ($0?.urlThumbnailImage)!) else { return }
               
                 self.arrayConsejosImagenesDetalle.append(imageURL2)
                 self.arrayConsejos.append(imageURL)

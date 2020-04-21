@@ -39,19 +39,19 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         iconoNoticiasCircular.layer.cornerRadius = 70.0
         
             //arreglar dps
-            
-            tabla.layer.cornerRadius = 41.1
-            tabla.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-            tabla.separatorStyle = UITableViewCell.SeparatorStyle.none
-            view.addSubview(imagenNuble)
-            view.sendSubviewToBack(imagenNuble)
-            view.addSubview(iconoNoticiasCircular)
+        
+        tabla.layer.cornerRadius = 41.1
+        tabla.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        tabla.separatorStyle = UITableViewCell.SeparatorStyle.none
+        view.addSubview(imagenNuble)
+        view.sendSubviewToBack(imagenNuble)
+        view.addSubview(iconoNoticiasCircular)
 
-            tabla.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
+        tabla.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
           
         
-            tabla.setContentOffset(CGPoint(x: 0, y: 50000.0), animated: false)
-            view.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
+        tabla.setContentOffset(CGPoint(x: 0, y: 50000.0), animated: false)
+        view.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
 }
     
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,7 +127,6 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             cell.addSubview(imagen)
 
         
-            
             let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 5, width: self.view.frame.size.width - 20, height: tamanoFondo + 15.0))
             
             whiteRoundedView.layer.backgroundColor = UIColor.white.cgColor
@@ -172,11 +171,11 @@ func datosNoticias(){
             
             self.arrayNoticias.append($0!.title)
             self.arrayDescripcionNoticias.append($0!.description)
-            self.arrayUrlImagenNoticias.append(URL(string: ($0?.urlThumbnailImage)!)!)
+            self.arrayUrlImagenNoticias.append(URL(string: ($0?.urlBackgroundImage)!)!)
             self.arrayUrlImagenCelda.append(URL(string: ($0?.urlBackgroundImage)!)!)
 
+        }
             
-            }
     DispatchQueue.main.async {
 
         self.tabla.reloadData()

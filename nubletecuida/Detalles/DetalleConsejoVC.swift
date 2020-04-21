@@ -13,6 +13,7 @@ class DetalleConsejoVC: UIViewController {
     var tituloConsejo:String!
     var imagenConsejo:UIImage!
     var urlImagenConsejo:URL!
+    var urlImagenConsejoChica:URL!
     var descripcionConsejo:String!
     
     override func viewDidLoad() {
@@ -28,9 +29,10 @@ class DetalleConsejoVC: UIViewController {
         vistaImagenFondo.alpha = 0.5
 
         let imagenCircular = UIImageView(frame: CGRect(x: view.center.x - 40.0, y: vistaImagenConsejo.bounds.maxY - 124.0, width: 80.0, height: 80.0))
-        imagenCircular.layer.cornerRadius = 100.0
-        imagenCircular.image = UIImage(named: "iconoManos")
-        
+        imagenCircular.downloaded(from: urlImagenConsejoChica, with: 1.0)
+        imagenCircular.layer.cornerRadius = 40
+        imagenCircular.layer.masksToBounds = true
+
         view.sendSubviewToBack(vistaImagenConsejo)
         
         let subVista = UIView(frame: CGRect(x: 0.0, y: vistaImagenConsejo.frame.maxY - 90.0, width: view.frame.width, height: view.frame.height))

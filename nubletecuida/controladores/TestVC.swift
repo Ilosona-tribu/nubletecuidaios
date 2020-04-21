@@ -36,8 +36,13 @@ class TestVC: UIViewController {
         
 // boton iniciar Test
         
-        let botonIniciar = UIButton(frame: CGRect(x: view.center.x - 101.5, y: imagenLogo.frame.maxY + 15.0, width: 203.0, height: 78.0))
-        botonIniciar.setImage(UIImage.init(named: "botonIniciar"), for: .normal)
+        let botonIniciar = UIButton(frame: CGRect(x: view.center.x - 92.5, y: imagenLogo.frame.maxY + 15.0, width: 185.0, height: 59.16))
+        botonIniciar.backgroundColor = UIColor(red: 0.0, green: 99.0/255.0, blue: 175.0/255.0, alpha: 1.0)
+        botonIniciar.layer.cornerRadius = 26.9
+        botonIniciar.setTitle("Iniciar test", for: .normal)
+        botonIniciar.titleLabel?.font = UIFont(name: "gobCL-Bold", size: 18.0)
+        
+        
     
         //metodo para enviar a detalle
         

@@ -31,15 +31,21 @@ class DetalleTestVC: UIViewController {
         
 //boton para mi
         
-        let botonParaMi = UIButton(frame: CGRect(x: view.center.x - 101.5, y: labelTextoIntroductorio.frame.maxY + 15.0, width: 203.0, height: 78.0))
-        botonParaMi.setImage(UIImage.init(named: "botonTestMio"), for: .normal)
+        let botonParaMi = UIButton(frame: CGRect(x: view.center.x - 92.5, y: labelTextoIntroductorio.frame.maxY + 30.0, width: 185.0, height: 59.16))
+        botonParaMi.backgroundColor = UIColor(red: 0.0, green: 99.0/255.0, blue: 175.0/255.0, alpha: 1.0)
+        botonParaMi.layer.cornerRadius = 26.9
+        botonParaMi.setTitle("Uso para mi", for: .normal)
+        botonParaMi.titleLabel?.font = UIFont(name: "gobCL-Bold", size: 18.0)
 
         
 // boton para otros
         
-        let botonParaOtros = UIButton(frame: CGRect(x: view.center.x - 101.5, y: botonParaMi.frame.maxY + 15.0, width: 203.0, height: 78.0))
-        botonParaOtros.setImage(UIImage.init(named: "botonTestOtro"), for: .normal)
-        
+        let botonParaOtros = UIButton(frame: CGRect(x: view.center.x - 92.5, y: botonParaMi.frame.maxY + 15.0, width: 185.0, height: 59.16))
+        botonParaOtros.backgroundColor = UIColor(red: 0.0, green: 197.0/255.0, blue: 242.0/255.0, alpha: 1.0)
+        botonParaOtros.layer.cornerRadius = 26.9
+        botonParaOtros.setTitle("Uso para alguien más", for: .normal)
+        botonParaOtros.titleLabel?.font = UIFont(name: "gobCL-Bold", size: 18.0)
+
 // añade los componentes a la vista
         
         self.view.addSubview(imagenPrincipal)
