@@ -16,7 +16,7 @@ class ContactoVC: UIViewController {
         
         let imagenFondo = UIImageView(frame: view.frame)
         imagenFondo.image = UIImage(named: "callCenter")
-
+        
 //subvista
         
         let vista = UIView(frame: CGRect(x: 0.0, y: view.center.y, width: self.view.frame.width, height: self.view.frame.height - 120.0))
@@ -36,7 +36,6 @@ class ContactoVC: UIViewController {
 
 //btn wsp
         
-        
         let btnWsp = UIButton(frame: CGRect(x: vista.center.x - 105.0, y: textoCentral.frame.maxY + 10.0, width: 210.0, height: 60.0))
         btnWsp.backgroundColor = UIColor.init(red: 37.0/255.0, green: 211.0/255.0, blue: 102.0/255.0, alpha: 1.0)
         btnWsp.layer.cornerRadius = 15.0
@@ -53,7 +52,6 @@ class ContactoVC: UIViewController {
         btnWsp.addSubview(btnWspImage)
         vista.addSubview(btnWsp)
 
-        
 //btn llamado
         
         let btnLLamado = UIButton(frame: CGRect(x: vista.center.x - 105.0 , y: btnWsp.frame.maxY + 15.0, width: 210.0, height: 60.0))
@@ -64,14 +62,13 @@ class ContactoVC: UIViewController {
         btnLLamado.addTarget(self, action: #selector(accionBtnLlamar(_:)), for: .touchUpInside)
         btnLLamado.setTitleColor(UIColor.white, for: .normal)
         btnLLamado.titleEdgeInsets = UIEdgeInsets(top: 0, left: 30 , bottom: 0, right: 5)
-
         btnLLamado.setTitle("600 600 8383", for: .normal)
         
         let btnLlamadoImage = UIImageView(frame: CGRect(x: 15.0, y: 15.0, width: 30, height: 30))
         btnLlamadoImage.image = UIImage(named: "fonoBlanco")
         btnLlamadoImage.backgroundColor = UIColor.clear
         btnLLamado.addSubview(btnLlamadoImage)
-
+        
         vista.addSubview(btnLLamado)
 
 // ajustes y agregues
@@ -80,20 +77,19 @@ class ContactoVC: UIViewController {
         self.view.addSubview(imagenFondo)
         self.view.sendSubviewToBack(imagenFondo)
         super.viewDidLoad()
-    
+        
     }
 
     @objc func accionBtnLlamar(_ sender:UIButton!) {
-       
+        
         print("llamar")
         llamar()
-        
-    
+   
     }
     
     @objc func accionBtnWsp(_ sender:UIButton!) {
 
-        
+        print("wsp")
     }
     
     func llamar() {

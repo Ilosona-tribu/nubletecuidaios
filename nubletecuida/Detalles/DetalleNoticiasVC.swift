@@ -11,45 +11,70 @@ import UIKit
 class DetalleNoticiasVC: UIViewController {
 
    var tituloConsejo:String!
-        var imagenNoticia:UIImage!
-        var urlImagenNotici:URL!
-        var descripcionNoticia:String!
+       var imagenConsejo:UIImage!
+       var urlImagenNotici:URL!
+       var descripcionNoticia:String!
+       
+       override func viewDidLoad() {
+           super.viewDidLoad()
+
+
+           
+           let vistaImagenConsejo = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 380.0))
+           vistaImagenConsejo.downloaded(from: urlImagenNotici, with: 1.0)
+         
+           let vistaImagenFondo = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: vistaImagenConsejo.frame.height + 100.0))
+           vistaImagenFondo.image = UIImage(named: "fondoVerdeAgua")
+           vistaImagenFondo.alpha = 0.5
+
+           let imagenCircular = UIImageView(frame: CGRect(x: view.center.x - 40.0, y: vistaImagenConsejo.bounds.maxY - 124.0, width: 80.0, height: 80.0))
+           imagenCircular.layer.cornerRadius = 100.0
+           imagenCircular.image = UIImage(named: "iconoNoticias")
+           
+           view.sendSubviewToBack(vistaImagenConsejo)
+           
+           let subVista = UIView(frame: CGRect(x: 0.0, y: vistaImagenConsejo.frame.maxY - 90.0, width: view.frame.width, height: view.frame.height))
+           subVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
+           subVista.layer.cornerRadius = 41.4
+
+
+        let labelTextoDescripcion = UILabelPadding(frame: CGRect(x: 20.0, y: 59.0, width: view.frame.width - 40.0, height: 0.0))
+
+        let maximumLabelSizeTexto = CGSize(width: (self.view.frame.size.width - 40.0), height: 40000.0)
+        labelTextoDescripcion.sizeThatFits(maximumLabelSizeTexto)
+
+        labelTextoDescripcion.text = descripcionNoticia
+        labelTextoDescripcion.textColor = UIColor.gray
+        labelTextoDescripcion.textAlignment = .left
+        labelTextoDescripcion.numberOfLines = 0
+        labelTextoDescripcion.sizeToFit()
+
+        labelTextoDescripcion.font = UIFont(name: "gobCL", size: 16.0)
+        labelTextoDescripcion.backgroundColor = UIColor.white
+           
+        labelTextoDescripcion.layer.backgroundColor  = UIColor.black.cgColor
+        labelTextoDescripcion.layer.cornerRadius = 13.3
+        labelTextoDescripcion.layer.masksToBounds = true
         
-        override func viewDidLoad() {
-            super.viewDidLoad()
 
-           // guard let imageData2 = try? Data(contentsOf: urlImagenConsejo) else { return }
+       
+        let whiteRoundedView : UIView = UIView(frame: CGRect(x: 20.0, y: 59.0, width: self.view.frame.size.width - 40, height: labelTextoDescripcion.frame.height + 15.0))
+        whiteRoundedView.layer.backgroundColor = UIColor.white.cgColor
+        whiteRoundedView.layer.masksToBounds = false
+        whiteRoundedView.layer.cornerRadius = 13.3
+        whiteRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
+        whiteRoundedView.layer.shadowOpacity = 0.2
 
-            let vistaImagenConsejo = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 323.0))
-            vistaImagenConsejo.downloaded(from: urlImagenNotici, with: 1.0)
-            let vistaImagenFondo = UIImageView(frame: view.frame)
-            vistaImagenFondo.image = UIImage(named: "fondoVerdeAgua")
-            vistaImagenFondo.alpha = 0.5
-            view.sendSubviewToBack(vistaImagenConsejo)
-            
-            let textoDescripcion = UITextView(frame: CGRect(x: 10.0, y: vistaImagenConsejo.frame.height, width: view.frame.width - 20.0, height: view.frame.height - 10.0))
-            textoDescripcion.layer.cornerRadius = 30.0
-            textoDescripcion.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
-            textoDescripcion.font = UIFont(name: "gobCL", size: 16.0)
-            textoDescripcion.textColor = UIColor.gray
-            textoDescripcion.text = descripcionNoticia
-            textoDescripcion.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 5, right: 10)
-            
-            view.addSubview(vistaImagenConsejo)
-            view.addSubview(vistaImagenFondo)
-            view.addSubview(textoDescripcion)
+        subVista.addSubview(whiteRoundedView)
 
-        }
-        
+        subVista.addSubview(labelTextoDescripcion)
+        view.bringSubviewToFront(subVista)
 
-        /*
-        // MARK: - Navigation
+           
+        view.addSubview(vistaImagenConsejo)
+        view.addSubview(vistaImagenFondo)
+        view.addSubview(subVista)
+        view.addSubview(imagenCircular)
 
-        // In a storyboard-based application, you will often want to do a little preparation before navigation
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            // Get the new view controller using segue.destination.
-            // Pass the selected object to the new view controller.
-        }
-        */
-
-    }
+       }
+}

@@ -61,13 +61,11 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         collectionVi.setCollectionViewLayout(layout, animated: true)
         collectionVi.layer.cornerRadius = 30.0
         collectionVi.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-
+        
         collectionVi.reloadData()
-        
         super.viewDidLoad()
-        
     }
-
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
       
@@ -78,7 +76,6 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
            
         let cell = collectionVi.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath)
         let imagen = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: cell.frame.width, height: cell.frame.height))
-        imagen.layer.cornerRadius = 20.0
         imagen.backgroundColor  = UIColor(white: 0, alpha: 0.8)
         let label = UILabel(frame: CGRect(x:22.5, y:imagen.center.x - 20.0, width: imagen.frame.width - 45.0, height: 40.0))
         label.numberOfLines = 4
@@ -91,6 +88,8 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         cell.addSubview(imagen)
         imagen.addSubview(label)
         cell.sendSubviewToBack(imagen)
+        cell.layer.cornerRadius = 26.0
+        cell.layer.masksToBounds = true
 
         return cell
 
@@ -123,7 +122,7 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
             result?.data?.listAdvices?.items?.forEach {
                 
                 self.arrayTituloConsejos.append($0!.title)
-                self.arrayDescripcionConsejos.append($0!.description)
+                self.arrayDescripcionConsejos.append($0!.detail)
 
 
                 guard let imageURL = URL(string:  ($0?.urlThumbnailImage)!) else { return }

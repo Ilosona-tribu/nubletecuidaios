@@ -29,10 +29,10 @@
 		C374089A24396DD100D28C13 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374089924396DD100D28C13 /* TestVC.swift */; };
 		C374089C24396DD100D28C13 /* ConsejosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C374089B24396DD100D28C13 /* ConsejosVC.swift */; };
 		C374089F24396DD100D28C13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C374089D24396DD100D28C13 /* Main.storyboard */; };
-		C37408A424396DD200D28C13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C37408A224396DD200D28C13 /* LaunchScreen.storyboard */; };
 		C37408AF24396DD300D28C13 /* nubletecuidaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37408AE24396DD300D28C13 /* nubletecuidaTests.swift */; };
 		C37408BA24396DD300D28C13 /* nubletecuidaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37408B924396DD300D28C13 /* nubletecuidaUITests.swift */; };
 		C3E506722449420400D24540 /* DetalleNoticiasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E506712449420400D24540 /* DetalleNoticiasVC.swift */; };
+		C3F1A565244E3ABC0006171B /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1A564244E3ABC0006171B /* SplashVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,7 +77,6 @@
 		C374089924396DD100D28C13 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		C374089B24396DD100D28C13 /* ConsejosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsejosVC.swift; sourceTree = "<group>"; };
 		C374089E24396DD100D28C13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C37408A324396DD200D28C13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C37408A524396DD200D28C13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C37408AA24396DD300D28C13 /* nubletecuidaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = nubletecuidaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C37408AE24396DD300D28C13 /* nubletecuidaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nubletecuidaTests.swift; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		C37408B924396DD300D28C13 /* nubletecuidaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nubletecuidaUITests.swift; sourceTree = "<group>"; };
 		C37408BB24396DD300D28C13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3E506712449420400D24540 /* DetalleNoticiasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleNoticiasVC.swift; sourceTree = "<group>"; };
+		C3F1A564244E3ABC0006171B /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		CB4E224978C3EC5AB6AE5256 /* Pods-nubletecuida.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nubletecuida.debug.xcconfig"; path = "Target Support Files/Pods-nubletecuida/Pods-nubletecuida.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,6 +160,7 @@
 				C349D134243A424600851BC6 /* MapaVC.swift */,
 				C349D136243A427D00851BC6 /* ContactoVC.swift */,
 				C34B6F252442B81C000AA950 /* TestCuestionarioVC.swift */,
+				C3F1A564244E3ABC0006171B /* SplashVC.swift */,
 			);
 			path = controladores;
 			sourceTree = "<group>";
@@ -224,7 +225,6 @@
 				C34B6F032441C897000AA950 /* celdas */,
 				C3456E1224482C9B00D4C978 /* sync */,
 				C374089D24396DD100D28C13 /* Main.storyboard */,
-				C37408A224396DD200D28C13 /* LaunchScreen.storyboard */,
 				C3456DCA2447863400D4C978 /* Assets.xcassets */,
 				C34B6F2424429E6D000AA950 /* Fuentes */,
 				C34B6F1624423613000AA950 /* imagenes */,
@@ -362,7 +362,6 @@
 				C34B6F2124429E57000AA950 /* gobCL_Bold.otf in Resources */,
 				C34B6F2224429E57000AA950 /* gobCL_Regular.otf in Resources */,
 				C34B6F2324429E57000AA950 /* gobCL_Light.otf in Resources */,
-				C37408A424396DD200D28C13 /* LaunchScreen.storyboard in Resources */,
 				C34B6F1724423613000AA950 /* imagenes in Resources */,
 				C3456DCB244786C000D4C978 /* Assets.xcassets in Resources */,
 				C3456E1724482CAF00D4C978 /* amplifyconfiguration.json in Resources */,
@@ -446,6 +445,7 @@
 				C3E506722449420400D24540 /* DetalleNoticiasVC.swift in Sources */,
 				C3456E1624482CAF00D4C978 /* API.swift in Sources */,
 				C34B6EFE2441C5E6000AA950 /* DetalleTestVC.swift in Sources */,
+				C3F1A565244E3ABC0006171B /* SplashVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,14 +487,6 @@
 				C374089E24396DD100D28C13 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		C37408A224396DD200D28C13 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C37408A324396DD200D28C13 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

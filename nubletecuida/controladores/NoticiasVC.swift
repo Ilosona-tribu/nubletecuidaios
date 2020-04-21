@@ -17,6 +17,8 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         var arrayNoticias = Array<String>()
         var arrayDescripcionNoticias = Array<String>()
         var arrayUrlImagenNoticias = Array<URL>()
+        var arrayUrlImagenCelda = Array<URL>()
+
   
     var tamanoCelda = CGFloat()
     
@@ -27,24 +29,29 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             }
             appSyncClient = appDelegate.appSyncClient
             datosNoticias()
-        
             super.viewDidLoad()
             let imagenNuble = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 280.0))
             imagenNuble.image = UIImage(named: "headerNoticias")
-            tabla.frame = CGRect(x: 0.0, y: imagenNuble.frame.maxY + 0.0, width: view.frame.width, height: view.frame.maxY + 20000.0)
-     
+        tabla.frame = CGRect(x: 0.0, y: imagenNuble.frame.maxY - 41.1, width: view.frame.width, height: view.frame.maxY)
+        let iconoNoticiasCircular = UIImageView(frame: CGRect(x: view.center.x - 35.0, y: tabla.frame.origin.y - 35.0, width: 70.0, height: 70.0))
+            
+        iconoNoticiasCircular.image = UIImage(named: "iconoNoticias")
+        iconoNoticiasCircular.layer.cornerRadius = 70.0
+        
             //arreglar dps
             
-            tabla.frame.size.height = tabla.frame.height + 150.0
-            tabla.layer.cornerRadius = 30.0
+            tabla.layer.cornerRadius = 41.1
             tabla.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             tabla.separatorStyle = UITableViewCell.SeparatorStyle.none
             view.addSubview(imagenNuble)
+            view.sendSubviewToBack(imagenNuble)
+            view.addSubview(iconoNoticiasCircular)
+
             tabla.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
+          
+        
             tabla.setContentOffset(CGPoint(x: 0, y: 50000.0), animated: false)
-                
-//            tabla.delegate = self
-//            tabla.dataSource = self
+            view.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
 }
     
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -62,13 +69,23 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
            }
         }
     
+     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let returnedView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 42.0)) //set these values as necessary
+        returnedView.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
+        
+        return returnedView
+    }
 
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 42.0
+    }
+    
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
             
             
-            cell.titulo?.frame = CGRect(x: 18.0, y: 15.0, width: view.frame.size.width - 30.0, height:0.0)
+            cell.titulo?.frame = CGRect(x: 128.0, y: 15.0, width: view.frame.size.width - 143.0, height:0.0)
             let maximumLabelSizeTitulo = CGSize(width: (self.view.frame.size.width - 30.0), height: 40000.0)
             cell.titulo.sizeThatFits(maximumLabelSizeTitulo)
             cell.titulo.font = UIFont.init(name: "gobCL-Bold", size: 18.0)
@@ -77,7 +94,8 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             cell.titulo.numberOfLines = 0
             cell.titulo?.sizeToFit()
           
-            cell.descripcion?.frame = CGRect(x: 18.0, y: cell.titulo.frame.maxY + 5.0, width: view.frame.size.width - 30.0, height:0.0)
+            
+            cell.descripcion?.frame = CGRect(x: 128.0, y: cell.titulo.frame.maxY + 5.0, width: view.frame.size.width - 143.0, height:0.0)
             let maximumLabelSizeDescripcion = CGSize(width: (self.view.frame.size.width - 30.0), height: 40000.0)
 
             cell.descripcion.sizeThatFits(maximumLabelSizeDescripcion)
@@ -87,10 +105,11 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             cell.descripcion.numberOfLines = 0
             cell.descripcion?.sizeToFit()
           
+            cell.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
+
             cell.addSubview(cell.descripcion)
             cell.selectionStyle = .none
 
-            
             tamanoCelda = cell.titulo.frame.height + 30.0 + cell.descripcion.frame.height
             
             var tamanoFondo:CGFloat!
@@ -101,27 +120,28 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 tamanoFondo = tamanoCelda - 5.0
 
             }
-            let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 5, width: self.view.frame.size.width - 20, height: tamanoFondo))
+            let imagen = UIImageView(frame: CGRect(x: 18.0, y: 15.0, width: tamanoFondo, height: tamanoFondo))
+            imagen.downloaded(from: arrayUrlImagenNoticias[indexPath.row], with: 1.0)
+            imagen.layer.cornerRadius = 13.3
+            imagen.layer.masksToBounds = true
+            cell.addSubview(imagen)
 
+        
+            
+            let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 5, width: self.view.frame.size.width - 20, height: tamanoFondo + 15.0))
+            
             whiteRoundedView.layer.backgroundColor = UIColor.white.cgColor
             whiteRoundedView.layer.masksToBounds = false
-            whiteRoundedView.layer.cornerRadius = 15.0
+            whiteRoundedView.layer.cornerRadius = 13.3
             whiteRoundedView.layer.shadowOffset = CGSize(width: -1, height: 1)
             whiteRoundedView.layer.shadowOpacity = 0.2
 
             cell.contentView.addSubview(whiteRoundedView)
             cell.contentView.sendSubviewToBack(whiteRoundedView)
-
             
             return cell
             
     }
-    
-
-//    override func viewDidAppear(_ animated: Bool) {
-//
-//        tabla.reloadData()
-//    }
     
 
     
@@ -131,12 +151,10 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "DetalleNoticiasVC") as? DetalleNoticiasVC {
             viewController.descripcionNoticia = arrayDescripcionNoticias[indexPath.row]
-            viewController.urlImagenNotici = arrayUrlImagenNoticias[indexPath.row]
+            viewController.urlImagenNotici = arrayUrlImagenCelda[indexPath.row]
             
             self.show(viewController, sender: nil)
         }
-
-        
     }
     
 func datosNoticias(){
@@ -154,11 +172,14 @@ func datosNoticias(){
             
             self.arrayNoticias.append($0!.title)
             self.arrayDescripcionNoticias.append($0!.description)
-            self.arrayUrlImagenNoticias.append(URL(string: ($0?.urlBackgroundImage)!)!)
+            self.arrayUrlImagenNoticias.append(URL(string: ($0?.urlThumbnailImage)!)!)
+            self.arrayUrlImagenCelda.append(URL(string: ($0?.urlBackgroundImage)!)!)
+
             
             }
     DispatchQueue.main.async {
 
         self.tabla.reloadData()
         
-    }}}}
+    }}
+}}
