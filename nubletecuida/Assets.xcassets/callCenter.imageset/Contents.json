@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "call-center-completo.png",
+      "filename" : "callCenter.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "call-center-completo-1.png",
+      "filename" : "callCenter-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "call-center-completo-2.png",
+      "filename" : "callCenter-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

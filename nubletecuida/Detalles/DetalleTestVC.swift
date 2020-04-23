@@ -12,22 +12,65 @@ class DetalleTestVC: UIViewController {
 
     override func viewDidLoad() {
 //imagenCentral
-        let imagenPrincipal = UIImageView(frame:CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: self.view.frame.height/2 + 25.0))
-        imagenPrincipal.image = UIImage(named:"mujerTosiendo")
+                let subVista = UIView(frame:CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: self.view.frame.height/2 + 25.0))
+                subVista.backgroundColor  = UIColor(red: 127.0/255.0, green: 224.0/255.0, blue: 226.0/255.0, alpha: 1.0)
+                subVista.layer.cornerRadius = 36.0
+                subVista.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+                let gradient = CAGradientLayer()
 
-//texto Introductorio
-        
-        let labelTextoIntroductorio = UILabel(frame: CGRect(x: 40.0, y: imagenPrincipal.frame.maxY + 15.0, width: self.view.frame.width - 80.0, height: 0.0))
-        labelTextoIntroductorio.font = UIFont.init(name: "gobCL-Light", size: 14.0)
+                gradient.frame = subVista.bounds
+                gradient.cornerRadius = 36.0
+                gradient.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 
-        let maximumLabelSizeTextoIntroductorio = CGSize(width: (self.view.frame.size.width - 100.0), height: 40000.0)
-        labelTextoIntroductorio.sizeThatFits(maximumLabelSizeTextoIntroductorio)
-        labelTextoIntroductorio.text = "Responderá algunas preguntas a cerca de sus síntomas,  viajes y el contacto que ha tenido con otras personas"
-        labelTextoIntroductorio.textColor = UIColor.gray
-        labelTextoIntroductorio.textAlignment = .left
-        labelTextoIntroductorio.numberOfLines = 0
-        labelTextoIntroductorio.sizeToFit()
+                gradient.colors = [UIColor(red: 127.0/255.0, green: 224.0/255.0, blue: 226.0/255.0, alpha: 1.0).cgColor,UIColor(red: 0.0, green: 180.0/255.0, blue: 226.0/255.0, alpha: 1.0).cgColor]
         
+                gradient.startPoint = CGPoint(x: 0, y: 1)
+                gradient.endPoint = CGPoint(x: 1, y: 0)
+                subVista.layer.insertSublayer(gradient, at: 0)
+        
+        
+        let valorTamañoX = CGFloat((self.view.frame.height/2 + 37.0)/2) // (la mitad de la altura + 37 )/2
+        let valorTamañoY = CGFloat((self.view.frame.height/2 - 24.0)/2)
+                
+        //971 × 849
+        //242.25 x 212.25
+        
+        
+                let imagenPrincipal = UIImageView(frame:CGRect(x: view.center.x - (valorTamañoX/2), y: subVista.frame.maxY - valorTamañoY, width: valorTamañoX, height: valorTamañoY))
+                imagenPrincipal.image = UIImage(named:"mujerTosiendo")
+        
+       
+
+                subVista.addSubview(imagenPrincipal)
+                
+        //imagen Logo Nuble
+        //   441 × 654
+                
+                
+        print(imagenPrincipal.frame)
+                let imagenLogoNuble = UIImageView(frame:CGRect(x: view.center.x - 27.5, y: valorTamañoY / 3, width: 55.125, height: 81.75))
+                imagenLogoNuble.image = UIImage(named:"nubleTeCuida")
+
+                subVista.addSubview(imagenLogoNuble)
+
+        //texto Introductorio
+                
+                let labelTextoIntroductorio = UILabel(frame: CGRect(x: 40.0, y: imagenPrincipal.frame.maxY + valorTamañoY/10.0, width: self.view.frame.width - 80.0, height: 0.0))
+                labelTextoIntroductorio.font = UIFont.init(name: "gobCL-Light", size: 14.0)
+                
+                let maximumLabelSizeTextoIntroductorio = CGSize(width: (self.view.frame.size.width - 100.0), height: 40000.0)
+                labelTextoIntroductorio.sizeThatFits(maximumLabelSizeTextoIntroductorio)
+                labelTextoIntroductorio.text = "Responderá algunas preguntas a cerca de sus síntomas, viajes y el contacto que ha tenido con otras personas"
+                labelTextoIntroductorio.textColor = UIColor.gray
+                labelTextoIntroductorio.textAlignment = .left
+                labelTextoIntroductorio.numberOfLines = 0
+                labelTextoIntroductorio.sizeToFit()
+                
+        //imagen logo 571 × 272
+
+                let imagenLogo = UIImageView(frame: CGRect(x: view.center.x - (571/(272/(valorTamañoX/2.2))/2), y: labelTextoIntroductorio.frame.maxY + valorTamañoY/50, width: 571/(272/(valorTamañoX/2.2)), height: valorTamañoY/2.2))
+                imagenLogo.image = UIImage(named: "imgenChicaTest")
+
         
 //boton para mi
         
@@ -48,7 +91,8 @@ class DetalleTestVC: UIViewController {
 
 // añade los componentes a la vista
         
-        self.view.addSubview(imagenPrincipal)
+        
+        self.view.addSubview(subVista)
         self.view.addSubview(labelTextoIntroductorio)
         self.view.addSubview(botonParaMi)
         self.view.addSubview(botonParaOtros)
@@ -72,6 +116,4 @@ class DetalleTestVC: UIViewController {
             self.show(viewController, sender: nil)
         }
     }
-
 }
-

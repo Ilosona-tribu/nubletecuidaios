@@ -27,29 +27,38 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                 return
             }
-            appSyncClient = appDelegate.appSyncClient
-            datosNoticias()
-            super.viewDidLoad()
-            let imagenNuble = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 280.0))
-            imagenNuble.image = UIImage(named: "headerNoticias")
+        appSyncClient = appDelegate.appSyncClient
+        datosNoticias()
+        super.viewDidLoad()
+        let imagenNuble = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: view.frame.height/4))
+        imagenNuble.image = UIImage(named: "headerNews")?.alpha(0.7)
+        imagenNuble.backgroundColor = UIColor(red: 0.0, green: 180.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+        
+        let labelTitulo = UILabel(frame:CGRect(x: (view.center.x - view.frame.width/4), y: view.frame.height/10, width: view.frame.width/2, height: 30))
+        labelTitulo.text = "Noticias"
+        labelTitulo.textAlignment = .center
+        labelTitulo.textColor = UIColor.white
+        labelTitulo.font = UIFont(name: "gobCL-Bold", size: 35.0)
+        
+        
         tabla.frame = CGRect(x: 0.0, y: imagenNuble.frame.maxY - 41.1, width: view.frame.width, height: view.frame.maxY - (imagenNuble.frame.maxY - 41))
         let iconoNoticiasCircular = UIImageView(frame: CGRect(x: view.center.x - 35.0, y: tabla.frame.origin.y - 35.0, width: 70.0, height: 70.0))
 
         iconoNoticiasCircular.image = UIImage(named: "iconoNoticias")
         iconoNoticiasCircular.layer.cornerRadius = 70.0
         
-            //arreglar dps
+        //arreglar dps
         
         tabla.layer.cornerRadius = 41.1
         tabla.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         tabla.separatorStyle = UITableViewCell.SeparatorStyle.none
         view.addSubview(imagenNuble)
         view.sendSubviewToBack(imagenNuble)
+        view.addSubview(labelTitulo)
         view.addSubview(iconoNoticiasCircular)
 
         tabla.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
-          
-        
+    
         tabla.setContentOffset(CGPoint(x: 0, y: 50000.0), animated: false)
         view.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
 }
@@ -66,7 +75,7 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
      func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let returnedView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: view.frame.width, height: 42.0)) //set these values as necessary
         returnedView.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
-        
+
         return returnedView
     }
 
@@ -120,7 +129,6 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             imagen.layer.masksToBounds = true
             cell.addSubview(imagen)
 
-        
             let whiteRoundedView : UIView = UIView(frame: CGRect(x: 10, y: 5, width: self.view.frame.size.width - 20, height: tamanoFondo + 15.0))
             
             whiteRoundedView.layer.backgroundColor = UIColor.white.cgColor
@@ -136,7 +144,6 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             
     }
     
-
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -153,7 +160,7 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 func datosNoticias(){
     
     let query = ListNewssQuery()
-        self.appSyncClient?.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result, error in
+        self.appSyncClient?.fetch(query: query, cachePolicy: .returnCacheDataElseFetch) { result, error in
 
         if let error = error {
             print("Error fetching data: \(error)")
@@ -167,8 +174,8 @@ func datosNoticias(){
             self.arrayDescripcionNoticias.append($0!.description)
             self.arrayUrlImagenNoticias.append(URL(string: ($0?.urlBackgroundImage)!)!)
             self.arrayUrlImagenCelda.append(URL(string: ($0?.urlBackgroundImage)!)!)
-
-        }
+            
+            }
             
     DispatchQueue.main.async {
 

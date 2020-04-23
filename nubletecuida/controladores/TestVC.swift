@@ -19,6 +19,9 @@ class TestVC: UIViewController {
         subVista.layer.cornerRadius = 36.0
         subVista.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         let gradient = CAGradientLayer()
+       
+        gradient.cornerRadius = 36.0
+        gradient.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
 
         gradient.frame = subVista.bounds
         gradient.cornerRadius = 36.0
@@ -30,17 +33,14 @@ class TestVC: UIViewController {
 
         let valorTamaño = CGFloat((self.view.frame.height/2 + 25.0)/2) // (la mitad de la altura + 25 )/2
         
-        
         let imagenPrincipal = UIImageView(frame:CGRect(x: view.center.x - (valorTamaño/2), y: valorTamaño, width: valorTamaño, height: valorTamaño))
         imagenPrincipal.image = UIImage(named:"doctorTest")
-
+        
         subVista.addSubview(imagenPrincipal)
         
-        //imagen Logo Nuble
-     //   441 × 654
+// imagen Logo Nuble
+        // 441 × 654
         
-        
-        print(CGFloat())
         let imagenLogoNuble = UIImageView(frame:CGRect(x: view.center.x - 27.5, y: valorTamaño / 3, width: 55.125, height: 81.75))
         imagenLogoNuble.image = UIImage(named:"nubleTeCuida")
 
@@ -98,24 +98,3 @@ class TestVC: UIViewController {
         }
     }
 }
-
-//extension UIView {
-//
-//func addGradiant() {
-//    let GradientLayerName = "gradientLayer"
-//
-//    if let oldlayer = self.layer.sublayers?.filter({$0.name == GradientLayerName}).first {
-//        oldlayer.removeFromSuperlayer()
-//    }
-//
-//    let gradientLayer = CAGradientLayer()
-//    gradientLayer.colors = [UIColor(red: 127.0/255.0, green: 224.0/255.0, blue: 226.0/255.0, alpha: 1.0).cgColor,UIColor(red: 0.0/255.0, green: 97.0/255.0, blue: 168.0/255.0, alpha: 1.0).cgColor]
-//    gradientLayer.startPoint = CGPoint(x: 0, y: 1)
-//    gradientLayer.endPoint = CGPoint(x: 1, y: 0)
-//    gradientLayer.frame = self.bounds
-//    gradientLayer.name = GradientLayerName
-//
-//    self.layer.insertSublayer(gradientLayer, at: 0)
-//}
-//
-//}

@@ -28,10 +28,13 @@ class DetalleConsejoVC: UIViewController {
         vistaImagenFondo.image = UIImage(named: "fondoVerdeAgua")
         vistaImagenFondo.alpha = 0.5
 
-        let imagenCircular = UIImageView(frame: CGRect(x: view.center.x - 40.0, y: vistaImagenConsejo.bounds.maxY - 124.0, width: 80.0, height: 80.0))
-        imagenCircular.downloaded(from: urlImagenConsejoChica, with: 1.0)
-        imagenCircular.layer.cornerRadius = 40
+        let imagenCircular = UIImageView(frame: CGRect(x: view.center.x - 40.0, y: vistaImagenConsejo.bounds.maxY - 124.0, width: 70, height: 70))
+        imagenCircular.layer.cornerRadius = 35.0
         imagenCircular.layer.masksToBounds = true
+        imagenCircular.downloaded(from: urlImagenConsejoChica, contentMode: .scaleAspectFit, with: 1.0)
+
+
+        imagenCircular.backgroundColor = UIColor(red: 127.0/255.0, green: 224.0/255.0, blue: 226.0/255.0, alpha: 1.0)
 
         view.sendSubviewToBack(vistaImagenConsejo)
         
@@ -45,7 +48,8 @@ class DetalleConsejoVC: UIViewController {
         let maximumLabelSizeTexto = CGSize(width: (self.view.frame.size.width - 40.0), height: 40000.0)
         labelTextoDescripcion.sizeThatFits(maximumLabelSizeTexto)
         labelTextoDescripcion.text = descripcionConsejo
-    //    print(descripcionConsejo)
+    
+        //    print(descripcionConsejo)
         
         labelTextoDescripcion.textColor = UIColor.gray
         labelTextoDescripcion.textAlignment = .left
@@ -58,7 +62,6 @@ class DetalleConsejoVC: UIViewController {
         labelTextoDescripcion.layer.backgroundColor  = UIColor.black.cgColor
         labelTextoDescripcion.layer.cornerRadius = 13.3
         labelTextoDescripcion.layer.masksToBounds = true
-        
         
 
         let whiteRoundedView : UIView = UIView(frame: CGRect(x: 20.0, y: 58.0, width: self.view.frame.size.width - 40, height: labelTextoDescripcion.frame.height + 15.0))
@@ -97,7 +100,7 @@ class UILabelPadding: UILabel {
 }
 
 extension UIImageView {
-    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFit, with alpha:CGFloat) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
+    func downloaded(from url: URL, contentMode mode: UIView.ContentMode = .scaleAspectFill, with alpha:CGFloat) {  // for swift 4.2 syntax just use ===> mode: UIView.ContentMode
         contentMode = mode
         URLSession.shared.dataTask(with: url) { data, response, error in
             guard
@@ -105,7 +108,6 @@ extension UIImageView {
                 let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
                 let data = data, error == nil,
                 let image = UIImage(data: data)
-              
                 else { return }
             DispatchQueue.main.async() {
                 self.image = image.alpha(alpha)
@@ -113,7 +115,4 @@ extension UIImageView {
         }.resume()
     }
 }
-
-
-
 

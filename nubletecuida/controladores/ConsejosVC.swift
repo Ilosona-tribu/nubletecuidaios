@@ -11,9 +11,7 @@ import AWSAppSync
 
 class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
    
-    
     var appSyncClient: AWSAppSyncClient?
-
 
 @IBOutlet weak var collectionVi: UICollectionView!
     var arrayConsejos = Array<URL>()
@@ -34,10 +32,10 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         let imagenFondo = UIImageView(frame: view.frame)
         imagenFondo.image = UIImage(named: "fondoVerdeAgua")
         
-        let imagenNuble = UIImageView(frame: CGRect(x: CGFloat(view.center.x - 25.0), y: 45, width: 44.1 * 1.25, height: 65.4 * 1.25))
+        let imagenNuble = UIImageView(frame: CGRect(x: CGFloat(view.center.x - 27.5), y: (self.view.frame.height/2 + 25.0)/6, width: 55.125, height: 81.75))
         
         imagenNuble.image = UIImage(named: "nubleTeCuida")
-        collectionVi.frame.origin = CGPoint(x: 0.0, y: imagenNuble.frame.maxY + 35.0)
+        collectionVi.frame.origin = CGPoint(x: 0.0, y: view.frame.height/4)
         collectionVi.frame.size = CGSize(width: view.frame.width, height: view.frame.height - collectionVi.frame.minY)
 
         self.view.addSubview(imagenFondo)
@@ -50,14 +48,16 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         collectionVi.delegate = self
         collectionVi.dataSource = self
         
-        let cellSize = CGSize(width:190/1.1 , height:190/1.1)
+        let cellSize = CGSize(width:view.frame.width/2.4 + 20, height:view.frame.width/2.4)
+        
+ //       print(view.frame.height)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical //.horizontal
         layout.itemSize = cellSize
-        layout.sectionInset = UIEdgeInsets(top: 10.0, left: 15.0, bottom: 10.0, right: 15.0)
-        layout.minimumLineSpacing = 10.0
-        layout.minimumInteritemSpacing = 10.0
+        layout.sectionInset = UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
+        layout.minimumLineSpacing = 5
+        layout.minimumInteritemSpacing = 5
         collectionVi.setCollectionViewLayout(layout, animated: true)
         collectionVi.layer.cornerRadius = 30.0
         collectionVi.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -76,11 +76,11 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         let cell = collectionVi.dequeueReusableCell(withReuseIdentifier: "collectionCell", for: indexPath)
         let imagen = UIImageView(frame: CGRect(x: 0.0, y: 0.0, width: cell.frame.width, height: cell.frame.height))
         imagen.backgroundColor  = UIColor(white: 0, alpha: 0.8)
-        let label = UILabel(frame: CGRect(x:22.5, y:imagen.center.x - 20.0, width: imagen.frame.width - 45.0, height: 40.0))
+        let label = UILabel(frame: CGRect(x:12.5, y:imagen.center.y - 20.0, width: imagen.frame.width - 25.0, height: 40.0))
         label.numberOfLines = 4
-        label.textAlignment = .left
         label.font = UIFont.init(name: "gobCL-Bold", size: 16.0)
         label.textColor = UIColor.white
+        label.textAlignment = .center
         label.text = arrayTituloConsejos[indexPath.row]
         imagen.downloaded(from: arrayConsejos[indexPath.row], with: 0.5)
 
@@ -90,6 +90,14 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         cell.layer.cornerRadius = 26.0
         cell.layer.masksToBounds = true
 
+        
+        
+        let imagenEsquina = UIImageView(frame: (CGRect(x: cell.contentView.frame.maxX - (cell.contentView.frame.height/5 + 15), y: cell.contentView.frame.height / 6, width: cell.contentView.frame.height/5, height: cell.contentView.frame.height/5)))
+        print(cell.frame.maxX)
+        imagenEsquina.downloaded(from: arrayConsejosImagenesDetalle[indexPath.row], contentMode: .scaleAspectFit, with: 1.0)
+        cell.addSubview(imagenEsquina)
+        
+        
         return cell
 
     }
@@ -99,11 +107,11 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "DetalleConsejoVC") as? DetalleConsejoVC {
             
-            viewController.descripcionConsejo = arrayDescripcionConsejos[indexPath.row]
-            viewController.urlImagenConsejo = arrayConsejos[indexPath.row]
-            viewController.urlImagenConsejoChica = arrayConsejosImagenesDetalle[indexPath.row]
-
-            self.show(viewController, sender: nil)
+        viewController.descripcionConsejo = arrayDescripcionConsejos[indexPath.row]
+        viewController.urlImagenConsejo = arrayConsejos[indexPath.row]
+        viewController.urlImagenConsejoChica = arrayConsejosImagenesDetalle[indexPath.row]
+        
+        self.show(viewController, sender: nil)
             
         }
     }
@@ -111,7 +119,7 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
     func datosConsejos(){
         
         let query = ListAdvicesQuery()
-            self.appSyncClient?.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result, error in
+            self.appSyncClient?.fetch(query: query, cachePolicy: .returnCacheDataElseFetch) { result, error in
 
             if let error = error {
                 print("Error fetching data: \(error)")

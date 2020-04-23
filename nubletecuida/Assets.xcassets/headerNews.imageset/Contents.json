@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "mujerTosiendo.png",
+      "filename" : "headerNews.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "mujerTosiendo-1.png",
+      "filename" : "headerNews-2.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "mujerTosiendo-2.png",
+      "filename" : "headerNews-1.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

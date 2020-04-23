@@ -12,31 +12,58 @@ class ContactoVC: UIViewController {
 
     override func viewDidLoad() {
         
-//imagen fondo
-        
-        let imagenFondo = UIImageView(frame: view.frame)
-        imagenFondo.image = UIImage(named: "callCenter")
-        
-//subvista
-        
-        let vista = UIView(frame: CGRect(x: 0.0, y: view.center.y, width: self.view.frame.width, height: self.view.frame.height - 120.0))
-        vista.layer.cornerRadius = 30.0
-        vista.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        vista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
 
-//texto
+        let subVista = UIView(frame:CGRect(x: 0.0, y: 0.0, width: self.view.frame.width, height: self.view.frame.height/2 + 25.0))
+        subVista.backgroundColor  = UIColor(red: 127.0/255.0, green: 224.0/255.0, blue: 226.0/255.0, alpha: 1.0)
+        subVista.layer.cornerRadius = 36.0
+        subVista.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        let gradient = CAGradientLayer()
+       
+        gradient.cornerRadius = 36.0
+        gradient.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+
+        gradient.frame = subVista.bounds
+        gradient.cornerRadius = 36.0
+        gradient.colors = [UIColor(red: 127.0/255.0, green: 224.0/255.0, blue: 226.0/255.0, alpha: 1.0).cgColor,UIColor(red: 0.0, green: 180.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor]
+        gradient.startPoint = CGPoint(x: 0, y: 1)
+        gradient.endPoint = CGPoint(x: 1, y: 0)
+
+        subVista.layer.insertSublayer(gradient, at: 0)
+
+        let valorTamaño = CGFloat((self.view.frame.height/2 + 25.0)/2) // (la mitad de la altura + 25 )/2
         
-        let textoCentral = UILabel.init(frame: CGRect(x: 60.0, y: 0.0, width: vista.frame.width - 120.0, height: 100.0))
-        textoCentral.text = "En caso de consulta o emergencia no dudes en contactarnos, ya sea a nuestro fono o wsp, canales abiertos las 24 hrs"
+        
+        print(view.frame)
+        
+        let imagenPrincipal = UIImageView(frame:CGRect(x: view.center.x - (valorTamaño/2) - (view.frame.width/20.7), y: valorTamaño + (view.frame.height/44.6), width: valorTamaño, height: valorTamaño))
+        imagenPrincipal.image = UIImage(named:"callCenter")
+        
+        subVista.addSubview(imagenPrincipal)
+        
+// imagen Logo Nuble
+        // 441 × 654
+        
+        let imagenLogoNuble = UIImageView(frame:CGRect(x: view.center.x - 27.5, y: valorTamaño / 3, width: 55.125, height: 81.75))
+        imagenLogoNuble.image = UIImage(named:"nubleTeCuida")
+
+        subVista.addSubview(imagenLogoNuble)
+
+//texto Introductorio
+        
+        let textoCentral = UILabel(frame: CGRect(x: 40.0, y: imagenPrincipal.frame.maxY + valorTamaño/10.0, width: self.view.frame.width - 80.0, height: 0.0))
         textoCentral.font = UIFont.init(name: "gobCL-Light", size: 14.0)
+        
+        let maximumLabelSizeTextoIntroductorio = CGSize(width: (self.view.frame.size.width - 100.0), height: 40000.0)
+        textoCentral.sizeThatFits(maximumLabelSizeTextoIntroductorio)
+        textoCentral.text = "En caso de consulta o emergencia no dudes en contactarnos, ya sea a nuestro fono o wsp, canales abiertos las 24 hrs"
         textoCentral.textColor = UIColor.gray
-        textoCentral.numberOfLines = 4
-      
-        vista.addSubview(textoCentral)
-
+        textoCentral.textAlignment = .left
+        textoCentral.numberOfLines = 0
+        textoCentral.sizeToFit()
+        view.addSubview(textoCentral)
 //btn wsp
         
-        let btnWsp = UIButton(frame: CGRect(x: vista.center.x - 105.0, y: textoCentral.frame.maxY + 10.0, width: 210.0, height: 60.0))
+        let btnWsp = UIButton(frame: CGRect(x: view.center.x - 105.0, y: textoCentral.frame.maxY + 20.0, width: 210.0, height: 60.0))
         btnWsp.backgroundColor = UIColor.init(red: 37.0/255.0, green: 211.0/255.0, blue: 102.0/255.0, alpha: 1.0)
         btnWsp.layer.cornerRadius = 15.0
         btnWsp.layer.borderWidth = 1
@@ -50,11 +77,11 @@ class ContactoVC: UIViewController {
         btnWspImage.image = UIImage(named: "wspLogo")
         btnWspImage.backgroundColor = UIColor.clear
         btnWsp.addSubview(btnWspImage)
-        vista.addSubview(btnWsp)
+        view.addSubview(btnWsp)
 
 //btn llamado
         
-        let btnLLamado = UIButton(frame: CGRect(x: vista.center.x - 105.0 , y: btnWsp.frame.maxY + 15.0, width: 210.0, height: 60.0))
+        let btnLLamado = UIButton(frame: CGRect(x: view.center.x - 105.0 , y: btnWsp.frame.maxY + 15.0, width: 210.0, height: 60.0))
         btnLLamado.backgroundColor = UIColor.systemBlue
         btnLLamado.layer.cornerRadius = 15.0
         btnLLamado.layer.borderWidth = 1
@@ -69,13 +96,13 @@ class ContactoVC: UIViewController {
         btnLlamadoImage.backgroundColor = UIColor.clear
         btnLLamado.addSubview(btnLlamadoImage)
         
-        vista.addSubview(btnLLamado)
+        view.addSubview(btnLLamado)
 
 // ajustes y agregues
         
-        self.view.addSubview(vista)
-        self.view.addSubview(imagenFondo)
-        self.view.sendSubviewToBack(imagenFondo)
+        self.view.addSubview(subVista)
+//        self.view.addSubview(imagenFondo)
+//        self.view.sendSubviewToBack(imagenFondo)
         super.viewDidLoad()
         
     }
