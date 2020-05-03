@@ -128,7 +128,8 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
             if let index = arrayAlternativas[enumerador].firstIndex(of:opcion) {
                 let distance = arrayAlternativas[enumerador].distance(from: arrayAlternativas[enumerador].startIndex, to: index)
 
-                let botonAlernativa = UIButton(frame: CGRect(x: view.center.x - 150.0, y: labelEncabezado.frame.maxY + 30.0 + CGFloat(distance * 65), width: 300.0, height: 60.0))
+                let botonAlernativa = UIButton(frame: CGRect(x: view.center.x - 174.5, y: labelEncabezado.frame.maxY + 30.0 + CGFloat(distance * 78), width: 345.0, height: 74.0))
+                
                 
                 botonAlernativa.setTitle(opcion, for: .normal)
                 botonAlernativa.setTitleColor(UIColor.gray, for: .normal)
@@ -211,8 +212,11 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
 func datosTest(){
     
     let query = ListQuestionsQuery()
-        self.appSyncClient?.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result, error in
+    
+    
+        self.appSyncClient?.fetch(query: query, cachePolicy: .returnCacheDataElseFetch) { result, error in
 
+        
         if let error = error {
             print("Error fetching data: \(error)")
             return

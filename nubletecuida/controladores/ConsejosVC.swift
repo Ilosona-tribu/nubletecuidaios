@@ -93,7 +93,6 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         
         
         let imagenEsquina = UIImageView(frame: (CGRect(x: cell.contentView.frame.maxX - (cell.contentView.frame.height/5 + 15), y: cell.contentView.frame.height / 6, width: cell.contentView.frame.height/5, height: cell.contentView.frame.height/5)))
-        print(cell.frame.maxX)
         imagenEsquina.downloaded(from: arrayConsejosImagenesDetalle[indexPath.row], contentMode: .scaleAspectFit, with: 1.0)
         cell.addSubview(imagenEsquina)
         

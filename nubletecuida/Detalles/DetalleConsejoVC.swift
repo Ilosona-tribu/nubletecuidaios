@@ -28,15 +28,34 @@ class DetalleConsejoVC: UIViewController {
         vistaImagenFondo.image = UIImage(named: "fondoVerdeAgua")
         vistaImagenFondo.alpha = 0.5
 
-        let imagenCircular = UIImageView(frame: CGRect(x: view.center.x - 40.0, y: vistaImagenConsejo.bounds.maxY - 124.0, width: 70, height: 70))
-        imagenCircular.layer.cornerRadius = 35.0
-        imagenCircular.layer.masksToBounds = true
+        let subVistaImagenCircular = UIView( frame: CGRect(x: view.center.x - 40.0, y: vistaImagenConsejo.bounds.maxY - 124.0, width: 80, height: 80))
+        
+         let gradient = CAGradientLayer()
+        
+
+         gradient.frame = subVistaImagenCircular.bounds
+         gradient.cornerRadius = 36.0
+        gradient.colors = [UIColor(red: 102.0/255.0, green: 222.0/255.0, blue: 174.0/255.0, alpha: 1.0).cgColor,UIColor(red: 80.0/255.0, green: 150.0/255.0, blue: 255.0/255.0, alpha: 1.0).cgColor]
+         gradient.startPoint = CGPoint(x: 0, y: 0)
+         gradient.endPoint = CGPoint(x: 1, y: 1)
+
+        subVistaImagenCircular.layer.cornerRadius = 40.0
+        subVistaImagenCircular.layer.masksToBounds = true
+        subVistaImagenCircular.layer.insertSublayer(gradient, at: 0)
+
+
+        
+        let imagenCircular = UIImageView(frame: CGRect(x: 15, y: 15, width: 50, height: 50))
         imagenCircular.downloaded(from: urlImagenConsejoChica, contentMode: .scaleAspectFit, with: 1.0)
+        subVistaImagenCircular.addSubview(imagenCircular)
+      
+//        imagenCircular.layer.masksToBounds = true
+//        imagenCircular.layer.borderWidth = 1.5
+//        imagenCircular.layer.borderColor = UIColor.white.cgColor
+//        imagenCircular.layer.cornerRadius = imagenCircular.bounds.width / 2
 
 
-        imagenCircular.backgroundColor = UIColor(red: 127.0/255.0, green: 224.0/255.0, blue: 226.0/255.0, alpha: 1.0)
-
-        view.sendSubviewToBack(vistaImagenConsejo)
+        view.sendSubviewToBack(subVistaImagenCircular)
         
         let subVista = UIView(frame: CGRect(x: 0.0, y: vistaImagenConsejo.frame.maxY - 90.0, width: view.frame.width, height: view.frame.height))
         subVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
@@ -78,7 +97,7 @@ class DetalleConsejoVC: UIViewController {
         view.addSubview(vistaImagenConsejo)
         view.addSubview(vistaImagenFondo)
         view.addSubview(subVista)
-        view.addSubview(imagenCircular)
+        view.addSubview(subVistaImagenCircular)
         
     }
 }
