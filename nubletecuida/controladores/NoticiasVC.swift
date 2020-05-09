@@ -94,7 +94,7 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             cell.titulo.font = UIFont.init(name: "gobCL-Bold", size: 16.0)
             cell.titulo?.text = arrayNoticias[indexPath.row]
             cell.titulo?.textAlignment = .left
-            cell.titulo.numberOfLines = 0
+            cell.titulo.numberOfLines = 4
             cell.titulo?.sizeToFit()
           
             

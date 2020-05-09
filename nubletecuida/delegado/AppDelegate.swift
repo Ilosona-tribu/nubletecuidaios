@@ -10,6 +10,8 @@ import UIKit
 import AWSAppSync
 import UserNotifications
 import AWSPinpoint
+import AWSCognitoIdentityProvider
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,12 +25,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .defaultPinpointConfiguration(launchOptions: launchOptions)
         // Set debug mode to use APNS sandbox, make sure to toggle for your production app
         pinpointConfiguration.debug = true
-        pinpoint = AWSPinpoint(configuration: pinpointConfiguration)
-
+        
+                pinpoint = AWSPinpoint(configuration: pinpointConfiguration)
+        
         // Present the user with a request to authorize push notifications
         registerForPushNotifications()
       
         
+//        let credentialsProvider = AWSCognitoCredentialsProvider(regionType:.USEast1,
+//           identityPoolId:"us-east-1:ca2553b5-f05b-4adb-900e-f457b37e519d")
+//
+//        let configuration = AWSServiceConfiguration(region:.USEast1, credentialsProvider:credentialsProvider)
+//
+//        AWSServiceManager.default().defaultServiceConfiguration = configuration
+
         
         // You can choose the directory in which AppSync stores its persistent cache databases:
             //     let cacheConfiguration = AWSAppSyncCacheConfiguration(withRootDirectory: rootDirectoryURL)
@@ -60,6 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("Error initializing AppSync client. \(error)")
             }
         
+        AWSDDLog.sharedInstance.logLevel = .verbose
+        AWSDDLog.add(AWSDDTTYLogger.sharedInstance)
+        
+        
         return true
     }
 
@@ -84,8 +98,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
         let token = tokenParts.joined()
+        
         print("Device Token: \(token)")
-
+        
         // Register the device token with Pinpoint as the endpoint for this user
         pinpoint!.notificationManager
             .interceptDidRegisterForRemoteNotifications(withDeviceToken: deviceToken)

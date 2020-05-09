@@ -38,8 +38,8 @@ class DetalleTestVC: UIViewController {
         
                 let imagenPrincipal = UIImageView(frame:CGRect(x: view.center.x - (valorTamañoX/2), y: subVista.frame.maxY - valorTamañoY, width: valorTamañoX, height: valorTamañoY))
                 imagenPrincipal.image = UIImage(named:"mujerTosiendo")
+                
         
-       
 
                 subVista.addSubview(imagenPrincipal)
                 
@@ -48,7 +48,7 @@ class DetalleTestVC: UIViewController {
                 
                 
         print(imagenPrincipal.frame)
-                let imagenLogoNuble = UIImageView(frame:CGRect(x: view.center.x - 27.5, y: valorTamañoY / 3, width: 55.125, height: 81.75))
+                let imagenLogoNuble = UIImageView(frame:CGRect(x: view.center.x - 27.5, y: valorTamañoY / 5, width: 55.125, height: 81.75))
                 imagenLogoNuble.image = UIImage(named:"nubleTeCuida")
 
                 subVista.addSubview(imagenLogoNuble)
@@ -62,19 +62,21 @@ class DetalleTestVC: UIViewController {
                 labelTextoIntroductorio.sizeThatFits(maximumLabelSizeTextoIntroductorio)
                 labelTextoIntroductorio.text = "Responderá algunas preguntas a cerca de sus síntomas, viajes y el contacto que ha tenido con otras personas"
                 labelTextoIntroductorio.textColor = UIColor.gray
-                labelTextoIntroductorio.textAlignment = .left
+                labelTextoIntroductorio.textAlignment = .justified
                 labelTextoIntroductorio.numberOfLines = 0
                 labelTextoIntroductorio.sizeToFit()
                 
         //imagen logo 571 × 272
 
-                let imagenLogo = UIImageView(frame: CGRect(x: view.center.x - (571/(272/(valorTamañoX/2.2))/2), y: labelTextoIntroductorio.frame.maxY + valorTamañoY/50, width: 571/(272/(valorTamañoX/2.2)), height: valorTamañoY/2.2))
+                let imagenLogo = UIImageView(frame: CGRect(x: view.center.x - (571/(272/(valorTamañoX/2.2))/2), y: imagenLogoNuble.frame.maxY + valorTamañoY/15, width: 571/(272/(valorTamañoX/2.2)), height: valorTamañoY/2.2))
                 imagenLogo.image = UIImage(named: "imgenChicaTest")
+        imagenLogo.contentMode = .scaleAspectFit
 
-        
+        subVista.addSubview(imagenLogo)
+
 //boton para mi
         
-        let botonParaMi = UIButton(frame: CGRect(x: view.center.x - 92.5, y: labelTextoIntroductorio.frame.maxY + 30.0, width: 185.0, height: 59.16))
+        let botonParaMi = UIButton(frame: CGRect(x: view.center.x - 97.5, y: labelTextoIntroductorio.frame.maxY + 30.0, width: 195.0, height: 59.16))
         botonParaMi.backgroundColor = UIColor(red: 0.0, green: 99.0/255.0, blue: 175.0/255.0, alpha: 1.0)
         botonParaMi.layer.cornerRadius = 26.9
         botonParaMi.setTitle("Uso para mi", for: .normal)
@@ -83,14 +85,13 @@ class DetalleTestVC: UIViewController {
         
 // boton para otros
         
-        let botonParaOtros = UIButton(frame: CGRect(x: view.center.x - 92.5, y: botonParaMi.frame.maxY + 15.0, width: 185.0, height: 59.16))
+        let botonParaOtros = UIButton(frame: CGRect(x: view.center.x - 97.5, y: botonParaMi.frame.maxY + 15.0, width: 195.0, height: 59.16))
         botonParaOtros.backgroundColor = UIColor(red: 0.0, green: 197.0/255.0, blue: 242.0/255.0, alpha: 1.0)
         botonParaOtros.layer.cornerRadius = 26.9
         botonParaOtros.setTitle("Uso para alguien más", for: .normal)
         botonParaOtros.titleLabel?.font = UIFont(name: "gobCL-Bold", size: 18.0)
 
 // añade los componentes a la vista
-        
         
         self.view.addSubview(subVista)
         self.view.addSubview(labelTextoIntroductorio)

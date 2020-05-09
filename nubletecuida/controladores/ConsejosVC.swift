@@ -18,7 +18,6 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
     var arrayConsejosImagenesDetalle = Array<URL>()
     var arrayDescripcionConsejos = Array<String>()
     var arrayTituloConsejos = Array<String>()
-    
     // MARK: - Controller delegates
 
     override func viewDidLoad() {
@@ -48,14 +47,16 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         collectionVi.delegate = self
         collectionVi.dataSource = self
         
-        let cellSize = CGSize(width:view.frame.width/2.4 + 20, height:view.frame.width/2.4)
+        let cellSize = CGSize(width:view.frame.width/3 + 30, height:view.frame.width/3)
         
- //       print(view.frame.height)
+        //155x125
+       print(cellSize)
+        print((view.center.x - view.frame.width/3 + 30)/4)
         
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical //.horizontal
         layout.itemSize = cellSize
-        layout.sectionInset = UIEdgeInsets(top: 5, left: 8, bottom: 5, right: 8)
+        layout.sectionInset = UIEdgeInsets(top: 20, left: (view.center.x - view.frame.width/3 + 30)/4, bottom: 5, right: (view.center.x - view.frame.width/3 + 30)/4)
         layout.minimumLineSpacing = 5
         layout.minimumInteritemSpacing = 5
         collectionVi.setCollectionViewLayout(layout, animated: true)

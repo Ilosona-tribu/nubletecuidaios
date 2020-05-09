@@ -7,9 +7,22 @@
                 "amplifyDatasource-amplify": {
                     "endpointType": "GraphQL",
                     "endpoint": "https://ianjndvuazebzjs2eto5hysfyy.appsync-api.us-east-1.amazonaws.com/graphql",
-                    "region": "us-east-2",
+                    "region": "us-east-1",
                     "authorizationType": "API_KEY",
                     "apiKey": "da2-nzk44lbxprfr3i2unt42xwbb3y"
+                }
+            }
+        }
+    },
+    "analytics": {
+        "plugins": {
+            "awsPinpointAnalyticsPlugin": {
+                "pinpointAnalytics": {
+                    "appId": "88a7ee4c9dde46358b4946da08c710fd",
+                    "region": "us-east-1"
+                },
+                "pinpointTargeting": {
+                    "region": "us-east-1"
                 }
             }
         }

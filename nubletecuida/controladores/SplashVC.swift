@@ -19,6 +19,7 @@ class SplashVC: UIViewController {
 
         let nuvbleImagenMapa = UIImageView(frame: CGRect(x:view.center.x - (view.frame.width - 86)/2, y: view.center.y - (view.frame.height/4 + 19), width: (view.frame.width - 86), height: (view.frame.height/4) + 19))
         nuvbleImagenMapa.image = UIImage(named: "nubleimagenmapa")
+        nuvbleImagenMapa.contentMode = .scaleAspectFit
      
         let logoNubleImagen = UIImageView(frame:CGRect(x: view.center.x - 60, y: view.frame.height - 130.0, width: 60, height: 48))
         logoNubleImagen.image = UIImage(named:"nubleimagen")

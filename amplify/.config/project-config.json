@@ -1,8 +1,8 @@
 {
+    "projectName": "nubletecuidaios",
+    "version": "3.0",
+    "frontend": "ios",
     "providers": [
         "awscloudformation"
-    ],
-    "projectName": "amplifyDatasource",
-    "version": "3.0",
-    "frontend": "ios"
+    ]
 }

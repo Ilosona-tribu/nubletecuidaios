@@ -57,7 +57,7 @@ class ContactoVC: UIViewController {
         textoCentral.sizeThatFits(maximumLabelSizeTextoIntroductorio)
         textoCentral.text = "En caso de consulta o emergencia no dudes en contactarnos, ya sea a nuestro fono o wsp, canales abiertos las 24 hrs"
         textoCentral.textColor = UIColor.gray
-        textoCentral.textAlignment = .left
+        textoCentral.textAlignment = .justified
         textoCentral.numberOfLines = 0
         textoCentral.sizeToFit()
         view.addSubview(textoCentral)

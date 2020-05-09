@@ -55,7 +55,7 @@ class TestVC: UIViewController {
         labelTextoIntroductorio.sizeThatFits(maximumLabelSizeTextoIntroductorio)
         labelTextoIntroductorio.text = "Éste instrumento ha sido desarrollado con la intención de orientar y ayudar a las personas que quieran saber su estado de salud con respecto al COVID-19."
         labelTextoIntroductorio.textColor = UIColor.gray
-        labelTextoIntroductorio.textAlignment = .left
+        labelTextoIntroductorio.textAlignment = .justified
         labelTextoIntroductorio.numberOfLines = 0
         labelTextoIntroductorio.sizeToFit()
         
