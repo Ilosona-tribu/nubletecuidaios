@@ -1,24 +1,24 @@
 {
-    "dev": {
+    "iosdev": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-nubletecuidaios-dev-222403-authRole",
-            "UnauthRoleArn": "arn:aws:iam::479545181301:role/amplify-nubletecuidaios-dev-222403-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::479545181301:role/amplify-nubletecuidaios-dev-222403-authRole",
+            "AuthRoleName": "amplify-iosdev1-iosdev-162525-authRole",
+            "UnauthRoleArn": "arn:aws:iam::479545181301:role/amplify-iosdev1-iosdev-162525-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::479545181301:role/amplify-iosdev1-iosdev-162525-authRole",
             "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-nubletecuidaios-dev-222403-deployment",
-            "UnauthRoleName": "amplify-nubletecuidaios-dev-222403-unauthRole",
-            "StackName": "amplify-nubletecuidaios-dev-222403",
-            "StackId": "arn:aws:cloudformation:us-east-1:479545181301:stack/amplify-nubletecuidaios-dev-222403/54b1b620-8dae-11ea-9a78-0e2e9aec3a21",
-            "AmplifyAppId": "d1q27as08dtc7a"
+            "DeploymentBucketName": "amplify-iosdev1-iosdev-162525-deployment",
+            "UnauthRoleName": "amplify-iosdev1-iosdev-162525-unauthRole",
+            "StackName": "amplify-iosdev1-iosdev-162525",
+            "StackId": "arn:aws:cloudformation:us-east-1:479545181301:stack/amplify-iosdev1-iosdev-162525/b975e680-948e-11ea-b43a-0ed5356bca17",
+            "AmplifyAppId": "d2mnqvhiagcwlx"
         },
         "categories": {
             "auth": {
-                "cognitoee40339a": {}
+                "cognito69671e07": {}
             },
             "notifications": {
                 "Pinpoint": {
-                    "Name": "nubletecuidaios-dev",
-                    "Id": "88a7ee4c9dde46358b4946da08c710fd",
+                    "Name": "iosdev1-iosdev",
+                    "Id": "9efca6d75e3e4fa8a5a26600edbfc1a0",
                     "Region": "us-east-1"
                 }
             }

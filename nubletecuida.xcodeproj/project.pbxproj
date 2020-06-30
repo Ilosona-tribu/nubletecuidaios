@@ -71,7 +71,7 @@
 		C34B6F1E24429E57000AA950 /* gobCL_Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gobCL_Regular.otf; sourceTree = "<group>"; };
 		C34B6F1F24429E57000AA950 /* gobCL_Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = gobCL_Light.otf; sourceTree = "<group>"; };
 		C34B6F252442B81C000AA950 /* TestCuestionarioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCuestionarioVC.swift; sourceTree = "<group>"; };
-		C374089224396DD100D28C13 /* nubletecuida.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = nubletecuida.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C374089224396DD100D28C13 /* nuble te cuida.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "nuble te cuida.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C374089524396DD100D28C13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C374089924396DD100D28C13 /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		C374089B24396DD100D28C13 /* ConsejosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsejosVC.swift; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		C374089324396DD100D28C13 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C374089224396DD100D28C13 /* nubletecuida.app */,
+				C374089224396DD100D28C13 /* nuble te cuida.app */,
 				C37408AA24396DD300D28C13 /* nubletecuidaTests.xctest */,
 				C37408B524396DD300D28C13 /* nubletecuidaUITests.xctest */,
 			);
@@ -272,7 +272,7 @@
 			);
 			name = nubletecuida;
 			productName = nubletecuida;
-			productReference = C374089224396DD100D28C13 /* nubletecuida.app */;
+			productReference = C374089224396DD100D28C13 /* nuble te cuida.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C37408A924396DD300D28C13 /* nubletecuidaTests */ = {
@@ -616,17 +616,17 @@
 				CODE_SIGN_ENTITLEMENTS = nubletecuida/nubletecuida.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.92;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = ZRAUY54U79;
 				INFOPLIST_FILE = nubletecuida/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nubleapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "nuble te cuida";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -641,17 +641,17 @@
 				CODE_SIGN_ENTITLEMENTS = nubletecuida/nubletecuida.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.92;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = ZRAUY54U79;
 				INFOPLIST_FILE = nubletecuida/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = nubleapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "nuble te cuida";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

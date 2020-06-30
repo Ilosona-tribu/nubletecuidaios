@@ -1,15 +1,15 @@
 {
 	"providers": {
 		"awscloudformation": {
-			"AuthRoleName": "amplify-nubletecuidaios-dev-222403-authRole",
-			"UnauthRoleArn": "arn:aws:iam::479545181301:role/amplify-nubletecuidaios-dev-222403-unauthRole",
-			"AuthRoleArn": "arn:aws:iam::479545181301:role/amplify-nubletecuidaios-dev-222403-authRole",
+			"AuthRoleName": "amplify-iosdev1-iosdev-162525-authRole",
+			"UnauthRoleArn": "arn:aws:iam::479545181301:role/amplify-iosdev1-iosdev-162525-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::479545181301:role/amplify-iosdev1-iosdev-162525-authRole",
 			"Region": "us-east-1",
-			"DeploymentBucketName": "amplify-nubletecuidaios-dev-222403-deployment",
-			"UnauthRoleName": "amplify-nubletecuidaios-dev-222403-unauthRole",
-			"StackName": "amplify-nubletecuidaios-dev-222403",
-			"StackId": "arn:aws:cloudformation:us-east-1:479545181301:stack/amplify-nubletecuidaios-dev-222403/54b1b620-8dae-11ea-9a78-0e2e9aec3a21",
-			"AmplifyAppId": "d1q27as08dtc7a"
+			"DeploymentBucketName": "amplify-iosdev1-iosdev-162525-deployment",
+			"UnauthRoleName": "amplify-iosdev1-iosdev-162525-unauthRole",
+			"StackName": "amplify-iosdev1-iosdev-162525",
+			"StackId": "arn:aws:cloudformation:us-east-1:479545181301:stack/amplify-iosdev1-iosdev-162525/b975e680-948e-11ea-b43a-0ed5356bca17",
+			"AmplifyAppId": "d2mnqvhiagcwlx"
 		}
 	},
 	"api": {
@@ -28,64 +28,64 @@
 				"region": "us-east-1",
 				"GraphQLAPIKeyOutput": "da2-nzk44lbxprfr3i2unt42xwbb3y"
 			},
-			"lastPushTimeStamp": "2020-05-04T02:26:47.768Z"
+			"lastPushTimeStamp": "2020-05-12T20:26:47.588Z"
 		}
 	},
 	"auth": {
-		"cognitoee40339a": {
+		"cognito69671e07": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/amplify-nubletecuidaios-dev-222403-deployment/amplify-cfn-templates/auth/cognitoee40339a-cloudformation-template.yml",
-				"logicalId": "authcognitoee40339a"
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-iosdev1-iosdev-162525-deployment/amplify-cfn-templates/auth/cognito69671e07-cloudformation-template.yml",
+				"logicalId": "authcognito69671e07"
 			},
-			"lastPushTimeStamp": "2020-05-04T02:31:41.312Z",
+			"lastPushTimeStamp": "2020-05-12T20:30:24.856Z",
 			"output": {
-				"IdentityPoolId": "us-east-1:c6985788-5b81-4d00-b92e-2c7883c681ed",
-				"IdentityPoolName": "nubletecuidaios_identitypool_bb69f8ee__dev"
+				"IdentityPoolId": "us-east-1:785e2e61-317b-4e5d-935d-6b151cf31217",
+				"IdentityPoolName": "iosdev1_identitypool_d9bda1b6__iosdev"
 			},
-			"lastPushDirHash": "hStkNNJdksoug0f/7FIttH6Qm0Y="
+			"lastPushDirHash": "qPybwClLel3dYt92PtGSiP0G5uU="
 		}
 	},
 	"analytics": {
-		"nubletecuidaios": {
+		"iosdev1": {
 			"service": "Pinpoint",
 			"providerPlugin": "awscloudformation",
 			"providerMetadata": {
-				"s3TemplateURL": "https://s3.amazonaws.com/amplify-nubletecuidaios-dev-222403-deployment/amplify-cfn-templates/analytics/pinpoint-cloudformation-template.json",
-				"logicalId": "analyticsnubletecuidaios"
+				"s3TemplateURL": "https://s3.amazonaws.com/amplify-iosdev1-iosdev-162525-deployment/amplify-cfn-templates/analytics/pinpoint-cloudformation-template.json",
+				"logicalId": "analyticsiosdev1"
 			},
-			"lastPushTimeStamp": "2020-05-04T02:31:41.312Z",
+			"lastPushTimeStamp": "2020-05-12T20:30:24.856Z",
 			"output": {
-				"appName": "nubletecuidaios-dev",
+				"appName": "iosdev1-iosdev",
 				"Region": "us-east-1",
-				"Id": "88a7ee4c9dde46358b4946da08c710fd"
+				"Id": "9efca6d75e3e4fa8a5a26600edbfc1a0"
 			},
-			"lastPushDirHash": "oakbHM04JV2ORf0eEjygLR+uPaU="
+			"lastPushDirHash": "mwYrNdVEtMs4+WNIIS3PwLIUSJQ="
 		}
 	},
 	"notifications": {
-		"nubletecuidaios": {
+		"iosdev1": {
 			"service": "Pinpoint",
 			"output": {
-				"Id": "88a7ee4c9dde46358b4946da08c710fd",
-				"Name": "nubletecuidaios-dev",
+				"Id": "9efca6d75e3e4fa8a5a26600edbfc1a0",
+				"Name": "iosdev1-iosdev",
 				"Region": "us-east-1",
 				"APNS": {
-					"ApplicationId": "88a7ee4c9dde46358b4946da08c710fd",
-					"CreationDate": "2020-05-04T02:40:47.276Z",
+					"ApplicationId": "9efca6d75e3e4fa8a5a26600edbfc1a0",
+					"CreationDate": "2020-05-12T20:32:30.168Z",
 					"DefaultAuthenticationMethod": "Certificate",
 					"Enabled": true,
 					"HasCredential": true,
 					"HasTokenKey": false,
 					"Id": "apns",
 					"IsArchived": false,
-					"LastModifiedDate": "2020-05-05T02:33:28.560Z",
+					"LastModifiedDate": "2020-05-12T20:48:43.603Z",
 					"Platform": "APNS",
-					"Version": 3
+					"Version": 2
 				}
 			},
-			"lastPushTimeStamp": "2020-05-04T02:37:06.511Z"
+			"lastPushTimeStamp": "2020-05-12T20:47:52.043Z"
 		}
 	}
 }

@@ -77,6 +77,8 @@ class ContactoVC: UIViewController {
         btnWspImage.image = UIImage(named: "wspLogo")
         btnWspImage.backgroundColor = UIColor.clear
         btnWsp.addSubview(btnWspImage)
+        btnWsp.addTarget(self, action: #selector(accionBtnWsp(_:)), for: .touchUpInside)
+
         view.addSubview(btnWsp)
 
 //btn llamado
@@ -110,24 +112,49 @@ class ContactoVC: UIViewController {
     @objc func accionBtnLlamar(_ sender:UIButton!) {
         
         print("llamar")
-        llamar()
+        
+        
+        makePhoneCall(phoneNumber: "6006008383")
+     //   llamar()
    
     }
     
+    func makePhoneCall(phoneNumber: String) {
+         if let phoneURL = NSURL(string: ("tel://" + phoneNumber)) {
+
+                let alert = UIAlertController(title: ("¿Llamar al número " + phoneNumber + "?"), message: nil, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Llamar", style: .default, handler: { (action) in
+                    UIApplication.shared.open(phoneURL as URL, options: [:], completionHandler: nil)
+                }))
+
+                alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        
+    }
+
     @objc func accionBtnWsp(_ sender:UIButton!) {
+
+        let phoneNumber =  "+56943404734" // you need to change this number
+        let appURL = URL(string: "https://api.whatsapp.com/send?phone=\(phoneNumber)")!
+        if UIApplication.shared.canOpenURL(appURL) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(appURL, options: [:], completionHandler: nil)
+            }
+            else {
+                UIApplication.shared.openURL(appURL)
+            }
+        } else {
+            // WhatsApp is not installed
+        }
+
+        UIApplication.shared.open(URL(string:"https://api.whatsapp.com/send?phone=+56943404734")!)
 
         print("wsp")
     }
     
-    func llamar() {
-            guard let url = URL(string: "tel://600 600 8383)"),
-                UIApplication.shared.canOpenURL(url) else { return }
-            if #available(iOS 10, *) {
-                UIApplication.shared.open(url)
-            } else {
-                UIApplication.shared.openURL(url)
-            }
-        }
+    
+    
     }
 
 

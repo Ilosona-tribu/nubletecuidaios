@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C374089124396DD100D28C13"
-               BuildableName = "nubletecuida.app"
+               BuildableName = "nuble te cuida.app"
                BlueprintName = "nubletecuida"
                ReferencedContainer = "container:nubletecuida.xcodeproj">
             </BuildableReference>
@@ -51,7 +51,7 @@
       </Testables>
    </TestAction>
    <LaunchAction
-      buildConfiguration = "Debug"
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C374089124396DD100D28C13"
-            BuildableName = "nubletecuida.app"
+            BuildableName = "nuble te cuida.app"
             BlueprintName = "nubletecuida"
             ReferencedContainer = "container:nubletecuida.xcodeproj">
          </BuildableReference>
@@ -82,7 +82,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C374089124396DD100D28C13"
-            BuildableName = "nubletecuida.app"
+            BuildableName = "nuble te cuida.app"
             BlueprintName = "nubletecuida"
             ReferencedContainer = "container:nubletecuida.xcodeproj">
          </BuildableReference>

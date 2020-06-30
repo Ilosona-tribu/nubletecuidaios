@@ -4,6 +4,8 @@ target :'nubletecuida' do
     pod 'AWSAppSync', '~> 3.1.0'
     pod  'AWSPinpoint'
     pod  'AWSMobileClient'
+    pod 'PushNotifications'
+
 
     # other pods
 end

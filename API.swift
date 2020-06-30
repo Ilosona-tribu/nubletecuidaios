@@ -2479,6 +2479,120 @@ public struct DeleteResultInput: GraphQLMapConvertible {
   }
 }
 
+public struct CreateCallInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(imageCall: String, textCall: String, whatsappNumber: String, phoneNumber: String) {
+    graphQLMap = ["image_call": imageCall, "text_call": textCall, "whatsapp_number": whatsappNumber, "phone_number": phoneNumber]
+  }
+
+  public var imageCall: String {
+    get {
+      return graphQLMap["image_call"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "image_call")
+    }
+  }
+
+  public var textCall: String {
+    get {
+      return graphQLMap["text_call"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "text_call")
+    }
+  }
+
+  public var whatsappNumber: String {
+    get {
+      return graphQLMap["whatsapp_number"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "whatsapp_number")
+    }
+  }
+
+  public var phoneNumber: String {
+    get {
+      return graphQLMap["phone_number"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "phone_number")
+    }
+  }
+}
+
+public struct UpdateCallInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(id: GraphQLID, imageCall: String? = nil, textCall: String? = nil, whatsappNumber: String? = nil, phoneNumber: String? = nil) {
+    graphQLMap = ["id": id, "image_call": imageCall, "text_call": textCall, "whatsapp_number": whatsappNumber, "phone_number": phoneNumber]
+  }
+
+  public var id: GraphQLID {
+    get {
+      return graphQLMap["id"] as! GraphQLID
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var imageCall: String? {
+    get {
+      return graphQLMap["image_call"] as! String?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "image_call")
+    }
+  }
+
+  public var textCall: String? {
+    get {
+      return graphQLMap["text_call"] as! String?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "text_call")
+    }
+  }
+
+  public var whatsappNumber: String? {
+    get {
+      return graphQLMap["whatsapp_number"] as! String?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "whatsapp_number")
+    }
+  }
+
+  public var phoneNumber: String? {
+    get {
+      return graphQLMap["phone_number"] as! String?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "phone_number")
+    }
+  }
+}
+
+public struct DeleteCallInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(id: GraphQLID) {
+    graphQLMap = ["id": id]
+  }
+
+  public var id: GraphQLID {
+    get {
+      return graphQLMap["id"] as! GraphQLID
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
+  }
+}
+
 public struct ModelNewsFilterInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
@@ -3443,6 +3557,59 @@ public struct TableStringFilterInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "beginsWith")
+    }
+  }
+}
+
+public struct TableCallFilterInput: GraphQLMapConvertible {
+  public var graphQLMap: GraphQLMap
+
+  public init(id: TableIDFilterInput? = nil, imageCall: TableStringFilterInput? = nil, textCall: TableStringFilterInput? = nil, whatsappNumber: TableStringFilterInput? = nil, phoneNumber: TableStringFilterInput? = nil) {
+    graphQLMap = ["id": id, "image_call": imageCall, "text_call": textCall, "whatsapp_number": whatsappNumber, "phone_number": phoneNumber]
+  }
+
+  public var id: TableIDFilterInput? {
+    get {
+      return graphQLMap["id"] as! TableIDFilterInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id")
+    }
+  }
+
+  public var imageCall: TableStringFilterInput? {
+    get {
+      return graphQLMap["image_call"] as! TableStringFilterInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "image_call")
+    }
+  }
+
+  public var textCall: TableStringFilterInput? {
+    get {
+      return graphQLMap["text_call"] as! TableStringFilterInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "text_call")
+    }
+  }
+
+  public var whatsappNumber: TableStringFilterInput? {
+    get {
+      return graphQLMap["whatsapp_number"] as! TableStringFilterInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "whatsapp_number")
+    }
+  }
+
+  public var phoneNumber: TableStringFilterInput? {
+    get {
+      return graphQLMap["phone_number"] as! TableStringFilterInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "phone_number")
     }
   }
 }
@@ -9399,6 +9566,363 @@ public final class DeleteResultMutation: GraphQLMutation {
   }
 }
 
+public final class CreateCallMutation: GraphQLMutation {
+  public static let operationString =
+    "mutation CreateCall($input: CreateCallInput!) {\n  createCall(input: $input) {\n    __typename\n    id\n    image_call\n    text_call\n    whatsapp_number\n    phone_number\n  }\n}"
+
+  public var input: CreateCallInput
+
+  public init(input: CreateCallInput) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("createCall", arguments: ["input": GraphQLVariable("input")], type: .object(CreateCall.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(createCall: CreateCall? = nil) {
+      self.init(snapshot: ["__typename": "Mutation", "createCall": createCall.flatMap { $0.snapshot }])
+    }
+
+    public var createCall: CreateCall? {
+      get {
+        return (snapshot["createCall"] as? Snapshot).flatMap { CreateCall(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "createCall")
+      }
+    }
+
+    public struct CreateCall: GraphQLSelectionSet {
+      public static let possibleTypes = ["Call"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("image_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("text_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("whatsapp_number", type: .nonNull(.scalar(String.self))),
+        GraphQLField("phone_number", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, imageCall: String, textCall: String, whatsappNumber: String, phoneNumber: String) {
+        self.init(snapshot: ["__typename": "Call", "id": id, "image_call": imageCall, "text_call": textCall, "whatsapp_number": whatsappNumber, "phone_number": phoneNumber])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var imageCall: String {
+        get {
+          return snapshot["image_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "image_call")
+        }
+      }
+
+      public var textCall: String {
+        get {
+          return snapshot["text_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "text_call")
+        }
+      }
+
+      public var whatsappNumber: String {
+        get {
+          return snapshot["whatsapp_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "whatsapp_number")
+        }
+      }
+
+      public var phoneNumber: String {
+        get {
+          return snapshot["phone_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "phone_number")
+        }
+      }
+    }
+  }
+}
+
+public final class UpdateCallMutation: GraphQLMutation {
+  public static let operationString =
+    "mutation UpdateCall($input: UpdateCallInput!) {\n  updateCall(input: $input) {\n    __typename\n    id\n    image_call\n    text_call\n    whatsapp_number\n    phone_number\n  }\n}"
+
+  public var input: UpdateCallInput
+
+  public init(input: UpdateCallInput) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("updateCall", arguments: ["input": GraphQLVariable("input")], type: .object(UpdateCall.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(updateCall: UpdateCall? = nil) {
+      self.init(snapshot: ["__typename": "Mutation", "updateCall": updateCall.flatMap { $0.snapshot }])
+    }
+
+    public var updateCall: UpdateCall? {
+      get {
+        return (snapshot["updateCall"] as? Snapshot).flatMap { UpdateCall(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "updateCall")
+      }
+    }
+
+    public struct UpdateCall: GraphQLSelectionSet {
+      public static let possibleTypes = ["Call"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("image_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("text_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("whatsapp_number", type: .nonNull(.scalar(String.self))),
+        GraphQLField("phone_number", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, imageCall: String, textCall: String, whatsappNumber: String, phoneNumber: String) {
+        self.init(snapshot: ["__typename": "Call", "id": id, "image_call": imageCall, "text_call": textCall, "whatsapp_number": whatsappNumber, "phone_number": phoneNumber])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var imageCall: String {
+        get {
+          return snapshot["image_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "image_call")
+        }
+      }
+
+      public var textCall: String {
+        get {
+          return snapshot["text_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "text_call")
+        }
+      }
+
+      public var whatsappNumber: String {
+        get {
+          return snapshot["whatsapp_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "whatsapp_number")
+        }
+      }
+
+      public var phoneNumber: String {
+        get {
+          return snapshot["phone_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "phone_number")
+        }
+      }
+    }
+  }
+}
+
+public final class DeleteCallMutation: GraphQLMutation {
+  public static let operationString =
+    "mutation DeleteCall($input: DeleteCallInput!) {\n  deleteCall(input: $input) {\n    __typename\n    id\n    image_call\n    text_call\n    whatsapp_number\n    phone_number\n  }\n}"
+
+  public var input: DeleteCallInput
+
+  public init(input: DeleteCallInput) {
+    self.input = input
+  }
+
+  public var variables: GraphQLMap? {
+    return ["input": input]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Mutation"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("deleteCall", arguments: ["input": GraphQLVariable("input")], type: .object(DeleteCall.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(deleteCall: DeleteCall? = nil) {
+      self.init(snapshot: ["__typename": "Mutation", "deleteCall": deleteCall.flatMap { $0.snapshot }])
+    }
+
+    public var deleteCall: DeleteCall? {
+      get {
+        return (snapshot["deleteCall"] as? Snapshot).flatMap { DeleteCall(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "deleteCall")
+      }
+    }
+
+    public struct DeleteCall: GraphQLSelectionSet {
+      public static let possibleTypes = ["Call"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("image_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("text_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("whatsapp_number", type: .nonNull(.scalar(String.self))),
+        GraphQLField("phone_number", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, imageCall: String, textCall: String, whatsappNumber: String, phoneNumber: String) {
+        self.init(snapshot: ["__typename": "Call", "id": id, "image_call": imageCall, "text_call": textCall, "whatsapp_number": whatsappNumber, "phone_number": phoneNumber])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var imageCall: String {
+        get {
+          return snapshot["image_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "image_call")
+        }
+      }
+
+      public var textCall: String {
+        get {
+          return snapshot["text_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "text_call")
+        }
+      }
+
+      public var whatsappNumber: String {
+        get {
+          return snapshot["whatsapp_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "whatsapp_number")
+        }
+      }
+
+      public var phoneNumber: String {
+        get {
+          return snapshot["phone_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "phone_number")
+        }
+      }
+    }
+  }
+}
+
 public final class SyncNewsQuery: GraphQLQuery {
   public static let operationString =
     "query SyncNews($filter: ModelNewsFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {\n  syncNews(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {\n    __typename\n    items {\n      __typename\n      id\n      title\n      description\n      detail\n      url_background_image\n      url_thumbnail_image\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    nextToken\n    startedAt\n  }\n}"
@@ -15056,6 +15580,295 @@ public final class ListResultsQuery: GraphQLQuery {
           }
           set {
             snapshot.updateValue(newValue, forKey: "detail_result")
+          }
+        }
+      }
+    }
+  }
+}
+
+public final class GetCallQuery: GraphQLQuery {
+  public static let operationString =
+    "query GetCall($id: ID!) {\n  getCall(id: $id) {\n    __typename\n    id\n    image_call\n    text_call\n    whatsapp_number\n    phone_number\n  }\n}"
+
+  public var id: GraphQLID
+
+  public init(id: GraphQLID) {
+    self.id = id
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("getCall", arguments: ["id": GraphQLVariable("id")], type: .object(GetCall.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(getCall: GetCall? = nil) {
+      self.init(snapshot: ["__typename": "Query", "getCall": getCall.flatMap { $0.snapshot }])
+    }
+
+    public var getCall: GetCall? {
+      get {
+        return (snapshot["getCall"] as? Snapshot).flatMap { GetCall(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "getCall")
+      }
+    }
+
+    public struct GetCall: GraphQLSelectionSet {
+      public static let possibleTypes = ["Call"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("image_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("text_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("whatsapp_number", type: .nonNull(.scalar(String.self))),
+        GraphQLField("phone_number", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, imageCall: String, textCall: String, whatsappNumber: String, phoneNumber: String) {
+        self.init(snapshot: ["__typename": "Call", "id": id, "image_call": imageCall, "text_call": textCall, "whatsapp_number": whatsappNumber, "phone_number": phoneNumber])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var imageCall: String {
+        get {
+          return snapshot["image_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "image_call")
+        }
+      }
+
+      public var textCall: String {
+        get {
+          return snapshot["text_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "text_call")
+        }
+      }
+
+      public var whatsappNumber: String {
+        get {
+          return snapshot["whatsapp_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "whatsapp_number")
+        }
+      }
+
+      public var phoneNumber: String {
+        get {
+          return snapshot["phone_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "phone_number")
+        }
+      }
+    }
+  }
+}
+
+public final class ListCallsQuery: GraphQLQuery {
+  public static let operationString =
+    "query ListCalls($filter: TableCallFilterInput, $limit: Int, $nextToken: String) {\n  listCalls(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      image_call\n      text_call\n      whatsapp_number\n      phone_number\n    }\n    nextToken\n  }\n}"
+
+  public var filter: TableCallFilterInput?
+  public var limit: Int?
+  public var nextToken: String?
+
+  public init(filter: TableCallFilterInput? = nil, limit: Int? = nil, nextToken: String? = nil) {
+    self.filter = filter
+    self.limit = limit
+    self.nextToken = nextToken
+  }
+
+  public var variables: GraphQLMap? {
+    return ["filter": filter, "limit": limit, "nextToken": nextToken]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Query"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("listCalls", arguments: ["filter": GraphQLVariable("filter"), "limit": GraphQLVariable("limit"), "nextToken": GraphQLVariable("nextToken")], type: .object(ListCall.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(listCalls: ListCall? = nil) {
+      self.init(snapshot: ["__typename": "Query", "listCalls": listCalls.flatMap { $0.snapshot }])
+    }
+
+    public var listCalls: ListCall? {
+      get {
+        return (snapshot["listCalls"] as? Snapshot).flatMap { ListCall(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "listCalls")
+      }
+    }
+
+    public struct ListCall: GraphQLSelectionSet {
+      public static let possibleTypes = ["CallConnection"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("items", type: .list(.object(Item.selections))),
+        GraphQLField("nextToken", type: .scalar(String.self)),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(items: [Item?]? = nil, nextToken: String? = nil) {
+        self.init(snapshot: ["__typename": "CallConnection", "items": items.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, "nextToken": nextToken])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var items: [Item?]? {
+        get {
+          return (snapshot["items"] as? [Snapshot?]).flatMap { $0.map { $0.flatMap { Item(snapshot: $0) } } }
+        }
+        set {
+          snapshot.updateValue(newValue.flatMap { $0.map { $0.flatMap { $0.snapshot } } }, forKey: "items")
+        }
+      }
+
+      public var nextToken: String? {
+        get {
+          return snapshot["nextToken"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "nextToken")
+        }
+      }
+
+      public struct Item: GraphQLSelectionSet {
+        public static let possibleTypes = ["Call"]
+
+        public static let selections: [GraphQLSelection] = [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("image_call", type: .nonNull(.scalar(String.self))),
+          GraphQLField("text_call", type: .nonNull(.scalar(String.self))),
+          GraphQLField("whatsapp_number", type: .nonNull(.scalar(String.self))),
+          GraphQLField("phone_number", type: .nonNull(.scalar(String.self))),
+        ]
+
+        public var snapshot: Snapshot
+
+        public init(snapshot: Snapshot) {
+          self.snapshot = snapshot
+        }
+
+        public init(id: GraphQLID, imageCall: String, textCall: String, whatsappNumber: String, phoneNumber: String) {
+          self.init(snapshot: ["__typename": "Call", "id": id, "image_call": imageCall, "text_call": textCall, "whatsapp_number": whatsappNumber, "phone_number": phoneNumber])
+        }
+
+        public var __typename: String {
+          get {
+            return snapshot["__typename"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return snapshot["id"]! as! GraphQLID
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var imageCall: String {
+          get {
+            return snapshot["image_call"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "image_call")
+          }
+        }
+
+        public var textCall: String {
+          get {
+            return snapshot["text_call"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "text_call")
+          }
+        }
+
+        public var whatsappNumber: String {
+          get {
+            return snapshot["whatsapp_number"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "whatsapp_number")
+          }
+        }
+
+        public var phoneNumber: String {
+          get {
+            return snapshot["phone_number"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "phone_number")
           }
         }
       }
@@ -20784,6 +21597,387 @@ public final class OnDeleteResultSubscription: GraphQLSubscription {
         }
         set {
           snapshot.updateValue(newValue, forKey: "detail_result")
+        }
+      }
+    }
+  }
+}
+
+public final class OnCreateCallSubscription: GraphQLSubscription {
+  public static let operationString =
+    "subscription OnCreateCall($id: ID, $image_call: AWSURL, $text_call: String, $whatsapp_number: String, $phone_number: String) {\n  onCreateCall(id: $id, image_call: $image_call, text_call: $text_call, whatsapp_number: $whatsapp_number, phone_number: $phone_number) {\n    __typename\n    id\n    image_call\n    text_call\n    whatsapp_number\n    phone_number\n  }\n}"
+
+  public var id: GraphQLID?
+  public var image_call: String?
+  public var text_call: String?
+  public var whatsapp_number: String?
+  public var phone_number: String?
+
+  public init(id: GraphQLID? = nil, image_call: String? = nil, text_call: String? = nil, whatsapp_number: String? = nil, phone_number: String? = nil) {
+    self.id = id
+    self.image_call = image_call
+    self.text_call = text_call
+    self.whatsapp_number = whatsapp_number
+    self.phone_number = phone_number
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id, "image_call": image_call, "text_call": text_call, "whatsapp_number": whatsapp_number, "phone_number": phone_number]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Subscription"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("onCreateCall", arguments: ["id": GraphQLVariable("id"), "image_call": GraphQLVariable("image_call"), "text_call": GraphQLVariable("text_call"), "whatsapp_number": GraphQLVariable("whatsapp_number"), "phone_number": GraphQLVariable("phone_number")], type: .object(OnCreateCall.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(onCreateCall: OnCreateCall? = nil) {
+      self.init(snapshot: ["__typename": "Subscription", "onCreateCall": onCreateCall.flatMap { $0.snapshot }])
+    }
+
+    public var onCreateCall: OnCreateCall? {
+      get {
+        return (snapshot["onCreateCall"] as? Snapshot).flatMap { OnCreateCall(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "onCreateCall")
+      }
+    }
+
+    public struct OnCreateCall: GraphQLSelectionSet {
+      public static let possibleTypes = ["Call"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("image_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("text_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("whatsapp_number", type: .nonNull(.scalar(String.self))),
+        GraphQLField("phone_number", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, imageCall: String, textCall: String, whatsappNumber: String, phoneNumber: String) {
+        self.init(snapshot: ["__typename": "Call", "id": id, "image_call": imageCall, "text_call": textCall, "whatsapp_number": whatsappNumber, "phone_number": phoneNumber])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var imageCall: String {
+        get {
+          return snapshot["image_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "image_call")
+        }
+      }
+
+      public var textCall: String {
+        get {
+          return snapshot["text_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "text_call")
+        }
+      }
+
+      public var whatsappNumber: String {
+        get {
+          return snapshot["whatsapp_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "whatsapp_number")
+        }
+      }
+
+      public var phoneNumber: String {
+        get {
+          return snapshot["phone_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "phone_number")
+        }
+      }
+    }
+  }
+}
+
+public final class OnUpdateCallSubscription: GraphQLSubscription {
+  public static let operationString =
+    "subscription OnUpdateCall($id: ID, $image_call: AWSURL, $text_call: String, $whatsapp_number: String, $phone_number: String) {\n  onUpdateCall(id: $id, image_call: $image_call, text_call: $text_call, whatsapp_number: $whatsapp_number, phone_number: $phone_number) {\n    __typename\n    id\n    image_call\n    text_call\n    whatsapp_number\n    phone_number\n  }\n}"
+
+  public var id: GraphQLID?
+  public var image_call: String?
+  public var text_call: String?
+  public var whatsapp_number: String?
+  public var phone_number: String?
+
+  public init(id: GraphQLID? = nil, image_call: String? = nil, text_call: String? = nil, whatsapp_number: String? = nil, phone_number: String? = nil) {
+    self.id = id
+    self.image_call = image_call
+    self.text_call = text_call
+    self.whatsapp_number = whatsapp_number
+    self.phone_number = phone_number
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id, "image_call": image_call, "text_call": text_call, "whatsapp_number": whatsapp_number, "phone_number": phone_number]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Subscription"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("onUpdateCall", arguments: ["id": GraphQLVariable("id"), "image_call": GraphQLVariable("image_call"), "text_call": GraphQLVariable("text_call"), "whatsapp_number": GraphQLVariable("whatsapp_number"), "phone_number": GraphQLVariable("phone_number")], type: .object(OnUpdateCall.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(onUpdateCall: OnUpdateCall? = nil) {
+      self.init(snapshot: ["__typename": "Subscription", "onUpdateCall": onUpdateCall.flatMap { $0.snapshot }])
+    }
+
+    public var onUpdateCall: OnUpdateCall? {
+      get {
+        return (snapshot["onUpdateCall"] as? Snapshot).flatMap { OnUpdateCall(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "onUpdateCall")
+      }
+    }
+
+    public struct OnUpdateCall: GraphQLSelectionSet {
+      public static let possibleTypes = ["Call"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("image_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("text_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("whatsapp_number", type: .nonNull(.scalar(String.self))),
+        GraphQLField("phone_number", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, imageCall: String, textCall: String, whatsappNumber: String, phoneNumber: String) {
+        self.init(snapshot: ["__typename": "Call", "id": id, "image_call": imageCall, "text_call": textCall, "whatsapp_number": whatsappNumber, "phone_number": phoneNumber])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var imageCall: String {
+        get {
+          return snapshot["image_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "image_call")
+        }
+      }
+
+      public var textCall: String {
+        get {
+          return snapshot["text_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "text_call")
+        }
+      }
+
+      public var whatsappNumber: String {
+        get {
+          return snapshot["whatsapp_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "whatsapp_number")
+        }
+      }
+
+      public var phoneNumber: String {
+        get {
+          return snapshot["phone_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "phone_number")
+        }
+      }
+    }
+  }
+}
+
+public final class OnDeleteCallSubscription: GraphQLSubscription {
+  public static let operationString =
+    "subscription OnDeleteCall($id: ID, $image_call: AWSURL, $text_call: String, $whatsapp_number: String, $phone_number: String) {\n  onDeleteCall(id: $id, image_call: $image_call, text_call: $text_call, whatsapp_number: $whatsapp_number, phone_number: $phone_number) {\n    __typename\n    id\n    image_call\n    text_call\n    whatsapp_number\n    phone_number\n  }\n}"
+
+  public var id: GraphQLID?
+  public var image_call: String?
+  public var text_call: String?
+  public var whatsapp_number: String?
+  public var phone_number: String?
+
+  public init(id: GraphQLID? = nil, image_call: String? = nil, text_call: String? = nil, whatsapp_number: String? = nil, phone_number: String? = nil) {
+    self.id = id
+    self.image_call = image_call
+    self.text_call = text_call
+    self.whatsapp_number = whatsapp_number
+    self.phone_number = phone_number
+  }
+
+  public var variables: GraphQLMap? {
+    return ["id": id, "image_call": image_call, "text_call": text_call, "whatsapp_number": whatsapp_number, "phone_number": phone_number]
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes = ["Subscription"]
+
+    public static let selections: [GraphQLSelection] = [
+      GraphQLField("onDeleteCall", arguments: ["id": GraphQLVariable("id"), "image_call": GraphQLVariable("image_call"), "text_call": GraphQLVariable("text_call"), "whatsapp_number": GraphQLVariable("whatsapp_number"), "phone_number": GraphQLVariable("phone_number")], type: .object(OnDeleteCall.selections)),
+    ]
+
+    public var snapshot: Snapshot
+
+    public init(snapshot: Snapshot) {
+      self.snapshot = snapshot
+    }
+
+    public init(onDeleteCall: OnDeleteCall? = nil) {
+      self.init(snapshot: ["__typename": "Subscription", "onDeleteCall": onDeleteCall.flatMap { $0.snapshot }])
+    }
+
+    public var onDeleteCall: OnDeleteCall? {
+      get {
+        return (snapshot["onDeleteCall"] as? Snapshot).flatMap { OnDeleteCall(snapshot: $0) }
+      }
+      set {
+        snapshot.updateValue(newValue?.snapshot, forKey: "onDeleteCall")
+      }
+    }
+
+    public struct OnDeleteCall: GraphQLSelectionSet {
+      public static let possibleTypes = ["Call"]
+
+      public static let selections: [GraphQLSelection] = [
+        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+        GraphQLField("image_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("text_call", type: .nonNull(.scalar(String.self))),
+        GraphQLField("whatsapp_number", type: .nonNull(.scalar(String.self))),
+        GraphQLField("phone_number", type: .nonNull(.scalar(String.self))),
+      ]
+
+      public var snapshot: Snapshot
+
+      public init(snapshot: Snapshot) {
+        self.snapshot = snapshot
+      }
+
+      public init(id: GraphQLID, imageCall: String, textCall: String, whatsappNumber: String, phoneNumber: String) {
+        self.init(snapshot: ["__typename": "Call", "id": id, "image_call": imageCall, "text_call": textCall, "whatsapp_number": whatsappNumber, "phone_number": phoneNumber])
+      }
+
+      public var __typename: String {
+        get {
+          return snapshot["__typename"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return snapshot["id"]! as! GraphQLID
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var imageCall: String {
+        get {
+          return snapshot["image_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "image_call")
+        }
+      }
+
+      public var textCall: String {
+        get {
+          return snapshot["text_call"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "text_call")
+        }
+      }
+
+      public var whatsappNumber: String {
+        get {
+          return snapshot["whatsapp_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "whatsapp_number")
+        }
+      }
+
+      public var phoneNumber: String {
+        get {
+          return snapshot["phone_number"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "phone_number")
         }
       }
     }

@@ -90,7 +90,6 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         cell.sendSubviewToBack(imagen)
         cell.layer.cornerRadius = 26.0
         cell.layer.masksToBounds = true
-
         
         
         let imagenEsquina = UIImageView(frame: (CGRect(x: cell.contentView.frame.maxX - (cell.contentView.frame.height/5 + 15), y: cell.contentView.frame.height / 6, width: cell.contentView.frame.height/5, height: cell.contentView.frame.height/5)))
@@ -119,7 +118,7 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
     func datosConsejos(){
         
         let query = ListAdvicesQuery()
-            self.appSyncClient?.fetch(query: query, cachePolicy: .returnCacheDataElseFetch) { result, error in
+            self.appSyncClient?.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result, error in
 
             if let error = error {
                 print("Error fetching data: \(error)")

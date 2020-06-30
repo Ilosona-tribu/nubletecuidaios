@@ -43,27 +43,29 @@ class DetalleNoticiasVC: UIViewController,UIScrollViewDelegate {
            subVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
            subVista.layer.cornerRadius = 41.4
 
-        let alturaFondoRedondeado = descripcionNoticia.height(constraintedWidth: self.view.frame.width - 40, font: UIFont(name: "gobCL", size: 16.0)!) + 25.0
+        let alturaFondoRedondeado = descripcionNoticia.height(constraintedWidth: self.view.frame.width - 40, font: UIFont(name: "gobCL", size: 16.0)!) + 35.0
 
-        let labelTextoDescripcion = UILabelPadding(frame: CGRect(x: 20.0, y: 52, width: view.frame.width - 40.0, height:alturaFondoRedondeado))
+        let labelTextoDescripcion = UITextView(frame: CGRect(x: 20.0, y: 52, width: view.frame.width - 40.0, height:alturaFondoRedondeado))
 
-      //  let maximumLabelSizeTexto = CGSize(width: (self.view.frame.size.width - 40.0), height: 40000.0)
-//        labelTextoDescripcion.sizeThatFits(maximumLabelSizeTexto)
 
         labelTextoDescripcion.text = descripcionNoticia
         labelTextoDescripcion.textColor = UIColor.gray
         labelTextoDescripcion.textAlignment = .left
-        labelTextoDescripcion.numberOfLines = 0
+       // labelTextoDescripcion.numberOfLines = 0
       //  labelTextoDescripcion.sizeToFit()
 
         labelTextoDescripcion.font = UIFont(name: "gobCL", size: 16.0)
         labelTextoDescripcion.backgroundColor = UIColor.white
            
-        labelTextoDescripcion.layer.backgroundColor  = UIColor.black.cgColor
+        labelTextoDescripcion.layer.backgroundColor  = UIColor.white.cgColor
         labelTextoDescripcion.layer.cornerRadius = 13.3
         labelTextoDescripcion.layer.masksToBounds = true
-    
-    
+        labelTextoDescripcion.isEditable = false
+        labelTextoDescripcion.isSelectable = true
+        labelTextoDescripcion.dataDetectorTypes = UIDataDetectorTypes.all
+        labelTextoDescripcion.layer.cornerRadius = 13.3
+        labelTextoDescripcion.layer.masksToBounds = true
+        labelTextoDescripcion.textContainerInset  = UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 8)
 
         let whiteRoundedView : UIView = UIView(frame: CGRect(x: 20.0, y: 52, width: self.view.frame.size.width - 40, height: alturaFondoRedondeado))
         whiteRoundedView.layer.backgroundColor = UIColor.white.cgColor
@@ -106,4 +108,11 @@ func height(constraintedWidth width: CGFloat, font: UIFont) -> CGFloat {
 
     return label.frame.height
  }
+}
+
+class UITextViewPadding : UITextView {
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    textContainerInset = UIEdgeInsets(top: 2, left: 8, bottom: 2, right: 8)
+  }
 }

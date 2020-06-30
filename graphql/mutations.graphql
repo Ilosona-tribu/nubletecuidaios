@@ -542,3 +542,30 @@ mutation DeleteResult($input: DeleteResultInput!) {
     detail_result
   }
 }
+mutation CreateCall($input: CreateCallInput!) {
+  createCall(input: $input) {
+    id
+    image_call
+    text_call
+    whatsapp_number
+    phone_number
+  }
+}
+mutation UpdateCall($input: UpdateCallInput!) {
+  updateCall(input: $input) {
+    id
+    image_call
+    text_call
+    whatsapp_number
+    phone_number
+  }
+}
+mutation DeleteCall($input: DeleteCallInput!) {
+  deleteCall(input: $input) {
+    id
+    image_call
+    text_call
+    whatsapp_number
+    phone_number
+  }
+}

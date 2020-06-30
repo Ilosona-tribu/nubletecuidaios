@@ -491,3 +491,66 @@ subscription OnDeleteResult(
     detail_result
   }
 }
+subscription OnCreateCall(
+  $id: ID
+  $image_call: AWSURL
+  $text_call: String
+  $whatsapp_number: String
+  $phone_number: String
+) {
+  onCreateCall(
+    id: $id
+    image_call: $image_call
+    text_call: $text_call
+    whatsapp_number: $whatsapp_number
+    phone_number: $phone_number
+  ) {
+    id
+    image_call
+    text_call
+    whatsapp_number
+    phone_number
+  }
+}
+subscription OnUpdateCall(
+  $id: ID
+  $image_call: AWSURL
+  $text_call: String
+  $whatsapp_number: String
+  $phone_number: String
+) {
+  onUpdateCall(
+    id: $id
+    image_call: $image_call
+    text_call: $text_call
+    whatsapp_number: $whatsapp_number
+    phone_number: $phone_number
+  ) {
+    id
+    image_call
+    text_call
+    whatsapp_number
+    phone_number
+  }
+}
+subscription OnDeleteCall(
+  $id: ID
+  $image_call: AWSURL
+  $text_call: String
+  $whatsapp_number: String
+  $phone_number: String
+) {
+  onDeleteCall(
+    id: $id
+    image_call: $image_call
+    text_call: $text_call
+    whatsapp_number: $whatsapp_number
+    phone_number: $phone_number
+  ) {
+    id
+    image_call
+    text_call
+    whatsapp_number
+    phone_number
+  }
+}

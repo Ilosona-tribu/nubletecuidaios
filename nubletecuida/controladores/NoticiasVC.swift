@@ -160,7 +160,7 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 func datosNoticias(){
     
     let query = ListNewssQuery()
-        self.appSyncClient?.fetch(query: query, cachePolicy: .returnCacheDataElseFetch) { result, error in
+        self.appSyncClient?.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result, error in
 
         if let error = error {
             print("Error fetching data: \(error)")

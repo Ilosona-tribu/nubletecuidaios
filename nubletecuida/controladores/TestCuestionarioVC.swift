@@ -54,7 +54,7 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
         scrollVista.layer.insertSublayer(gradient, at: 0)
         scrollVista.isScrollEnabled = true
         
-        vista = UIView(frame: CGRect(x: 0.0, y: view.center.y / 3, width: self.view.frame.width, height: self.view.frame.height))
+        vista = UIView(frame: CGRect(x: 0.0, y: view.center.y / 3, width: self.view.frame.width, height: self.scrollVista.frame.height))
         vista.layer.cornerRadius = 30.0
         vista.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         vista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 0.92)
@@ -78,9 +78,12 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
         scrollVista.addSubview(vista)
         scrollVista.addSubview(imagenNuble)
         
+//        vista.frame.size.height = scrollVista.frame.height
+        
+        print(scrollVista.frame.height)
+        
         vista.addSubview(labelEncabezado)
 
-        print(enumerador)
         if (enumerador == 0){
             
             botonVolver.isHidden = true
@@ -106,22 +109,22 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
             botonVolver.isHidden = false
 
         }
-
     }
     
     @objc func avanzarPreguntaAction(_ sender:UIButton!) {
 
-        
+        scrollVista.setContentOffset(.zero, animated: false)
+
         if(self.enumerador  < arrayEncabezados.count - 1)
         {
             self.enumerador = self.enumerador + 1
             esconderBotonRetroceder()
             cambiarAlternativas()
             labelEncabezado.text = arrayEncabezados[enumerador]
-            
 
         }
         else{
+
       // se esconde el labelEncabezado, boton avanzar y se eliminan los botones de alternativas.
             sender.isHidden = true
             for button in arrayBotones {
@@ -156,14 +159,14 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
               
             self.resultado(valor: 1)
         }
-    
         
     }
 
     
     func resultado(valor:Int)  {
         let labelTextoRecomendacion = UILabel()
-        vista.frame.size.height = view.frame.height - (vista.frame.origin.y * 2)
+      //  vista.frame.size.height = view.frame.height - (vista.frame.origin.y * 2)
+        vista.frame.size.height = view.frame.height
 
         if (valor < 5){
             let gradient = CAGradientLayer()
@@ -179,17 +182,18 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
            // vista.backgroundColor = UIColor(red: 95.0/255.0, green: 207.0/255.0, blue: 167.0/255.0, alpha: 1.0)
         scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
         labelEncabezado.text = "Por el momento no necesita una prueba"
-            labelTextoRecomendacion.text = "En este momento, según sus respuestas, no es necesario que le hagan las pruebas de COVID‑19. Si cambia algo, debe repetir el cuestionario."
+        labelTextoRecomendacion.text = "En este momento, según sus respuestas, no es necesario que le hagan las pruebas de COVID‑19. Si cambia algo, debe repetir el cuestionario."
             labelTextoRecomendacion.textColor = .darkGray
 }
+        
         else{
             vista.backgroundColor = UIColor(red: 212/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
             scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
             labelEncabezado.text = "Debe intentar mantenerse alejado de los demás durante al menos 7 días a partir de la aparición de sus síntomas"
           labelTextoRecomendacion.textColor = .lightGray
             labelTextoRecomendacion.text = "Su aislamiento puede terminar si sus síntomas mejoran significativamente y si no ha tenido fiebre durante al menos 72 horas sin el uso de medicamentos. Al aislarse, puede reducir la propagación de COVID-19 y proteger a los demás."
-
         }
+        
         let imagenAlerta = UIImageView(frame: CGRect(x: view.center.x - 35, y: 15.0, width: 70, height: 60))
         imagenAlerta.image = UIImage(named: "alertaTriangulo")
         vista.addSubview(imagenAlerta)
@@ -244,7 +248,6 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
 
                 let botonAlernativa = UIButton(frame: CGRect(x: view.center.x - 174.5, y: labelEncabezado.frame.maxY + 30.0 + CGFloat(distance * 78), width: 345.0, height: 74.0))
                 
-                
                 botonAlernativa.setTitle(opcion, for: .normal)
                 botonAlernativa.setTitleColor(UIColor.gray, for: .normal)
                 
@@ -256,11 +259,28 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
 
                 botonAlernativa.contentHorizontalAlignment = .left
                 botonAlernativa.contentVerticalAlignment = .top
-                botonAlernativa.contentEdgeInsets = UIEdgeInsets(top: 28, left: 20, bottom: 0.0, right: 10)
+                botonAlernativa.contentEdgeInsets = UIEdgeInsets(top: 20, left: 20, bottom: 5.0, right: 45)
                 botonAlernativa.adjustsImageWhenHighlighted = false
                 botonAlernativa.addTarget(self, action: #selector(checkAlternativa(_:)), for: .touchUpInside)
                 botonAlernativa.titleLabel?.font = UIFont(name: "gobCL", size: 16.0)
 
+                botonAlernativa.titleLabel?.numberOfLines = 2
+
+                let attributedString = NSMutableAttributedString(string: opcion!)
+
+                // *** Create instance of `NSMutableParagraphStyle`
+                let paragraphStyle = NSMutableParagraphStyle()
+
+                // *** set LineSpacing property in points ***
+                paragraphStyle.lineSpacing = 2 // Whatever line spacing you want in points
+
+                // *** Apply attribute to string ***
+                attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+
+                // *** Set Attributed String to your label ***
+                botonAlernativa.titleLabel?.attributedText = attributedString
+
+                
                 arrayBotones.append(botonAlernativa)
                 vista.addSubview(botonAlernativa)
             }
@@ -297,9 +317,12 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
         if((botonAvanzar.frame.maxY + view.center.y / 3) > view.frame.height){
             print(botonAvanzar.frame.height)
             scrollVista.contentSize.height = botonAvanzar.frame.maxY + 180
+            vista.frame.size.height = botonAvanzar.frame.maxY + 180
+
       }
         else{
             scrollVista.contentSize.height = view.frame.height
+
         }
     }
     
@@ -362,3 +385,10 @@ func datosTest(){
     }
 }}
 
+extension UILabel {
+    func addCharactersSpacing(spacing:CGFloat, text:String) {
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttribute(NSAttributedString.Key.kern, value: spacing, range: NSMakeRange(0, text.count))
+        self.attributedText = attributedString
+    }
+}

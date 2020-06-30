@@ -1,28 +1,22 @@
 {
-	"auth": {
-		"cognitoee40339a": {
-			"service": "Cognito",
-			"providerPlugin": "awscloudformation"
-		}
-	},
-	"analytics": {
-		"nubletecuidaios": {
-			"service": "Pinpoint",
-			"providerPlugin": "awscloudformation"
-		}
-	},
-	"notifications": {
-		"nubletecuidaios": {
-			"service": "Pinpoint",
-			"channels": [
-				"APNS"
-			]
-		}
-	},
-	"storage": {
-		"dynamo80a4a073": {
-			"service": "DynamoDB",
-			"providerPlugin": "awscloudformation"
-		}
-	}
+    "auth": {
+        "cognito69671e07": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation"
+        }
+    },
+    "analytics": {
+        "iosdev1": {
+            "service": "Pinpoint",
+            "providerPlugin": "awscloudformation"
+        }
+    },
+    "notifications": {
+        "iosdev1": {
+            "service": "Pinpoint",
+            "channels": [
+                "APNS"
+            ]
+        }
+    }
 }

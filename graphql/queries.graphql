@@ -552,3 +552,28 @@ query ListResults(
     nextToken
   }
 }
+query GetCall($id: ID!) {
+  getCall(id: $id) {
+    id
+    image_call
+    text_call
+    whatsapp_number
+    phone_number
+  }
+}
+query ListCalls(
+  $filter: TableCallFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listCalls(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      image_call
+      text_call
+      whatsapp_number
+      phone_number
+    }
+    nextToken
+  }
+}

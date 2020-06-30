@@ -18,7 +18,7 @@
         "plugins": {
             "awsPinpointAnalyticsPlugin": {
                 "pinpointAnalytics": {
-                    "appId": "88a7ee4c9dde46358b4946da08c710fd",
+                    "appId": "9efca6d75e3e4fa8a5a26600edbfc1a0",
                     "region": "us-east-1"
                 },
                 "pinpointTargeting": {
