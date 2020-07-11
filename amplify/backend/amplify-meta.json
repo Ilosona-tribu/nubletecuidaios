@@ -39,7 +39,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-iosdev1-iosdev-162525-deployment/amplify-cfn-templates/auth/cognito69671e07-cloudformation-template.yml",
 				"logicalId": "authcognito69671e07"
 			},
-			"lastPushTimeStamp": "2020-05-12T20:30:24.856Z",
+			"lastPushTimeStamp": "2020-07-11T03:09:36.791Z",
 			"output": {
 				"IdentityPoolId": "us-east-1:785e2e61-317b-4e5d-935d-6b151cf31217",
 				"IdentityPoolName": "iosdev1_identitypool_d9bda1b6__iosdev"
@@ -55,7 +55,7 @@
 				"s3TemplateURL": "https://s3.amazonaws.com/amplify-iosdev1-iosdev-162525-deployment/amplify-cfn-templates/analytics/pinpoint-cloudformation-template.json",
 				"logicalId": "analyticsiosdev1"
 			},
-			"lastPushTimeStamp": "2020-05-12T20:30:24.856Z",
+			"lastPushTimeStamp": "2020-07-11T03:09:36.792Z",
 			"output": {
 				"appName": "iosdev1-iosdev",
 				"Region": "us-east-1",
@@ -68,24 +68,24 @@
 		"iosdev1": {
 			"service": "Pinpoint",
 			"output": {
-				"Id": "9efca6d75e3e4fa8a5a26600edbfc1a0",
 				"Name": "iosdev1-iosdev",
+				"Id": "9efca6d75e3e4fa8a5a26600edbfc1a0",
 				"Region": "us-east-1",
 				"APNS": {
 					"ApplicationId": "9efca6d75e3e4fa8a5a26600edbfc1a0",
 					"CreationDate": "2020-05-12T20:32:30.168Z",
-					"DefaultAuthenticationMethod": "Certificate",
+					"DefaultAuthenticationMethod": "CERTIFICATE",
 					"Enabled": true,
 					"HasCredential": true,
 					"HasTokenKey": false,
 					"Id": "apns",
 					"IsArchived": false,
-					"LastModifiedDate": "2020-05-12T20:48:43.603Z",
+					"LastModifiedDate": "2020-05-12T23:05:10.021Z",
 					"Platform": "APNS",
-					"Version": 2
+					"Version": 5
 				}
 			},
-			"lastPushTimeStamp": "2020-05-12T20:47:52.043Z"
+			"lastPushTimeStamp": "2020-07-11T03:09:38.940Z"
 		}
 	}
 }

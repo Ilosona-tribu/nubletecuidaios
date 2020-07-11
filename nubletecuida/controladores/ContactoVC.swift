@@ -91,7 +91,7 @@ class ContactoVC: UIViewController {
         btnLLamado.addTarget(self, action: #selector(accionBtnLlamar(_:)), for: .touchUpInside)
         btnLLamado.setTitleColor(UIColor.white, for: .normal)
         btnLLamado.titleEdgeInsets = UIEdgeInsets(top: 0, left: 30 , bottom: 0, right: 5)
-        btnLLamado.setTitle("600 600 8383", for: .normal)
+        btnLLamado.setTitle("800 123 591", for: .normal)
         
         let btnLlamadoImage = UIImageView(frame: CGRect(x: 15.0, y: 15.0, width: 30, height: 30))
         btnLlamadoImage.image = UIImage(named: "fonoBlanco")
@@ -114,7 +114,7 @@ class ContactoVC: UIViewController {
         print("llamar")
         
         
-        makePhoneCall(phoneNumber: "6006008383")
+        makePhoneCall(phoneNumber: "800123591")
      //   llamar()
    
     }

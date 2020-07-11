@@ -68,24 +68,24 @@
 		"iosdev1": {
 			"service": "Pinpoint",
 			"output": {
-				"Id": "9efca6d75e3e4fa8a5a26600edbfc1a0",
 				"Name": "iosdev1-iosdev",
+				"Id": "9efca6d75e3e4fa8a5a26600edbfc1a0",
 				"Region": "us-east-1",
 				"APNS": {
 					"ApplicationId": "9efca6d75e3e4fa8a5a26600edbfc1a0",
 					"CreationDate": "2020-05-12T20:32:30.168Z",
-					"DefaultAuthenticationMethod": "Certificate",
+					"DefaultAuthenticationMethod": "CERTIFICATE",
 					"Enabled": true,
 					"HasCredential": true,
 					"HasTokenKey": false,
 					"Id": "apns",
 					"IsArchived": false,
-					"LastModifiedDate": "2020-05-12T20:48:43.603Z",
+					"LastModifiedDate": "2020-05-12T23:05:10.021Z",
 					"Platform": "APNS",
-					"Version": 2
+					"Version": 5
 				}
 			},
-			"lastPushTimeStamp": "2020-05-12T20:47:52.043Z"
+			"lastPushTimeStamp": "2020-07-11T03:09:38.940Z"
 		}
 	}
 }

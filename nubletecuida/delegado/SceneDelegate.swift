@@ -19,6 +19,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
     }
+    
+    
+//      func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (_ options: UNNotificationPresentationOptions) -> Void) {
+//              var userInfo = NSDictionary()
+//              userInfo = notification.request.content.userInfo as NSDictionary
+//              let pay = userInfo as NSDictionary
+//          let st = pay["data"] as! String
+//         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//
+//             print(st)
+//         let driverLocationVC = mainStoryboard.instantiateViewController(withIdentifier: "NoticiasVC") as! NoticiasVC
+//         if st == "noticias" {
+//             
+//            self.window?.rootViewController = driverLocationVC
+//
+//         }
+//
+//
+//      }
+//
+
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

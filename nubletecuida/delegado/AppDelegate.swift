@@ -14,6 +14,7 @@ import AWSCognitoIdentityProvider
 import PushNotifications
 
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     var appSyncClient: AWSAppSyncClient?
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       
+
                 // Set debug mode to use APNS sandbox, make sure to toggle for your production app
         self.pushNotifications.start(instanceId: "f78f517c-837a-45ec-9f25-52dd24cff4a6")
          self.pushNotifications.registerForRemoteNotifications()
@@ -75,8 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 print("Error initializing AppSync client. \(error)")
             }
         
-        
-        
         return true
         
         
@@ -105,7 +105,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        let infoNoti = userInfo["data"] as! String
+
+        print(infoNoti)
+
+        
+         let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController
+        
+        // instantiate the view controller from storyboard
+        // root view controller is tab bar controller
+        // the selected tab contains navigation controller
+        // then we push the new view controller to it
+        if (infoNoti == "noticias"){
+       print("es igual")
+
+            let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "NoticiasVC") as? NoticiasVC {
+            
+            rootViewController?.show(viewController, sender: nil)
+                    }
+                }
+
+        
+
+        
         self.pushNotifications.handleNotification(userInfo: userInfo)
+    
     }
 
+
 }
+
+

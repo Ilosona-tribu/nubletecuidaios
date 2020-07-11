@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pec-CJ-AWE">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pec-CJ-AWE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +16,7 @@
         <!--Test-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" customClass="TestVC" customModule="nubletecuida" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" customClass="TestVC" customModule="nuble_te_cuida" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +32,7 @@
         <!--Detalle TestVC-->
         <scene sceneID="47T-uz-etX">
             <objects>
-                <viewController storyboardIdentifier="DetalleTestVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bHI-VH-yRe" customClass="DetalleTestVC" customModule="nubletecuida" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetalleTestVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bHI-VH-yRe" customClass="DetalleTestVC" customModule="nuble_te_cuida" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kt8-XP-HnE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -47,7 +47,7 @@
         <!--Test CuestionarioVC-->
         <scene sceneID="A3A-Wq-h0D">
             <objects>
-                <viewController storyboardIdentifier="TestCuestionarioVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="usY-HB-ueq" customClass="TestCuestionarioVC" customModule="nubletecuida" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TestCuestionarioVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="usY-HB-ueq" customClass="TestCuestionarioVC" customModule="nuble_te_cuida" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tSZ-KP-3f9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,7 +62,7 @@
         <!--Consejos-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="ConsejosVC" customModule="nubletecuida" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customClass="ConsejosVC" customModule="nuble_te_cuida" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -109,7 +109,7 @@
         <!--Detalle ConsejoVC-->
         <scene sceneID="ctx-Zs-y2Z">
             <objects>
-                <viewController storyboardIdentifier="DetalleConsejoVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HeU-7f-bzv" customClass="DetalleConsejoVC" customModule="nubletecuida" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetalleConsejoVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HeU-7f-bzv" customClass="DetalleConsejoVC" customModule="nuble_te_cuida" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="i65-Zh-Qlu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,7 +124,7 @@
         <!--Contacto-->
         <scene sceneID="q9I-C6-XE1">
             <objects>
-                <viewController id="E6a-q8-1Zb" customClass="ContactoVC" customModule="nubletecuida" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="E6a-q8-1Zb" customClass="ContactoVC" customModule="nuble_te_cuida" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FLW-fS-YAw">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -160,7 +160,7 @@
         <!--Noticias-->
         <scene sceneID="kBb-z3-1Bw">
             <objects>
-                <viewController id="u1Z-2s-Ns3" customClass="NoticiasVC" customModule="nubletecuida" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoticiasVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u1Z-2s-Ns3" customClass="NoticiasVC" customModule="nuble_te_cuida" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W3C-Al-SpM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -170,7 +170,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" rowHeight="96" id="gpw-eU-TgO" customClass="TableViewCell" customModule="nubletecuida" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableViewCell" rowHeight="96" id="gpw-eU-TgO" customClass="TableViewCell" customModule="nuble_te_cuida" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gpw-eU-TgO" id="qvb-ST-0Aj">
@@ -220,7 +220,7 @@
         <!--Detalle NoticiasVC-->
         <scene sceneID="Rs6-Nc-pKn">
             <objects>
-                <viewController storyboardIdentifier="DetalleNoticiasVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="r8l-YV-6lL" customClass="DetalleNoticiasVC" customModule="nubletecuida" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetalleNoticiasVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="r8l-YV-6lL" customClass="DetalleNoticiasVC" customModule="nuble_te_cuida" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vXH-hq-Gco">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,7 +235,7 @@
         <!--Mapa Contagio-->
         <scene sceneID="4iF-2F-zXn">
             <objects>
-                <viewController id="0Dv-10-TdY" customClass="MapaVC" customModule="nubletecuida" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0Dv-10-TdY" customClass="MapaVC" customModule="nuble_te_cuida" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MK7-43-Rud">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -257,7 +257,7 @@
         <!--SplashVC-->
         <scene sceneID="aVY-sY-oee">
             <objects>
-                <viewController id="pec-CJ-AWE" customClass="SplashVC" customModule="nubletecuida" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="pec-CJ-AWE" customClass="SplashVC" customModule="nuble_te_cuida" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ybn-W9-ETb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -70,7 +70,6 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
         
         labelEncabezado = UILabel(frame: CGRect(x: 40.0, y: 30.0, width: view.frame.width - 80, height: 40.0))
         labelEncabezado.font = UIFont.init(name: "gobCL-Bold", size: 18.0)
-        labelEncabezado.numberOfLines = 2
         
         labelEncabezado.textColor = UIColor.systemBlue
         
@@ -119,10 +118,11 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
         {
             self.enumerador = self.enumerador + 1
             esconderBotonRetroceder()
-            cambiarAlternativas()
             labelEncabezado.text = arrayEncabezados[enumerador]
-
-        }
+            self.labelEncabezado.frame.size.width = self.view.frame.width - 80.0
+            self.labelEncabezado.sizeToFit()
+            cambiarAlternativas()
+}
         else{
 
       // se esconde el labelEncabezado, boton avanzar y se eliminan los botones de alternativas.
@@ -132,20 +132,20 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
             }
             self.resultado(valor: 1)
         }
-
-        
     }
     
 //retroceder pregunta
     
     @objc func retrocederPregunta(_ sender:UIButton!) {
-        
+
           if(self.enumerador  < arrayEncabezados.count)
          
           {
             self.enumerador = self.enumerador - 1
-            cambiarAlternativas()
             labelEncabezado.text = arrayEncabezados[enumerador]
+            self.labelEncabezado.frame.size.width = self.view.frame.width - 80.0
+            self.labelEncabezado.sizeToFit()
+            cambiarAlternativas()
             esconderBotonRetroceder()
 
           }
@@ -353,16 +353,14 @@ func datosTest(){
     
     let query = ListQuestionsQuery()
     
-    
         self.appSyncClient?.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result, error in
 
-        
+            
         if let error = error {
             print("Error fetching data: \(error)")
             return
         }
-        
-        result?.data?.listQuestions?.items?.forEach {
+            result?.data?.listQuestions?.items?.forEach {
             
             if ($0!.listOptions?.count == 0) {
                 self.arrayAlternativas.append([])
@@ -380,6 +378,12 @@ func datosTest(){
             DispatchQueue.main.async {
                 self.labelEncabezado.text = self.arrayEncabezados[self.enumerador]
                 self.cambiarAlternativas()
+                self.labelEncabezado.lineBreakMode = .byClipping
+                self.labelEncabezado.frame.size.height = 1000.0
+                self.labelEncabezado.numberOfLines = 0
+                self.labelEncabezado.sizeToFit()
+
+
 
         }
     }

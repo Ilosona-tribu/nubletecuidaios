@@ -53,17 +53,15 @@ class DetalleNoticiasVC: UIViewController,UIScrollViewDelegate {
         labelTextoDescripcion.textAlignment = .left
        // labelTextoDescripcion.numberOfLines = 0
       //  labelTextoDescripcion.sizeToFit()
-
         labelTextoDescripcion.font = UIFont(name: "gobCL", size: 16.0)
         labelTextoDescripcion.backgroundColor = UIColor.white
            
         labelTextoDescripcion.layer.backgroundColor  = UIColor.white.cgColor
         labelTextoDescripcion.layer.cornerRadius = 13.3
-        labelTextoDescripcion.layer.masksToBounds = true
+        labelTextoDescripcion.isScrollEnabled = false
         labelTextoDescripcion.isEditable = false
         labelTextoDescripcion.isSelectable = true
         labelTextoDescripcion.dataDetectorTypes = UIDataDetectorTypes.all
-        labelTextoDescripcion.layer.cornerRadius = 13.3
         labelTextoDescripcion.layer.masksToBounds = true
         labelTextoDescripcion.textContainerInset  = UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 8)
 
@@ -108,11 +106,4 @@ func height(constraintedWidth width: CGFloat, font: UIFont) -> CGFloat {
 
     return label.frame.height
  }
-}
-
-class UITextViewPadding : UITextView {
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    textContainerInset = UIEdgeInsets(top: 2, left: 8, bottom: 2, right: 8)
-  }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class TestVC: UIViewController {
 
@@ -88,12 +89,11 @@ class TestVC: UIViewController {
         
     }
     
-    
 
     @objc func buttonAction(_ sender:UIButton!) {
 
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "DetalleTestVC") as? DetalleTestVC {
+        if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "TestCuestionarioVC") as? TestCuestionarioVC {
             self.show(viewController, sender: nil)
         }
     }

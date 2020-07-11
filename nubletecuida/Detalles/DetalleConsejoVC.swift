@@ -73,7 +73,7 @@ class DetalleConsejoVC: UIViewController,UIScrollViewDelegate {
               //  let maximumLabelSizeTexto = CGSize(width: (self.view.frame.size.width - 40.0), height: 40000.0)
         //        labelTextoDescripcion.sizeThatFits(maximumLabelSizeTexto)
 
-        
+        labelTextoDescripcion.isScrollEnabled = false
                 labelTextoDescripcion.text = descripcionConsejo
                 labelTextoDescripcion.textColor = UIColor.gray
                 labelTextoDescripcion.textAlignment = .left
