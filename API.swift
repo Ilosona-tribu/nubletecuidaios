@@ -1733,8 +1733,8 @@ public struct CreateResponsesInput: GraphQLMapConvertible {
 public struct QuestionInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, questionnaire: QuestionnaireInput? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-    graphQLMap = ["id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "questionnaire": questionnaire, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt]
+  public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, questionnaire: QuestionnaireInput? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+    graphQLMap = ["id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "questionnaire": questionnaire, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt]
   }
 
   public var id: GraphQLID {
@@ -1761,6 +1761,15 @@ public struct QuestionInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "question_type")
+    }
+  }
+
+  public var idQuestion: String {
+    get {
+      return graphQLMap["id_question"] as! String
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "id_question")
     }
   }
 
@@ -6595,7 +6604,7 @@ public final class DeleteQuestionnaireMutation: GraphQLMutation {
 
 public final class CreateQuestionMutation: GraphQLMutation {
   public static let operationString =
-    "mutation CreateQuestion($input: CreateQuestionInput!, $condition: ModelQuestionConditionInput) {\n  createQuestion(input: $input, condition: $condition) {\n    __typename\n    id\n    text_question\n    question_type\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "mutation CreateQuestion($input: CreateQuestionInput!, $condition: ModelQuestionConditionInput) {\n  createQuestion(input: $input, condition: $condition) {\n    __typename\n    id\n    text_question\n    question_type\n    id_question\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public var input: CreateQuestionInput
   public var condition: ModelQuestionConditionInput?
@@ -6643,6 +6652,7 @@ public final class CreateQuestionMutation: GraphQLMutation {
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+        GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("list_options", type: .list(.scalar(String.self))),
         GraphQLField("questionnaire", type: .object(Questionnaire.selections)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
@@ -6656,8 +6666,8 @@ public final class CreateQuestionMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -6693,6 +6703,15 @@ public final class CreateQuestionMutation: GraphQLMutation {
         }
         set {
           snapshot.updateValue(newValue, forKey: "question_type")
+        }
+      }
+
+      public var idQuestion: String {
+        get {
+          return snapshot["id_question"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id_question")
         }
       }
 
@@ -6843,7 +6862,7 @@ public final class CreateQuestionMutation: GraphQLMutation {
 
 public final class UpdateQuestionMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpdateQuestion($input: UpdateQuestionInput!, $condition: ModelQuestionConditionInput) {\n  updateQuestion(input: $input, condition: $condition) {\n    __typename\n    id\n    text_question\n    question_type\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "mutation UpdateQuestion($input: UpdateQuestionInput!, $condition: ModelQuestionConditionInput) {\n  updateQuestion(input: $input, condition: $condition) {\n    __typename\n    id\n    text_question\n    question_type\n    id_question\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public var input: UpdateQuestionInput
   public var condition: ModelQuestionConditionInput?
@@ -6891,6 +6910,7 @@ public final class UpdateQuestionMutation: GraphQLMutation {
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+        GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("list_options", type: .list(.scalar(String.self))),
         GraphQLField("questionnaire", type: .object(Questionnaire.selections)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
@@ -6904,8 +6924,8 @@ public final class UpdateQuestionMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -6941,6 +6961,15 @@ public final class UpdateQuestionMutation: GraphQLMutation {
         }
         set {
           snapshot.updateValue(newValue, forKey: "question_type")
+        }
+      }
+
+      public var idQuestion: String {
+        get {
+          return snapshot["id_question"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id_question")
         }
       }
 
@@ -7091,7 +7120,7 @@ public final class UpdateQuestionMutation: GraphQLMutation {
 
 public final class DeleteQuestionMutation: GraphQLMutation {
   public static let operationString =
-    "mutation DeleteQuestion($input: DeleteQuestionInput!, $condition: ModelQuestionConditionInput) {\n  deleteQuestion(input: $input, condition: $condition) {\n    __typename\n    id\n    text_question\n    question_type\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "mutation DeleteQuestion($input: DeleteQuestionInput!, $condition: ModelQuestionConditionInput) {\n  deleteQuestion(input: $input, condition: $condition) {\n    __typename\n    id\n    text_question\n    question_type\n    id_question\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public var input: DeleteQuestionInput
   public var condition: ModelQuestionConditionInput?
@@ -7139,6 +7168,7 @@ public final class DeleteQuestionMutation: GraphQLMutation {
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+        GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("list_options", type: .list(.scalar(String.self))),
         GraphQLField("questionnaire", type: .object(Questionnaire.selections)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
@@ -7152,8 +7182,8 @@ public final class DeleteQuestionMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -7189,6 +7219,15 @@ public final class DeleteQuestionMutation: GraphQLMutation {
         }
         set {
           snapshot.updateValue(newValue, forKey: "question_type")
+        }
+      }
+
+      public var idQuestion: String {
+        get {
+          return snapshot["id_question"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id_question")
         }
       }
 
@@ -7339,7 +7378,7 @@ public final class DeleteQuestionMutation: GraphQLMutation {
 
 public final class CreateResponsesMutation: GraphQLMutation {
   public static let operationString =
-    "mutation CreateResponses($input: CreateResponsesInput!, $condition: ModelResponsesConditionInput) {\n  createResponses(input: $input, condition: $condition) {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "mutation CreateResponses($input: CreateResponsesInput!, $condition: ModelResponsesConditionInput) {\n  createResponses(input: $input, condition: $condition) {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      id_question\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public var input: CreateResponsesInput
   public var condition: ModelResponsesConditionInput?
@@ -7483,6 +7522,7 @@ public final class CreateResponsesMutation: GraphQLMutation {
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+          GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("list_options", type: .list(.scalar(String.self))),
           GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
           GraphQLField("_deleted", type: .scalar(Bool.self)),
@@ -7495,8 +7535,8 @@ public final class CreateResponsesMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
         }
 
         public var __typename: String {
@@ -7532,6 +7572,15 @@ public final class CreateResponsesMutation: GraphQLMutation {
           }
           set {
             snapshot.updateValue(newValue, forKey: "question_type")
+          }
+        }
+
+        public var idQuestion: String {
+          get {
+            return snapshot["id_question"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id_question")
           }
         }
 
@@ -7644,7 +7693,7 @@ public final class CreateResponsesMutation: GraphQLMutation {
 
 public final class UpdateResponsesMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpdateResponses($input: UpdateResponsesInput!, $condition: ModelResponsesConditionInput) {\n  updateResponses(input: $input, condition: $condition) {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "mutation UpdateResponses($input: UpdateResponsesInput!, $condition: ModelResponsesConditionInput) {\n  updateResponses(input: $input, condition: $condition) {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      id_question\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public var input: UpdateResponsesInput
   public var condition: ModelResponsesConditionInput?
@@ -7788,6 +7837,7 @@ public final class UpdateResponsesMutation: GraphQLMutation {
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+          GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("list_options", type: .list(.scalar(String.self))),
           GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
           GraphQLField("_deleted", type: .scalar(Bool.self)),
@@ -7800,8 +7850,8 @@ public final class UpdateResponsesMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
         }
 
         public var __typename: String {
@@ -7837,6 +7887,15 @@ public final class UpdateResponsesMutation: GraphQLMutation {
           }
           set {
             snapshot.updateValue(newValue, forKey: "question_type")
+          }
+        }
+
+        public var idQuestion: String {
+          get {
+            return snapshot["id_question"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id_question")
           }
         }
 
@@ -7949,7 +8008,7 @@ public final class UpdateResponsesMutation: GraphQLMutation {
 
 public final class DeleteResponsesMutation: GraphQLMutation {
   public static let operationString =
-    "mutation DeleteResponses($input: DeleteResponsesInput!, $condition: ModelResponsesConditionInput) {\n  deleteResponses(input: $input, condition: $condition) {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "mutation DeleteResponses($input: DeleteResponsesInput!, $condition: ModelResponsesConditionInput) {\n  deleteResponses(input: $input, condition: $condition) {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      id_question\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public var input: DeleteResponsesInput
   public var condition: ModelResponsesConditionInput?
@@ -8093,6 +8152,7 @@ public final class DeleteResponsesMutation: GraphQLMutation {
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+          GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("list_options", type: .list(.scalar(String.self))),
           GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
           GraphQLField("_deleted", type: .scalar(Bool.self)),
@@ -8105,8 +8165,8 @@ public final class DeleteResponsesMutation: GraphQLMutation {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
         }
 
         public var __typename: String {
@@ -8142,6 +8202,15 @@ public final class DeleteResponsesMutation: GraphQLMutation {
           }
           set {
             snapshot.updateValue(newValue, forKey: "question_type")
+          }
+        }
+
+        public var idQuestion: String {
+          get {
+            return snapshot["id_question"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id_question")
           }
         }
 
@@ -12898,7 +12967,7 @@ public final class ListQuestionnairesQuery: GraphQLQuery {
 
 public final class SyncQuestionsQuery: GraphQLQuery {
   public static let operationString =
-    "query SyncQuestions($filter: ModelQuestionFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {\n  syncQuestions(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {\n    __typename\n    items {\n      __typename\n      id\n      text_question\n      question_type\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    nextToken\n    startedAt\n  }\n}"
+    "query SyncQuestions($filter: ModelQuestionFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {\n  syncQuestions(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {\n    __typename\n    items {\n      __typename\n      id\n      text_question\n      question_type\n      id_question\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    nextToken\n    startedAt\n  }\n}"
 
   public var filter: ModelQuestionFilterInput?
   public var limit: Int?
@@ -13006,6 +13075,7 @@ public final class SyncQuestionsQuery: GraphQLQuery {
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+          GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("list_options", type: .list(.scalar(String.self))),
           GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
           GraphQLField("_deleted", type: .scalar(Bool.self)),
@@ -13018,8 +13088,8 @@ public final class SyncQuestionsQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
         }
 
         public var __typename: String {
@@ -13055,6 +13125,15 @@ public final class SyncQuestionsQuery: GraphQLQuery {
           }
           set {
             snapshot.updateValue(newValue, forKey: "question_type")
+          }
+        }
+
+        public var idQuestion: String {
+          get {
+            return snapshot["id_question"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id_question")
           }
         }
 
@@ -13100,7 +13179,7 @@ public final class SyncQuestionsQuery: GraphQLQuery {
 
 public final class GetQuestionQuery: GraphQLQuery {
   public static let operationString =
-    "query GetQuestion($id: ID!) {\n  getQuestion(id: $id) {\n    __typename\n    id\n    text_question\n    question_type\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "query GetQuestion($id: ID!) {\n  getQuestion(id: $id) {\n    __typename\n    id\n    text_question\n    question_type\n    id_question\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public var id: GraphQLID
 
@@ -13146,6 +13225,7 @@ public final class GetQuestionQuery: GraphQLQuery {
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+        GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("list_options", type: .list(.scalar(String.self))),
         GraphQLField("questionnaire", type: .object(Questionnaire.selections)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
@@ -13159,8 +13239,8 @@ public final class GetQuestionQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -13196,6 +13276,15 @@ public final class GetQuestionQuery: GraphQLQuery {
         }
         set {
           snapshot.updateValue(newValue, forKey: "question_type")
+        }
+      }
+
+      public var idQuestion: String {
+        get {
+          return snapshot["id_question"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id_question")
         }
       }
 
@@ -13346,7 +13435,7 @@ public final class GetQuestionQuery: GraphQLQuery {
 
 public final class ListQuestionsQuery: GraphQLQuery {
   public static let operationString =
-    "query ListQuestions($filter: ModelQuestionFilterInput, $limit: Int, $nextToken: String) {\n  listQuestions(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      text_question\n      question_type\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    nextToken\n    startedAt\n  }\n}"
+    "query ListQuestions($filter: ModelQuestionFilterInput, $limit: Int, $nextToken: String) {\n  listQuestions(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      text_question\n      question_type\n      id_question\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    nextToken\n    startedAt\n  }\n}"
 
   public var filter: ModelQuestionFilterInput?
   public var limit: Int?
@@ -13452,6 +13541,7 @@ public final class ListQuestionsQuery: GraphQLQuery {
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+          GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("list_options", type: .list(.scalar(String.self))),
           GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
           GraphQLField("_deleted", type: .scalar(Bool.self)),
@@ -13464,8 +13554,8 @@ public final class ListQuestionsQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
         }
 
         public var __typename: String {
@@ -13501,6 +13591,15 @@ public final class ListQuestionsQuery: GraphQLQuery {
           }
           set {
             snapshot.updateValue(newValue, forKey: "question_type")
+          }
+        }
+
+        public var idQuestion: String {
+          get {
+            return snapshot["id_question"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id_question")
           }
         }
 
@@ -13728,7 +13827,7 @@ public final class SyncResponsesQuery: GraphQLQuery {
 
 public final class GetResponsesQuery: GraphQLQuery {
   public static let operationString =
-    "query GetResponses($id: ID!) {\n  getResponses(id: $id) {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "query GetResponses($id: ID!) {\n  getResponses(id: $id) {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      id_question\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public var id: GraphQLID
 
@@ -13870,6 +13969,7 @@ public final class GetResponsesQuery: GraphQLQuery {
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+          GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("list_options", type: .list(.scalar(String.self))),
           GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
           GraphQLField("_deleted", type: .scalar(Bool.self)),
@@ -13882,8 +13982,8 @@ public final class GetResponsesQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
         }
 
         public var __typename: String {
@@ -13919,6 +14019,15 @@ public final class GetResponsesQuery: GraphQLQuery {
           }
           set {
             snapshot.updateValue(newValue, forKey: "question_type")
+          }
+        }
+
+        public var idQuestion: String {
+          get {
+            return snapshot["id_question"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id_question")
           }
         }
 
@@ -18722,7 +18831,7 @@ public final class OnDeleteQuestionnaireSubscription: GraphQLSubscription {
 
 public final class OnCreateQuestionSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnCreateQuestion {\n  onCreateQuestion {\n    __typename\n    id\n    text_question\n    question_type\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "subscription OnCreateQuestion {\n  onCreateQuestion {\n    __typename\n    id\n    text_question\n    question_type\n    id_question\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public init() {
   }
@@ -18761,6 +18870,7 @@ public final class OnCreateQuestionSubscription: GraphQLSubscription {
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+        GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("list_options", type: .list(.scalar(String.self))),
         GraphQLField("questionnaire", type: .object(Questionnaire.selections)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
@@ -18774,8 +18884,8 @@ public final class OnCreateQuestionSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -18811,6 +18921,15 @@ public final class OnCreateQuestionSubscription: GraphQLSubscription {
         }
         set {
           snapshot.updateValue(newValue, forKey: "question_type")
+        }
+      }
+
+      public var idQuestion: String {
+        get {
+          return snapshot["id_question"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id_question")
         }
       }
 
@@ -18961,7 +19080,7 @@ public final class OnCreateQuestionSubscription: GraphQLSubscription {
 
 public final class OnUpdateQuestionSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnUpdateQuestion {\n  onUpdateQuestion {\n    __typename\n    id\n    text_question\n    question_type\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "subscription OnUpdateQuestion {\n  onUpdateQuestion {\n    __typename\n    id\n    text_question\n    question_type\n    id_question\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public init() {
   }
@@ -19000,6 +19119,7 @@ public final class OnUpdateQuestionSubscription: GraphQLSubscription {
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+        GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("list_options", type: .list(.scalar(String.self))),
         GraphQLField("questionnaire", type: .object(Questionnaire.selections)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
@@ -19013,8 +19133,8 @@ public final class OnUpdateQuestionSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -19050,6 +19170,15 @@ public final class OnUpdateQuestionSubscription: GraphQLSubscription {
         }
         set {
           snapshot.updateValue(newValue, forKey: "question_type")
+        }
+      }
+
+      public var idQuestion: String {
+        get {
+          return snapshot["id_question"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id_question")
         }
       }
 
@@ -19200,7 +19329,7 @@ public final class OnUpdateQuestionSubscription: GraphQLSubscription {
 
 public final class OnDeleteQuestionSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnDeleteQuestion {\n  onDeleteQuestion {\n    __typename\n    id\n    text_question\n    question_type\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "subscription OnDeleteQuestion {\n  onDeleteQuestion {\n    __typename\n    id\n    text_question\n    question_type\n    id_question\n    list_options\n    questionnaire {\n      __typename\n      id\n      image_questionnaire\n      title_questionnaire\n      description_questionnaire\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public init() {
   }
@@ -19239,6 +19368,7 @@ public final class OnDeleteQuestionSubscription: GraphQLSubscription {
         GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
         GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+        GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
         GraphQLField("list_options", type: .list(.scalar(String.self))),
         GraphQLField("questionnaire", type: .object(Questionnaire.selections)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
@@ -19252,8 +19382,8 @@ public final class OnDeleteQuestionSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, questionnaire: Questionnaire? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "questionnaire": questionnaire.flatMap { $0.snapshot }, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -19289,6 +19419,15 @@ public final class OnDeleteQuestionSubscription: GraphQLSubscription {
         }
         set {
           snapshot.updateValue(newValue, forKey: "question_type")
+        }
+      }
+
+      public var idQuestion: String {
+        get {
+          return snapshot["id_question"]! as! String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "id_question")
         }
       }
 
@@ -19439,7 +19578,7 @@ public final class OnDeleteQuestionSubscription: GraphQLSubscription {
 
 public final class OnCreateResponsesSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnCreateResponses {\n  onCreateResponses {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "subscription OnCreateResponses {\n  onCreateResponses {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      id_question\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public init() {
   }
@@ -19574,6 +19713,7 @@ public final class OnCreateResponsesSubscription: GraphQLSubscription {
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+          GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("list_options", type: .list(.scalar(String.self))),
           GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
           GraphQLField("_deleted", type: .scalar(Bool.self)),
@@ -19586,8 +19726,8 @@ public final class OnCreateResponsesSubscription: GraphQLSubscription {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
         }
 
         public var __typename: String {
@@ -19623,6 +19763,15 @@ public final class OnCreateResponsesSubscription: GraphQLSubscription {
           }
           set {
             snapshot.updateValue(newValue, forKey: "question_type")
+          }
+        }
+
+        public var idQuestion: String {
+          get {
+            return snapshot["id_question"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id_question")
           }
         }
 
@@ -19735,7 +19884,7 @@ public final class OnCreateResponsesSubscription: GraphQLSubscription {
 
 public final class OnUpdateResponsesSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnUpdateResponses {\n  onUpdateResponses {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "subscription OnUpdateResponses {\n  onUpdateResponses {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      id_question\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public init() {
   }
@@ -19870,6 +20019,7 @@ public final class OnUpdateResponsesSubscription: GraphQLSubscription {
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+          GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("list_options", type: .list(.scalar(String.self))),
           GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
           GraphQLField("_deleted", type: .scalar(Bool.self)),
@@ -19882,8 +20032,8 @@ public final class OnUpdateResponsesSubscription: GraphQLSubscription {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
         }
 
         public var __typename: String {
@@ -19919,6 +20069,15 @@ public final class OnUpdateResponsesSubscription: GraphQLSubscription {
           }
           set {
             snapshot.updateValue(newValue, forKey: "question_type")
+          }
+        }
+
+        public var idQuestion: String {
+          get {
+            return snapshot["id_question"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id_question")
           }
         }
 
@@ -20031,7 +20190,7 @@ public final class OnUpdateResponsesSubscription: GraphQLSubscription {
 
 public final class OnDeleteResponsesSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnDeleteResponses {\n  onDeleteResponses {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "subscription OnDeleteResponses {\n  onDeleteResponses {\n    __typename\n    id\n    question {\n      __typename\n      id\n      text_question\n      question_type\n      id_question\n      list_options\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    response\n    group {\n      __typename\n      id\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public init() {
   }
@@ -20166,6 +20325,7 @@ public final class OnDeleteResponsesSubscription: GraphQLSubscription {
           GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
           GraphQLField("text_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("question_type", type: .nonNull(.scalar(QuestionType.self))),
+          GraphQLField("id_question", type: .nonNull(.scalar(String.self))),
           GraphQLField("list_options", type: .list(.scalar(String.self))),
           GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
           GraphQLField("_deleted", type: .scalar(Bool.self)),
@@ -20178,8 +20338,8 @@ public final class OnDeleteResponsesSubscription: GraphQLSubscription {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+        public init(id: GraphQLID, textQuestion: String, questionType: QuestionType, idQuestion: String, listOptions: [String?]? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+          self.init(snapshot: ["__typename": "Question", "id": id, "text_question": textQuestion, "question_type": questionType, "id_question": idQuestion, "list_options": listOptions, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
         }
 
         public var __typename: String {
@@ -20215,6 +20375,15 @@ public final class OnDeleteResponsesSubscription: GraphQLSubscription {
           }
           set {
             snapshot.updateValue(newValue, forKey: "question_type")
+          }
+        }
+
+        public var idQuestion: String {
+          get {
+            return snapshot["id_question"]! as! String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "id_question")
           }
         }
 

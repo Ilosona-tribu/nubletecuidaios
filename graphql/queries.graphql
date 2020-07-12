@@ -306,6 +306,7 @@ query SyncQuestions(
       id
       text_question
       question_type
+      id_question
       list_options
       _version
       _deleted
@@ -320,6 +321,7 @@ query GetQuestion($id: ID!) {
     id
     text_question
     question_type
+    id_question
     list_options
     questionnaire {
       id
@@ -345,6 +347,7 @@ query ListQuestions(
       id
       text_question
       question_type
+      id_question
       list_options
       _version
       _deleted
@@ -384,6 +387,7 @@ query GetResponses($id: ID!) {
       id
       text_question
       question_type
+      id_question
       list_options
       _version
       _deleted

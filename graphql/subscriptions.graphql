@@ -235,6 +235,7 @@ subscription OnCreateQuestion {
     id
     text_question
     question_type
+    id_question
     list_options
     questionnaire {
       id
@@ -255,6 +256,7 @@ subscription OnUpdateQuestion {
     id
     text_question
     question_type
+    id_question
     list_options
     questionnaire {
       id
@@ -275,6 +277,7 @@ subscription OnDeleteQuestion {
     id
     text_question
     question_type
+    id_question
     list_options
     questionnaire {
       id
@@ -297,6 +300,7 @@ subscription OnCreateResponses {
       id
       text_question
       question_type
+      id_question
       list_options
       _version
       _deleted
@@ -321,6 +325,7 @@ subscription OnUpdateResponses {
       id
       text_question
       question_type
+      id_question
       list_options
       _version
       _deleted
@@ -345,6 +350,7 @@ subscription OnDeleteResponses {
       id
       text_question
       question_type
+      id_question
       list_options
       _version
       _deleted

@@ -12,9 +12,12 @@ import AWSAppSync
 class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
     var enumerador = 0
     var arrayEncabezados = Array<String>()
+    var arrayIds = Array<Int>()
     var arrayRespuestas = Array<String>()
     var arrayAlternativas = Array<[String?]>()
     var arrayTipoDeRespuesta = Array<String>()
+    var alternativasSeleccionadas = Array<Int>()
+
 
     var arrayBotones = Array<UIButton>()
     var arrayOtrosComponentes = Array<UITextField>()
@@ -68,7 +71,7 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
         
         scrollVista.addSubview(botonVolver)
         
-        labelEncabezado = UILabel(frame: CGRect(x: 40.0, y: 30.0, width: view.frame.width - 80, height: 40.0))
+        labelEncabezado = UILabel(frame: CGRect(x: 40.0, y: 30.0, width: view.frame.width - 80, height: 215.0))
         labelEncabezado.font = UIFont.init(name: "gobCL-Bold", size: 18.0)
         
         labelEncabezado.textColor = UIColor.systemBlue
@@ -113,10 +116,10 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
     @objc func avanzarPreguntaAction(_ sender:UIButton!) {
 
         scrollVista.setContentOffset(.zero, animated: false)
+        logicaTest(idQuestion: enumerador)
 
-        if(self.enumerador  < arrayEncabezados.count - 1)
+        if(self.enumerador  < arrayEncabezados.count)
         {
-            self.enumerador = self.enumerador + 1
             esconderBotonRetroceder()
             labelEncabezado.text = arrayEncabezados[enumerador]
             self.labelEncabezado.frame.size.width = self.view.frame.width - 80.0
@@ -141,7 +144,6 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
           if(self.enumerador  < arrayEncabezados.count)
          
           {
-            self.enumerador = self.enumerador - 1
             labelEncabezado.text = arrayEncabezados[enumerador]
             self.labelEncabezado.frame.size.width = self.view.frame.width - 80.0
             self.labelEncabezado.sizeToFit()
@@ -163,62 +165,7 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
     }
 
     
-    func resultado(valor:Int)  {
-        let labelTextoRecomendacion = UILabel()
-      //  vista.frame.size.height = view.frame.height - (vista.frame.origin.y * 2)
-        vista.frame.size.height = view.frame.height
-
-        if (valor < 5){
-            let gradient = CAGradientLayer()
-            gradient.frame = vista.bounds
-            gradient.cornerRadius = 30.0
-            gradient.colors = [UIColor(red: 0.0/255.0, green: 228.0/255.0, blue: 168.0/255.0, alpha: 1.0).cgColor,UIColor(red: 0.0/255.0, green: 169.0/255.0, blue: 160.0/255.0, alpha: 1.0).cgColor]
-            gradient.startPoint = CGPoint(x: 0.45, y: 0.45)
-            gradient.endPoint = CGPoint(x: 1, y: 1)
-            //vista.backgroundColor = UIColor(red: 212/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
-            
-            vista.layer.insertSublayer(gradient, at: 0)
-
-           // vista.backgroundColor = UIColor(red: 95.0/255.0, green: 207.0/255.0, blue: 167.0/255.0, alpha: 1.0)
-        scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
-        labelEncabezado.text = "Por el momento no necesita una prueba"
-        labelTextoRecomendacion.text = "En este momento, según sus respuestas, no es necesario que le hagan las pruebas de COVID‑19. Si cambia algo, debe repetir el cuestionario."
-            labelTextoRecomendacion.textColor = .darkGray
-}
-        
-        else{
-            vista.backgroundColor = UIColor(red: 212/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
-            scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
-            labelEncabezado.text = "Debe intentar mantenerse alejado de los demás durante al menos 7 días a partir de la aparición de sus síntomas"
-          labelTextoRecomendacion.textColor = .lightGray
-            labelTextoRecomendacion.text = "Su aislamiento puede terminar si sus síntomas mejoran significativamente y si no ha tenido fiebre durante al menos 72 horas sin el uso de medicamentos. Al aislarse, puede reducir la propagación de COVID-19 y proteger a los demás."
-        }
-        
-        let imagenAlerta = UIImageView(frame: CGRect(x: view.center.x - 35, y: 15.0, width: 70, height: 60))
-        imagenAlerta.image = UIImage(named: "alertaTriangulo")
-        vista.addSubview(imagenAlerta)
-        labelEncabezado.font = UIFont(name: "gobCL-Bold", size: 25.0)
-        labelEncabezado.frame = CGRect(x: 40, y: imagenAlerta.frame.maxY + 15.0, width: self.view.frame.width - 80.0, height: 1000.0)
-        labelEncabezado.numberOfLines = 0
-        labelEncabezado.sizeToFit()
-
-        labelTextoRecomendacion.frame = CGRect(x: 40, y: labelEncabezado.frame.maxY + 15, width: self.view.frame.width - 80, height: 250)
-        labelTextoRecomendacion.font = UIFont(name: "gobCL", size: 16.0)
-        vista.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
-
-        labelTextoRecomendacion.textAlignment = .justified
-        labelTextoRecomendacion.numberOfLines = 0
-        labelTextoRecomendacion.sizeToFit()
-
-        vista.addSubview(labelTextoRecomendacion)
-        labelEncabezado.textColor = UIColor.white
-        labelEncabezado.textAlignment = .center
-        imagenNuble.image = UIImage(named: "nubleTeCuidaAzul")
-        print("no hay más elementos")
-        
-        botonVolver.isHidden = true
-
-    }
+    
 
  //funcion de cambio de alternativas también se hace manejo del boton de cambio de avanzar
     func cambiarAlternativas() {
@@ -268,19 +215,15 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
 
                 let attributedString = NSMutableAttributedString(string: opcion!)
 
-                // *** Create instance of `NSMutableParagraphStyle`
                 let paragraphStyle = NSMutableParagraphStyle()
 
-                // *** set LineSpacing property in points ***
                 paragraphStyle.lineSpacing = 2 // Whatever line spacing you want in points
-
-                // *** Apply attribute to string ***
                 attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
 
                 // *** Set Attributed String to your label ***
                 botonAlernativa.titleLabel?.attributedText = attributedString
 
-                
+                botonAlernativa.tag = index + 1
                 arrayBotones.append(botonAlernativa)
                 vista.addSubview(botonAlernativa)
             }
@@ -329,8 +272,10 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
     /// activar estado selección de la alternativa
     @objc func checkAlternativa(_ sender:UIButton!) {
         
+        print(alternativasSeleccionadas)
         if (sender.isSelected == false){
             
+            alternativasSeleccionadas.append(sender.tag)
             (sender.subviews[1] as! UIImageView).image = UIImage(named: "botonSeleccionado")
             sender.isSelected = true
             
@@ -342,12 +287,88 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
             
             sender.isSelected = false
             (sender.subviews[1] as! UIImageView).image = UIImage(named: "botonNoSeleccionado")
+            
+            alternativasSeleccionadas.remove(at: alternativasSeleccionadas.lastIndex(of:sender.tag)!)
             // se debería eliminar la respuesta deseleccionada ?????????????????????????*********
         }
         
         sender.reloadInputViews()
     }
     
+    func resultado(valor:Int)  {
+            let labelTextoRecomendacion = UILabel()
+          //  vista.frame.size.height = view.frame.height - (vista.frame.origin.y * 2)
+            vista.frame.size.height = view.frame.height
+
+            if (valor == 10){
+                let gradient = CAGradientLayer()
+                gradient.frame = vista.bounds
+                gradient.cornerRadius = 30.0
+                gradient.colors = [UIColor(red: 0.0/255.0, green: 228.0/255.0, blue: 168.0/255.0, alpha: 1.0).cgColor,UIColor(red: 0.0/255.0, green: 169.0/255.0, blue: 160.0/255.0, alpha: 1.0).cgColor]
+                gradient.startPoint = CGPoint(x: 0.45, y: 0.45)
+                gradient.endPoint = CGPoint(x: 1, y: 1)
+                //vista.backgroundColor = UIColor(red: 212/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
+                
+                vista.layer.insertSublayer(gradient, at: 0)
+
+               // vista.backgroundColor = UIColor(red: 95.0/255.0, green: 207.0/255.0, blue: 167.0/255.0, alpha: 1.0)
+            scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
+            labelEncabezado.text = "Por el momento no necesita una prueba"
+            labelTextoRecomendacion.text = "En este momento, según sus respuestas, no es necesario que le hagan las pruebas de COVID‑19. Si cambia algo, debe repetir el cuestionario."
+                labelTextoRecomendacion.textColor = .darkGray
+    }
+            
+            else if(valor == 11){
+                //sospechoso
+                vista.backgroundColor = UIColor(red: 212/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
+                scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
+                labelEncabezado.text = "Debe intentar mantenerse alejado de los demás durante al menos 7 días a partir de la aparición de sus síntomas"
+              labelTextoRecomendacion.textColor = .lightGray
+                labelTextoRecomendacion.text = "Su aislamiento puede terminar si sus síntomas mejoran significativamente y si no ha tenido fiebre durante al menos 72 horas sin el uso de medicamentos. Al aislarse, puede reducir la propagación de COVID-19 y proteger a los demás."
+            }
+        else if(valor == 12){
+                //contacto estrecho
+            vista.backgroundColor = UIColor(red: 212/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
+            scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
+            labelEncabezado.text = "Debe intentar mantenerse alejado de los demás durante al menos 7 días a partir de la aparición de sus síntomas"
+          labelTextoRecomendacion.textColor = .lightGray
+            labelTextoRecomendacion.text = "Su aislamiento puede terminar si sus síntomas mejoran significativamente y si no ha tenido fiebre durante al menos 72 horas sin el uso de medicamentos. Al aislarse, puede reducir la propagación de COVID-19 y proteger a los demás."
+        }
+        else if(valor == 13){
+                //crítico
+            vista.backgroundColor = UIColor(red: 212/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
+            scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
+            labelEncabezado.text = "Debe intentar mantenerse alejado de los demás durante al menos 7 días a partir de la aparición de sus síntomas"
+          labelTextoRecomendacion.textColor = .lightGray
+            labelTextoRecomendacion.text = "Su aislamiento puede terminar si sus síntomas mejoran significativamente y si no ha tenido fiebre durante al menos 72 horas sin el uso de medicamentos. Al aislarse, puede reducir la propagación de COVID-19 y proteger a los demás."
+        }
+
+            
+            let imagenAlerta = UIImageView(frame: CGRect(x: view.center.x - 35, y: 15.0, width: 70, height: 60))
+            imagenAlerta.image = UIImage(named: "alertaTriangulo")
+            vista.addSubview(imagenAlerta)
+            labelEncabezado.font = UIFont(name: "gobCL-Bold", size: 25.0)
+            labelEncabezado.frame = CGRect(x: 40, y: imagenAlerta.frame.maxY + 15.0, width: self.view.frame.width - 80.0, height: 1000.0)
+            labelEncabezado.numberOfLines = 0
+            labelEncabezado.sizeToFit()
+
+            labelTextoRecomendacion.frame = CGRect(x: 40, y: labelEncabezado.frame.maxY + 15, width: self.view.frame.width - 80, height: 250)
+            labelTextoRecomendacion.font = UIFont(name: "gobCL", size: 16.0)
+            vista.layer.maskedCorners = [.layerMinXMinYCorner,.layerMinXMaxYCorner, .layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+
+            labelTextoRecomendacion.textAlignment = .justified
+            labelTextoRecomendacion.numberOfLines = 0
+            labelTextoRecomendacion.sizeToFit()
+
+            vista.addSubview(labelTextoRecomendacion)
+            labelEncabezado.textColor = UIColor.white
+            labelEncabezado.textAlignment = .center
+            imagenNuble.image = UIImage(named: "nubleTeCuidaAzul")
+            print("no hay más elementos")
+            
+            botonVolver.isHidden = true
+
+        }
 
 func datosTest(){
     
@@ -355,13 +376,21 @@ func datosTest(){
     
         self.appSyncClient?.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result, error in
 
-            
+    
         if let error = error {
             print("Error fetching data: \(error)")
             return
         }
-            result?.data?.listQuestions?.items?.forEach {
             
+            var itemsSort = result?.data?.listQuestions?.items
+            
+            itemsSort = itemsSort?.sorted { (idQuestion1, idQuestion2) -> Bool in
+            let idQuestion1 = idQuestion1?.idQuestion
+            let idQuestion2 = idQuestion2?.idQuestion
+                return (idQuestion1!.localizedCaseInsensitiveCompare(idQuestion2!) == .orderedAscending)
+                
+            }
+            itemsSort?.forEach {
             if ($0!.listOptions?.count == 0) {
                 self.arrayAlternativas.append([])
             }
@@ -386,8 +415,84 @@ func datosTest(){
 
 
         }
+            
     }
-}}
+}
+    func logicaTest(idQuestion:Int)  {
+        
+        
+        switch idQuestion {
+        case 0:
+            if(alternativasSeleccionadas.last == 1){
+                
+                enumerador = 13
+                
+            }
+            else
+            {
+                enumerador = 1
+              //  resultado(valor: 1)
+            }
+
+        case 1:
+            
+            if(alternativasSeleccionadas.last == 1){
+                
+                enumerador = 2
+                
+            }
+            else
+            {
+                enumerador = 3
+            }
+            case 2:
+            
+                if(alternativasSeleccionadas.last == 1){
+                
+                enumerador = 13
+
+                
+            }
+            
+            else {
+                enumerador = 3
+            }
+            
+        case 3:
+            //ha tenido tos ...
+            if(alternativasSeleccionadas.last! == 12){
+                
+                enumerador = 10
+
+                
+            }
+            
+            else {
+                enumerador = 4
+            }
+            
+        case 4:
+            if(alternativasSeleccionadas.last == 1){
+                
+                enumerador = 5
+
+                
+            }
+            
+            else {
+                enumerador = 11
+            }
+
+        case 5:
+            print("caso encuentro cercano")
+            
+        default:
+            print("default")
+        }
+
+    }
+    
+}
 
 extension UILabel {
     func addCharactersSpacing(spacing:CGFloat, text:String) {
