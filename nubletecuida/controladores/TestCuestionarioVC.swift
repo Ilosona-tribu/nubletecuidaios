@@ -17,7 +17,7 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
     var arrayAlternativas = Array<[String?]>()
     var arrayTipoDeRespuesta = Array<String>()
     var alternativasSeleccionadas = Array<Int>()
-
+    var arrayRecorridoTest = Array<Int>()
 
     var arrayBotones = Array<UIButton>()
     var arrayOtrosComponentes = Array<UITextField>()
@@ -87,7 +87,8 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
         vista.addSubview(labelEncabezado)
 
         if (enumerador == 0){
-            
+            arrayRecorridoTest.append(enumerador)
+
             botonVolver.isHidden = true
             
         }
@@ -117,7 +118,7 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
 
         scrollVista.setContentOffset(.zero, animated: false)
         logicaTest(idQuestion: enumerador)
-
+        arrayRecorridoTest.append(enumerador)
         if(self.enumerador  < arrayEncabezados.count)
         {
             esconderBotonRetroceder()
@@ -133,7 +134,7 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
             for button in arrayBotones {
                 button.removeFromSuperview()
             }
-            self.resultado(valor: 1)
+            self.resultado(valor: enumerador)
         }
     }
     
@@ -141,14 +142,18 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
     
     @objc func retrocederPregunta(_ sender:UIButton!) {
 
-          if(self.enumerador  < arrayEncabezados.count)
-         
-          {
+        if(self.enumerador  < arrayEncabezados.count)
+        {
+            print(arrayRecorridoTest)
+            arrayRecorridoTest.removeLast()
+            enumerador = arrayRecorridoTest.last!
+
             labelEncabezado.text = arrayEncabezados[enumerador]
             self.labelEncabezado.frame.size.width = self.view.frame.width - 80.0
             self.labelEncabezado.sizeToFit()
             cambiarAlternativas()
             esconderBotonRetroceder()
+            
 
           }
             
@@ -159,7 +164,7 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
                   button.removeFromSuperview()
               }
               
-            self.resultado(valor: 1)
+            self.resultado(valor: enumerador)
         }
         
     }
@@ -272,7 +277,6 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
     /// activar estado selección de la alternativa
     @objc func checkAlternativa(_ sender:UIButton!) {
         
-        print(alternativasSeleccionadas)
         if (sender.isSelected == false){
             
             alternativasSeleccionadas.append(sender.tag)
@@ -320,20 +324,21 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
             
             else if(valor == 11){
                 //sospechoso
-                vista.backgroundColor = UIColor(red: 212/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
+                vista.backgroundColor = UIColor(red: 50/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
                 scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
-                labelEncabezado.text = "Debe intentar mantenerse alejado de los demás durante al menos 7 días a partir de la aparición de sus síntomas"
+                labelEncabezado.text = "Ud es sospechoso de tener COVID-19"
               labelTextoRecomendacion.textColor = .lightGray
-                labelTextoRecomendacion.text = "Su aislamiento puede terminar si sus síntomas mejoran significativamente y si no ha tenido fiebre durante al menos 72 horas sin el uso de medicamentos. Al aislarse, puede reducir la propagación de COVID-19 y proteger a los demás."
+                labelTextoRecomendacion.text = "Tenga cuidado"
             }
         else if(valor == 12){
                 //contacto estrecho
-            vista.backgroundColor = UIColor(red: 212/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
-            scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
-            labelEncabezado.text = "Debe intentar mantenerse alejado de los demás durante al menos 7 días a partir de la aparición de sus síntomas"
+            vista.backgroundColor = UIColor(red: 100/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
+                scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
+            labelEncabezado.text = "Ud estuvo en contacto estrecho"
           labelTextoRecomendacion.textColor = .lightGray
-            labelTextoRecomendacion.text = "Su aislamiento puede terminar si sus síntomas mejoran significativamente y si no ha tenido fiebre durante al menos 72 horas sin el uso de medicamentos. Al aislarse, puede reducir la propagación de COVID-19 y proteger a los demás."
+            labelTextoRecomendacion.text = "le recomendamos que esté alerta a presentar nuevos síntomas."
         }
+                
         else if(valor == 13){
                 //crítico
             vista.backgroundColor = UIColor(red: 212/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
@@ -462,10 +467,9 @@ func datosTest(){
             //ha tenido tos ...
             if(alternativasSeleccionadas.last! == 12){
                 
+                print(alternativasSeleccionadas.last!)
                 enumerador = 10
-
-                
-            }
+}
             
             else {
                 enumerador = 4
@@ -484,7 +488,19 @@ func datosTest(){
             }
 
         case 5:
-            print("caso encuentro cercano")
+            
+            
+            if(alternativasSeleccionadas.last! == 5){
+                
+                enumerador = 11
+
+                
+            }
+            
+            else {
+                enumerador = 12
+            }
+
             
         default:
             print("default")
