@@ -98,9 +98,7 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
 
         }
         super.viewDidLoad()
-
-    }
-    
+}
     
     //funcion esconder boton retroceder
     
@@ -180,6 +178,7 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
             for boton in arrayBotones{
                 
                 boton.removeFromSuperview()
+                arrayBotones.removeAll()
             }
         }
         
@@ -255,6 +254,8 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
         botonAvanzar.layer.cornerRadius = 26.9
         botonAvanzar.setTitle("Siguiente", for: .normal)
         botonAvanzar.titleLabel?.font = UIFont(name: "gobCL-Bold", size: 18.0)
+        botonAvanzar.tag = 0
+        botonAvanzar.isHidden = true
 
         botonAvanzar.addTarget(self, action: #selector(avanzarPreguntaAction(_:)), for: .touchUpInside)
         vista.addSubview(botonAvanzar)
@@ -276,9 +277,13 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
     
     /// activar estado selección de la alternativa
     @objc func checkAlternativa(_ sender:UIButton!) {
+
+
+        botonAvanzar.isHidden = false
+
+        if(arrayTipoDeRespuesta[enumerador] == "BOOL"){
+        deselectAlternativas()
         
-        if (sender.isSelected == false){
-            
             alternativasSeleccionadas.append(sender.tag)
             (sender.subviews[1] as! UIImageView).image = UIImage(named: "botonSeleccionado")
             sender.isSelected = true
@@ -286,24 +291,70 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
             //se añade la respuesta al array
             arrayRespuestas.append((sender.titleLabel?.text)!)
         }
-            
+        
         else{
             
-            sender.isSelected = false
-            (sender.subviews[1] as! UIImageView).image = UIImage(named: "botonNoSeleccionado")
-            
-            alternativasSeleccionadas.remove(at: alternativasSeleccionadas.lastIndex(of:sender.tag)!)
-            // se debería eliminar la respuesta deseleccionada ?????????????????????????*********
-        }
+                if (sender.isSelected == false){
+
+                    if(sender.titleLabel?.text == "Ninguna de las anteriores"){
+                        deselectAlternativas()
+                    }
+                    
+                    print(arrayBotones[arrayBotones.count - 2].isSelected)
+                    //deseleccionar ninguna de las anteriores al tocar otra alternativa
+                    if(arrayBotones[arrayBotones.count - 2].isSelected){
+                        
+                    (arrayBotones[arrayBotones.count - 2].subviews[1] as! UIImageView).image = UIImage(named: "botonNoSeleccionado")
+                        arrayBotones[arrayBotones.count - 2].isSelected = false
+
+                        
+                    }
+                    
+                    alternativasSeleccionadas.append(sender.tag)
+                    (sender.subviews[1] as! UIImageView).image = UIImage(named: "botonSeleccionado")
+                    
+                    sender.isSelected = true
+                    
+                    
+                    //se añade la respuesta al array
+                    arrayRespuestas.append((sender.titleLabel?.text)!)
+                                
+                }
+                else{
+                    print(arrayBotones)
+                    (sender.subviews[1] as! UIImageView).image = UIImage(named: "botonNoSeleccionado")
+
+                    sender.isSelected = false
+
+                    alternativasSeleccionadas.remove(at: alternativasSeleccionadas.lastIndex(of:sender.tag)!)
+                    // se debería eliminar la respuesta deseleccionada ?????????????????????????*********
+                }
+                
+            }
+
         
         sender.reloadInputViews()
     }
+    
+    
+func deselectAlternativas(){
+    for boton in arrayBotones {
+        
+        if(boton.tag > 0){
+            
+        (boton.subviews[1] as! UIImageView).image = UIImage(named: "botonNoSeleccionado")
+            boton.isSelected = false
+        }
+    }
+}
+    
+    
     
     func resultado(valor:Int)  {
             let labelTextoRecomendacion = UILabel()
           //  vista.frame.size.height = view.frame.height - (vista.frame.origin.y * 2)
             vista.frame.size.height = view.frame.height
-
+        labelEncabezado.textAlignment = .center
             if (valor == 10){
                 let gradient = CAGradientLayer()
                 gradient.frame = vista.bounds
@@ -317,8 +368,8 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
 
                // vista.backgroundColor = UIColor(red: 95.0/255.0, green: 207.0/255.0, blue: 167.0/255.0, alpha: 1.0)
             scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
-            labelEncabezado.text = "Por el momento no necesita una prueba"
-            labelTextoRecomendacion.text = "En este momento, según sus respuestas, no es necesario que le hagan las pruebas de COVID‑19. Si cambia algo, debe repetir el cuestionario."
+            labelEncabezado.text = "Caso Favorable"
+            labelTextoRecomendacion.text = "Aún así toma todas las medidas necesarias y los consejos de esta aplicación."
                 labelTextoRecomendacion.textColor = .darkGray
     }
             
@@ -326,26 +377,26 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
                 //sospechoso
                 vista.backgroundColor = UIColor(red: 50/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
                 scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
-                labelEncabezado.text = "Ud es sospechoso de tener COVID-19"
+                labelEncabezado.text = "Caso Sospechoso"
               labelTextoRecomendacion.textColor = .lightGray
-                labelTextoRecomendacion.text = "Tenga cuidado"
+                labelTextoRecomendacion.text = "Por favor aislate, si tus sintomas empeoran revisa los números de contacto de esta aplicación."
             }
         else if(valor == 12){
                 //contacto estrecho
             vista.backgroundColor = UIColor(red: 100/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
                 scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
-            labelEncabezado.text = "Ud estuvo en contacto estrecho"
+            labelEncabezado.text = "Contacto Estrecho"
           labelTextoRecomendacion.textColor = .lightGray
-            labelTextoRecomendacion.text = "le recomendamos que esté alerta a presentar nuevos síntomas."
+            labelTextoRecomendacion.text = "Por favor aislate, si tus sintomas empeoran revisa los números de contacto de esta aplicación."
         }
                 
         else if(valor == 13){
                 //crítico
             vista.backgroundColor = UIColor(red: 212/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
             scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
-            labelEncabezado.text = "Debe intentar mantenerse alejado de los demás durante al menos 7 días a partir de la aparición de sus síntomas"
+            labelEncabezado.text = "Caso Grave"
           labelTextoRecomendacion.textColor = .lightGray
-            labelTextoRecomendacion.text = "Su aislamiento puede terminar si sus síntomas mejoran significativamente y si no ha tenido fiebre durante al menos 72 horas sin el uso de medicamentos. Al aislarse, puede reducir la propagación de COVID-19 y proteger a los demás."
+            labelTextoRecomendacion.text = "De acuerdo a  los síntomas que has indicado, deberías buscar ayuda inmediatamente."
         }
 
             
@@ -507,7 +558,6 @@ func datosTest(){
         }
 
     }
-    
 }
 
 extension UILabel {
