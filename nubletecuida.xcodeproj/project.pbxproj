@@ -616,7 +616,7 @@
 				CODE_SIGN_ENTITLEMENTS = nubletecuida/nubletecuida.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = ZRAUY54U79;
 				INFOPLIST_FILE = nubletecuida/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -641,7 +641,7 @@
 				CODE_SIGN_ENTITLEMENTS = nubletecuida/nubletecuida.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = ZRAUY54U79;
 				INFOPLIST_FILE = nubletecuida/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;

@@ -471,9 +471,30 @@ func datosTest(){
 
 
         }
-            
     }
-}
+    
+    }
+    
+    
+    func datosRespuestas(){
+            
+            let query = ListResultsQuery()
+            
+                self.appSyncClient?.fetch(query: query, cachePolicy: .fetchIgnoringCacheData) { result, error in
+
+            
+                if let error = error {
+                    print("Error fetching data: \(error)")
+                    return
+                }
+                    
+                    var its = result?.data?.listResults?.items
+                    
+                    print(its)
+            }
+
+    }
+        
     func logicaTest(idQuestion:Int)  {
         
         
@@ -558,6 +579,8 @@ func datosTest(){
         }
 
     }
+    
+    
 }
 
 extension UILabel {

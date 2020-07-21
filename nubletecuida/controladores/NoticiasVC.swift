@@ -152,7 +152,7 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "DetalleNoticiasVC") as? DetalleNoticiasVC {
             viewController.descripcionNoticia = arrayDescripcionNoticias[indexPath.row]
             viewController.urlImagenNotici = arrayUrlImagenCelda[indexPath.row]
-            
+            viewController.tituloNoticia = arrayNoticias[indexPath.row]
             self.show(viewController, sender: nil)
         }
     }

@@ -18,6 +18,8 @@ query SyncNews(
       detail
       url_background_image
       url_thumbnail_image
+      url_detail_image
+      url_detail_image_2
       _version
       _deleted
       _lastChangedAt
@@ -34,6 +36,8 @@ query GetNews($id: ID!) {
     detail
     url_background_image
     url_thumbnail_image
+    url_detail_image
+    url_detail_image_2
     _version
     _deleted
     _lastChangedAt
@@ -52,6 +56,8 @@ query ListNewss(
       detail
       url_background_image
       url_thumbnail_image
+      url_detail_image
+      url_detail_image_2
       _version
       _deleted
       _lastChangedAt

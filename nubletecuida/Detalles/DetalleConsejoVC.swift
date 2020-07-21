@@ -53,10 +53,10 @@ class DetalleConsejoVC: UIViewController,UIScrollViewDelegate {
         imagenCircular.downloaded(from: urlImagenConsejoChica, contentMode: .scaleAspectFit, with: 1.0)
         subVistaImagenCircular.addSubview(imagenCircular)
       
-//        imagenCircular.layer.masksToBounds = true
-//        imagenCircular.layer.borderWidth = 1.5
-//        imagenCircular.layer.borderColor = UIColor.white.cgColor
-//        imagenCircular.layer.cornerRadius = imagenCircular.bounds.width / 2
+        imagenCircular.layer.masksToBounds = true
+        imagenCircular.layer.borderWidth = 1.5
+        imagenCircular.layer.borderColor = UIColor.white.cgColor
+        imagenCircular.layer.cornerRadius = imagenCircular.bounds.width / 2
 
 
         scrollVista.sendSubviewToBack(subVistaImagenCircular)
@@ -65,10 +65,15 @@ class DetalleConsejoVC: UIViewController,UIScrollViewDelegate {
         subVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
         subVista.layer.cornerRadius = 41.4
 
+        let attributedStringTitulo = NSMutableAttributedString(string: descripcionConsejo)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 2
+        attributedStringTitulo.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedStringTitulo.length))
 
-                let alturaFondoRedondeado = descripcionConsejo.height(constraintedWidth: self.view.frame.width - 40, font: UIFont(name: "gobCL", size: 16.0)!) + 35.0
+        let alturaFondoRedondeado = attributedStringTitulo.height(constraintedWidth: self.view.frame.width - 40, font: UIFont(name: "gobCL", size: 16.0)!) + 35.0
 
-                let labelTextoDescripcion = UITextView(frame: CGRect(x: 20.0, y: 52, width: view.frame.width - 40.0, height:alturaFondoRedondeado))
+        
+        let labelTextoDescripcion = UITextView(frame: CGRect(x: 20.0, y: 52, width: view.frame.width - 40.0, height:alturaFondoRedondeado))
 
               //  let maximumLabelSizeTexto = CGSize(width: (self.view.frame.size.width - 40.0), height: 40000.0)
         //        labelTextoDescripcion.sizeThatFits(maximumLabelSizeTexto)

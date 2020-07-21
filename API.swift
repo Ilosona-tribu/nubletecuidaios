@@ -5,8 +5,8 @@ import AWSAppSync
 public struct CreateNewsInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID? = nil, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, version: Int? = nil) {
-    graphQLMap = ["id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "_version": version]
+  public init(id: GraphQLID? = nil, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, urlDetailImage: String? = nil, urlDetailImage_2: String? = nil, version: Int? = nil) {
+    graphQLMap = ["id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "url_detail_image": urlDetailImage, "url_detail_image_2": urlDetailImage_2, "_version": version]
   }
 
   public var id: GraphQLID? {
@@ -63,6 +63,24 @@ public struct CreateNewsInput: GraphQLMapConvertible {
     }
   }
 
+  public var urlDetailImage: String? {
+    get {
+      return graphQLMap["url_detail_image"] as! String?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "url_detail_image")
+    }
+  }
+
+  public var urlDetailImage_2: String? {
+    get {
+      return graphQLMap["url_detail_image_2"] as! String?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "url_detail_image_2")
+    }
+  }
+
   public var version: Int? {
     get {
       return graphQLMap["_version"] as! Int?
@@ -76,8 +94,8 @@ public struct CreateNewsInput: GraphQLMapConvertible {
 public struct ModelNewsConditionInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(title: ModelStringInput? = nil, description: ModelStringInput? = nil, detail: ModelStringInput? = nil, urlBackgroundImage: ModelStringInput? = nil, urlThumbnailImage: ModelStringInput? = nil, and: [ModelNewsConditionInput?]? = nil, or: [ModelNewsConditionInput?]? = nil, not: ModelNewsConditionInput? = nil) {
-    graphQLMap = ["title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "and": and, "or": or, "not": not]
+  public init(title: ModelStringInput? = nil, description: ModelStringInput? = nil, detail: ModelStringInput? = nil, urlBackgroundImage: ModelStringInput? = nil, urlThumbnailImage: ModelStringInput? = nil, urlDetailImage: ModelStringInput? = nil, urlDetailImage_2: ModelStringInput? = nil, and: [ModelNewsConditionInput?]? = nil, or: [ModelNewsConditionInput?]? = nil, not: ModelNewsConditionInput? = nil) {
+    graphQLMap = ["title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "url_detail_image": urlDetailImage, "url_detail_image_2": urlDetailImage_2, "and": and, "or": or, "not": not]
   }
 
   public var title: ModelStringInput? {
@@ -122,6 +140,24 @@ public struct ModelNewsConditionInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "url_thumbnail_image")
+    }
+  }
+
+  public var urlDetailImage: ModelStringInput? {
+    get {
+      return graphQLMap["url_detail_image"] as! ModelStringInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "url_detail_image")
+    }
+  }
+
+  public var urlDetailImage_2: ModelStringInput? {
+    get {
+      return graphQLMap["url_detail_image_2"] as! ModelStringInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "url_detail_image_2")
     }
   }
 
@@ -417,8 +453,8 @@ public struct ModelSizeInput: GraphQLMapConvertible {
 public struct UpdateNewsInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: GraphQLID, title: String? = nil, description: String? = nil, detail: String? = nil, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, version: Int? = nil) {
-    graphQLMap = ["id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "_version": version]
+  public init(id: GraphQLID, title: String? = nil, description: String? = nil, detail: String? = nil, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, urlDetailImage: String? = nil, urlDetailImage_2: String? = nil, version: Int? = nil) {
+    graphQLMap = ["id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "url_detail_image": urlDetailImage, "url_detail_image_2": urlDetailImage_2, "_version": version]
   }
 
   public var id: GraphQLID {
@@ -472,6 +508,24 @@ public struct UpdateNewsInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "url_thumbnail_image")
+    }
+  }
+
+  public var urlDetailImage: String? {
+    get {
+      return graphQLMap["url_detail_image"] as! String?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "url_detail_image")
+    }
+  }
+
+  public var urlDetailImage_2: String? {
+    get {
+      return graphQLMap["url_detail_image_2"] as! String?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "url_detail_image_2")
     }
   }
 
@@ -2605,8 +2659,8 @@ public struct DeleteCallInput: GraphQLMapConvertible {
 public struct ModelNewsFilterInput: GraphQLMapConvertible {
   public var graphQLMap: GraphQLMap
 
-  public init(id: ModelIDInput? = nil, title: ModelStringInput? = nil, description: ModelStringInput? = nil, detail: ModelStringInput? = nil, urlBackgroundImage: ModelStringInput? = nil, urlThumbnailImage: ModelStringInput? = nil, and: [ModelNewsFilterInput?]? = nil, or: [ModelNewsFilterInput?]? = nil, not: ModelNewsFilterInput? = nil) {
-    graphQLMap = ["id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "and": and, "or": or, "not": not]
+  public init(id: ModelIDInput? = nil, title: ModelStringInput? = nil, description: ModelStringInput? = nil, detail: ModelStringInput? = nil, urlBackgroundImage: ModelStringInput? = nil, urlThumbnailImage: ModelStringInput? = nil, urlDetailImage: ModelStringInput? = nil, urlDetailImage_2: ModelStringInput? = nil, and: [ModelNewsFilterInput?]? = nil, or: [ModelNewsFilterInput?]? = nil, not: ModelNewsFilterInput? = nil) {
+    graphQLMap = ["id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "url_detail_image": urlDetailImage, "url_detail_image_2": urlDetailImage_2, "and": and, "or": or, "not": not]
   }
 
   public var id: ModelIDInput? {
@@ -2660,6 +2714,24 @@ public struct ModelNewsFilterInput: GraphQLMapConvertible {
     }
     set {
       graphQLMap.updateValue(newValue, forKey: "url_thumbnail_image")
+    }
+  }
+
+  public var urlDetailImage: ModelStringInput? {
+    get {
+      return graphQLMap["url_detail_image"] as! ModelStringInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "url_detail_image")
+    }
+  }
+
+  public var urlDetailImage_2: ModelStringInput? {
+    get {
+      return graphQLMap["url_detail_image_2"] as! ModelStringInput?
+    }
+    set {
+      graphQLMap.updateValue(newValue, forKey: "url_detail_image_2")
     }
   }
 
@@ -3625,7 +3697,7 @@ public struct TableCallFilterInput: GraphQLMapConvertible {
 
 public final class CreateNewsMutation: GraphQLMutation {
   public static let operationString =
-    "mutation CreateNews($input: CreateNewsInput!, $condition: ModelNewsConditionInput) {\n  createNews(input: $input, condition: $condition) {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "mutation CreateNews($input: CreateNewsInput!, $condition: ModelNewsConditionInput) {\n  createNews(input: $input, condition: $condition) {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    url_detail_image\n    url_detail_image_2\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public var input: CreateNewsInput
   public var condition: ModelNewsConditionInput?
@@ -3676,6 +3748,8 @@ public final class CreateNewsMutation: GraphQLMutation {
         GraphQLField("detail", type: .nonNull(.scalar(String.self))),
         GraphQLField("url_background_image", type: .scalar(String.self)),
         GraphQLField("url_thumbnail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image_2", type: .scalar(String.self)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
         GraphQLField("_deleted", type: .scalar(Bool.self)),
         GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
@@ -3687,8 +3761,8 @@ public final class CreateNewsMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, urlDetailImage: String? = nil, urlDetailImage_2: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "url_detail_image": urlDetailImage, "url_detail_image_2": urlDetailImage_2, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -3754,6 +3828,24 @@ public final class CreateNewsMutation: GraphQLMutation {
         }
       }
 
+      public var urlDetailImage: String? {
+        get {
+          return snapshot["url_detail_image"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image")
+        }
+      }
+
+      public var urlDetailImage_2: String? {
+        get {
+          return snapshot["url_detail_image_2"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image_2")
+        }
+      }
+
       public var version: Int {
         get {
           return snapshot["_version"]! as! Int
@@ -3786,7 +3878,7 @@ public final class CreateNewsMutation: GraphQLMutation {
 
 public final class UpdateNewsMutation: GraphQLMutation {
   public static let operationString =
-    "mutation UpdateNews($input: UpdateNewsInput!, $condition: ModelNewsConditionInput) {\n  updateNews(input: $input, condition: $condition) {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "mutation UpdateNews($input: UpdateNewsInput!, $condition: ModelNewsConditionInput) {\n  updateNews(input: $input, condition: $condition) {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    url_detail_image\n    url_detail_image_2\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public var input: UpdateNewsInput
   public var condition: ModelNewsConditionInput?
@@ -3837,6 +3929,8 @@ public final class UpdateNewsMutation: GraphQLMutation {
         GraphQLField("detail", type: .nonNull(.scalar(String.self))),
         GraphQLField("url_background_image", type: .scalar(String.self)),
         GraphQLField("url_thumbnail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image_2", type: .scalar(String.self)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
         GraphQLField("_deleted", type: .scalar(Bool.self)),
         GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
@@ -3848,8 +3942,8 @@ public final class UpdateNewsMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, urlDetailImage: String? = nil, urlDetailImage_2: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "url_detail_image": urlDetailImage, "url_detail_image_2": urlDetailImage_2, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -3915,6 +4009,24 @@ public final class UpdateNewsMutation: GraphQLMutation {
         }
       }
 
+      public var urlDetailImage: String? {
+        get {
+          return snapshot["url_detail_image"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image")
+        }
+      }
+
+      public var urlDetailImage_2: String? {
+        get {
+          return snapshot["url_detail_image_2"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image_2")
+        }
+      }
+
       public var version: Int {
         get {
           return snapshot["_version"]! as! Int
@@ -3947,7 +4059,7 @@ public final class UpdateNewsMutation: GraphQLMutation {
 
 public final class DeleteNewsMutation: GraphQLMutation {
   public static let operationString =
-    "mutation DeleteNews($input: DeleteNewsInput!, $condition: ModelNewsConditionInput) {\n  deleteNews(input: $input, condition: $condition) {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "mutation DeleteNews($input: DeleteNewsInput!, $condition: ModelNewsConditionInput) {\n  deleteNews(input: $input, condition: $condition) {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    url_detail_image\n    url_detail_image_2\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public var input: DeleteNewsInput
   public var condition: ModelNewsConditionInput?
@@ -3998,6 +4110,8 @@ public final class DeleteNewsMutation: GraphQLMutation {
         GraphQLField("detail", type: .nonNull(.scalar(String.self))),
         GraphQLField("url_background_image", type: .scalar(String.self)),
         GraphQLField("url_thumbnail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image_2", type: .scalar(String.self)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
         GraphQLField("_deleted", type: .scalar(Bool.self)),
         GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
@@ -4009,8 +4123,8 @@ public final class DeleteNewsMutation: GraphQLMutation {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, urlDetailImage: String? = nil, urlDetailImage_2: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "url_detail_image": urlDetailImage, "url_detail_image_2": urlDetailImage_2, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -4073,6 +4187,24 @@ public final class DeleteNewsMutation: GraphQLMutation {
         }
         set {
           snapshot.updateValue(newValue, forKey: "url_thumbnail_image")
+        }
+      }
+
+      public var urlDetailImage: String? {
+        get {
+          return snapshot["url_detail_image"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image")
+        }
+      }
+
+      public var urlDetailImage_2: String? {
+        get {
+          return snapshot["url_detail_image_2"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image_2")
         }
       }
 
@@ -9994,7 +10126,7 @@ public final class DeleteCallMutation: GraphQLMutation {
 
 public final class SyncNewsQuery: GraphQLQuery {
   public static let operationString =
-    "query SyncNews($filter: ModelNewsFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {\n  syncNews(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {\n    __typename\n    items {\n      __typename\n      id\n      title\n      description\n      detail\n      url_background_image\n      url_thumbnail_image\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    nextToken\n    startedAt\n  }\n}"
+    "query SyncNews($filter: ModelNewsFilterInput, $limit: Int, $nextToken: String, $lastSync: AWSTimestamp) {\n  syncNews(filter: $filter, limit: $limit, nextToken: $nextToken, lastSync: $lastSync) {\n    __typename\n    items {\n      __typename\n      id\n      title\n      description\n      detail\n      url_background_image\n      url_thumbnail_image\n      url_detail_image\n      url_detail_image_2\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    nextToken\n    startedAt\n  }\n}"
 
   public var filter: ModelNewsFilterInput?
   public var limit: Int?
@@ -10105,6 +10237,8 @@ public final class SyncNewsQuery: GraphQLQuery {
           GraphQLField("detail", type: .nonNull(.scalar(String.self))),
           GraphQLField("url_background_image", type: .scalar(String.self)),
           GraphQLField("url_thumbnail_image", type: .scalar(String.self)),
+          GraphQLField("url_detail_image", type: .scalar(String.self)),
+          GraphQLField("url_detail_image_2", type: .scalar(String.self)),
           GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
           GraphQLField("_deleted", type: .scalar(Bool.self)),
           GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
@@ -10116,8 +10250,8 @@ public final class SyncNewsQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-          self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+        public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, urlDetailImage: String? = nil, urlDetailImage_2: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+          self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "url_detail_image": urlDetailImage, "url_detail_image_2": urlDetailImage_2, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
         }
 
         public var __typename: String {
@@ -10183,6 +10317,24 @@ public final class SyncNewsQuery: GraphQLQuery {
           }
         }
 
+        public var urlDetailImage: String? {
+          get {
+            return snapshot["url_detail_image"] as? String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "url_detail_image")
+          }
+        }
+
+        public var urlDetailImage_2: String? {
+          get {
+            return snapshot["url_detail_image_2"] as? String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "url_detail_image_2")
+          }
+        }
+
         public var version: Int {
           get {
             return snapshot["_version"]! as! Int
@@ -10216,7 +10368,7 @@ public final class SyncNewsQuery: GraphQLQuery {
 
 public final class GetNewsQuery: GraphQLQuery {
   public static let operationString =
-    "query GetNews($id: ID!) {\n  getNews(id: $id) {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "query GetNews($id: ID!) {\n  getNews(id: $id) {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    url_detail_image\n    url_detail_image_2\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public var id: GraphQLID
 
@@ -10265,6 +10417,8 @@ public final class GetNewsQuery: GraphQLQuery {
         GraphQLField("detail", type: .nonNull(.scalar(String.self))),
         GraphQLField("url_background_image", type: .scalar(String.self)),
         GraphQLField("url_thumbnail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image_2", type: .scalar(String.self)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
         GraphQLField("_deleted", type: .scalar(Bool.self)),
         GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
@@ -10276,8 +10430,8 @@ public final class GetNewsQuery: GraphQLQuery {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, urlDetailImage: String? = nil, urlDetailImage_2: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "url_detail_image": urlDetailImage, "url_detail_image_2": urlDetailImage_2, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -10343,6 +10497,24 @@ public final class GetNewsQuery: GraphQLQuery {
         }
       }
 
+      public var urlDetailImage: String? {
+        get {
+          return snapshot["url_detail_image"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image")
+        }
+      }
+
+      public var urlDetailImage_2: String? {
+        get {
+          return snapshot["url_detail_image_2"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image_2")
+        }
+      }
+
       public var version: Int {
         get {
           return snapshot["_version"]! as! Int
@@ -10375,7 +10547,7 @@ public final class GetNewsQuery: GraphQLQuery {
 
 public final class ListNewssQuery: GraphQLQuery {
   public static let operationString =
-    "query ListNewss($filter: ModelNewsFilterInput, $limit: Int, $nextToken: String) {\n  listNewss(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      title\n      description\n      detail\n      url_background_image\n      url_thumbnail_image\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    nextToken\n    startedAt\n  }\n}"
+    "query ListNewss($filter: ModelNewsFilterInput, $limit: Int, $nextToken: String) {\n  listNewss(filter: $filter, limit: $limit, nextToken: $nextToken) {\n    __typename\n    items {\n      __typename\n      id\n      title\n      description\n      detail\n      url_background_image\n      url_thumbnail_image\n      url_detail_image\n      url_detail_image_2\n      _version\n      _deleted\n      _lastChangedAt\n    }\n    nextToken\n    startedAt\n  }\n}"
 
   public var filter: ModelNewsFilterInput?
   public var limit: Int?
@@ -10484,6 +10656,8 @@ public final class ListNewssQuery: GraphQLQuery {
           GraphQLField("detail", type: .nonNull(.scalar(String.self))),
           GraphQLField("url_background_image", type: .scalar(String.self)),
           GraphQLField("url_thumbnail_image", type: .scalar(String.self)),
+          GraphQLField("url_detail_image", type: .scalar(String.self)),
+          GraphQLField("url_detail_image_2", type: .scalar(String.self)),
           GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
           GraphQLField("_deleted", type: .scalar(Bool.self)),
           GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
@@ -10495,8 +10669,8 @@ public final class ListNewssQuery: GraphQLQuery {
           self.snapshot = snapshot
         }
 
-        public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-          self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+        public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, urlDetailImage: String? = nil, urlDetailImage_2: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+          self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "url_detail_image": urlDetailImage, "url_detail_image_2": urlDetailImage_2, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
         }
 
         public var __typename: String {
@@ -10559,6 +10733,24 @@ public final class ListNewssQuery: GraphQLQuery {
           }
           set {
             snapshot.updateValue(newValue, forKey: "url_thumbnail_image")
+          }
+        }
+
+        public var urlDetailImage: String? {
+          get {
+            return snapshot["url_detail_image"] as? String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "url_detail_image")
+          }
+        }
+
+        public var urlDetailImage_2: String? {
+          get {
+            return snapshot["url_detail_image_2"] as? String
+          }
+          set {
+            snapshot.updateValue(newValue, forKey: "url_detail_image_2")
           }
         }
 
@@ -15987,7 +16179,7 @@ public final class ListCallsQuery: GraphQLQuery {
 
 public final class OnCreateNewsSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnCreateNews {\n  onCreateNews {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "subscription OnCreateNews {\n  onCreateNews {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    url_detail_image\n    url_detail_image_2\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public init() {
   }
@@ -16029,6 +16221,8 @@ public final class OnCreateNewsSubscription: GraphQLSubscription {
         GraphQLField("detail", type: .nonNull(.scalar(String.self))),
         GraphQLField("url_background_image", type: .scalar(String.self)),
         GraphQLField("url_thumbnail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image_2", type: .scalar(String.self)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
         GraphQLField("_deleted", type: .scalar(Bool.self)),
         GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
@@ -16040,8 +16234,8 @@ public final class OnCreateNewsSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, urlDetailImage: String? = nil, urlDetailImage_2: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "url_detail_image": urlDetailImage, "url_detail_image_2": urlDetailImage_2, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -16107,6 +16301,24 @@ public final class OnCreateNewsSubscription: GraphQLSubscription {
         }
       }
 
+      public var urlDetailImage: String? {
+        get {
+          return snapshot["url_detail_image"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image")
+        }
+      }
+
+      public var urlDetailImage_2: String? {
+        get {
+          return snapshot["url_detail_image_2"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image_2")
+        }
+      }
+
       public var version: Int {
         get {
           return snapshot["_version"]! as! Int
@@ -16139,7 +16351,7 @@ public final class OnCreateNewsSubscription: GraphQLSubscription {
 
 public final class OnUpdateNewsSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnUpdateNews {\n  onUpdateNews {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "subscription OnUpdateNews {\n  onUpdateNews {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    url_detail_image\n    url_detail_image_2\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public init() {
   }
@@ -16181,6 +16393,8 @@ public final class OnUpdateNewsSubscription: GraphQLSubscription {
         GraphQLField("detail", type: .nonNull(.scalar(String.self))),
         GraphQLField("url_background_image", type: .scalar(String.self)),
         GraphQLField("url_thumbnail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image_2", type: .scalar(String.self)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
         GraphQLField("_deleted", type: .scalar(Bool.self)),
         GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
@@ -16192,8 +16406,8 @@ public final class OnUpdateNewsSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, urlDetailImage: String? = nil, urlDetailImage_2: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "url_detail_image": urlDetailImage, "url_detail_image_2": urlDetailImage_2, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -16259,6 +16473,24 @@ public final class OnUpdateNewsSubscription: GraphQLSubscription {
         }
       }
 
+      public var urlDetailImage: String? {
+        get {
+          return snapshot["url_detail_image"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image")
+        }
+      }
+
+      public var urlDetailImage_2: String? {
+        get {
+          return snapshot["url_detail_image_2"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image_2")
+        }
+      }
+
       public var version: Int {
         get {
           return snapshot["_version"]! as! Int
@@ -16291,7 +16523,7 @@ public final class OnUpdateNewsSubscription: GraphQLSubscription {
 
 public final class OnDeleteNewsSubscription: GraphQLSubscription {
   public static let operationString =
-    "subscription OnDeleteNews {\n  onDeleteNews {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
+    "subscription OnDeleteNews {\n  onDeleteNews {\n    __typename\n    id\n    title\n    description\n    detail\n    url_background_image\n    url_thumbnail_image\n    url_detail_image\n    url_detail_image_2\n    _version\n    _deleted\n    _lastChangedAt\n  }\n}"
 
   public init() {
   }
@@ -16333,6 +16565,8 @@ public final class OnDeleteNewsSubscription: GraphQLSubscription {
         GraphQLField("detail", type: .nonNull(.scalar(String.self))),
         GraphQLField("url_background_image", type: .scalar(String.self)),
         GraphQLField("url_thumbnail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image", type: .scalar(String.self)),
+        GraphQLField("url_detail_image_2", type: .scalar(String.self)),
         GraphQLField("_version", type: .nonNull(.scalar(Int.self))),
         GraphQLField("_deleted", type: .scalar(Bool.self)),
         GraphQLField("_lastChangedAt", type: .nonNull(.scalar(Int.self))),
@@ -16344,8 +16578,8 @@ public final class OnDeleteNewsSubscription: GraphQLSubscription {
         self.snapshot = snapshot
       }
 
-      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
-        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
+      public init(id: GraphQLID, title: String, description: String, detail: String, urlBackgroundImage: String? = nil, urlThumbnailImage: String? = nil, urlDetailImage: String? = nil, urlDetailImage_2: String? = nil, version: Int, deleted: Bool? = nil, lastChangedAt: Int) {
+        self.init(snapshot: ["__typename": "News", "id": id, "title": title, "description": description, "detail": detail, "url_background_image": urlBackgroundImage, "url_thumbnail_image": urlThumbnailImage, "url_detail_image": urlDetailImage, "url_detail_image_2": urlDetailImage_2, "_version": version, "_deleted": deleted, "_lastChangedAt": lastChangedAt])
       }
 
       public var __typename: String {
@@ -16408,6 +16642,24 @@ public final class OnDeleteNewsSubscription: GraphQLSubscription {
         }
         set {
           snapshot.updateValue(newValue, forKey: "url_thumbnail_image")
+        }
+      }
+
+      public var urlDetailImage: String? {
+        get {
+          return snapshot["url_detail_image"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image")
+        }
+      }
+
+      public var urlDetailImage_2: String? {
+        get {
+          return snapshot["url_detail_image_2"] as? String
+        }
+        set {
+          snapshot.updateValue(newValue, forKey: "url_detail_image_2")
         }
       }
 
