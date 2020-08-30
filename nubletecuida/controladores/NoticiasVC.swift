@@ -17,6 +17,7 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         var arrayNoticias = Array<String>()
         var arrayDescripcionNoticias = Array<String>()
         var arrayUrlImagenNoticias = Array<URL>()
+        var arrayUrlImagenDetalle = Array<String>()
         var arrayUrlImagenCelda = Array<URL>()
 
   
@@ -124,7 +125,7 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
             }
             let imagen = UIImageView(frame: CGRect(x: 18.0, y: 15.0, width: 100, height: 100))
-            imagen.downloaded(from: arrayUrlImagenNoticias[indexPath.row], with: 1.0)
+            imagen.downloaded(from: arrayUrlImagenCelda[indexPath.row], with: 1.0)
             imagen.layer.cornerRadius = 13.3
             imagen.layer.masksToBounds = true
             cell.addSubview(imagen)
@@ -151,7 +152,9 @@ class NoticiasVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "DetalleNoticiasVC") as? DetalleNoticiasVC {
             viewController.descripcionNoticia = arrayDescripcionNoticias[indexPath.row]
-            viewController.urlImagenNotici = arrayUrlImagenCelda[indexPath.row]
+            viewController.urlImagenNotici = arrayUrlImagenNoticias[indexPath.row]
+            viewController.urlImagenDetalle = arrayUrlImagenDetalle[indexPath.row]
+            
             viewController.tituloNoticia = arrayNoticias[indexPath.row]
             self.show(viewController, sender: nil)
         }
@@ -173,7 +176,23 @@ func datosNoticias(){
             self.arrayNoticias.append($0!.title)
             self.arrayDescripcionNoticias.append($0!.description)
             self.arrayUrlImagenNoticias.append(URL(string: ($0?.urlBackgroundImage)!)!)
-            self.arrayUrlImagenCelda.append(URL(string: ($0?.urlBackgroundImage)!)!)
+            self.arrayUrlImagenCelda.append(URL(string: ($0?.urlThumbnailImage)!)!)
+
+            print($0?.urlDetailImage)
+          //  print(URL(string: ($0?.urlDetailImage)!)!)
+            
+            self.arrayUrlImagenDetalle.append($0?.urlDetailImage ?? "")
+//
+//            if($0?.urlBackgroundImage != nil){
+//
+//                self.arrayUrlImagenDetalle.append(URL(string: ($0?.urlDetailImage)!)!)
+//
+//            }
+//            else{
+//                self.arrayUrlImagenDetalle.append(URL(string: "")!)
+//
+//
+//            }
             
             }
             

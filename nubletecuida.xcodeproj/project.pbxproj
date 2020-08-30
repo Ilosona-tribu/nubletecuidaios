@@ -16,6 +16,7 @@
 		C349D133243A421300851BC6 /* NoticiasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349D132243A421300851BC6 /* NoticiasVC.swift */; };
 		C349D135243A424600851BC6 /* MapaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349D134243A424600851BC6 /* MapaVC.swift */; };
 		C349D137243A427D00851BC6 /* ContactoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C349D136243A427D00851BC6 /* ContactoVC.swift */; };
+		C34B3C0724F65EFD00101574 /* DetalleNoticiasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B3C0624F65EFD00101574 /* DetalleNoticiasVC.swift */; };
 		C34B6EF024416E2D000AA950 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B6EEF24416E2D000AA950 /* TableViewCell.swift */; };
 		C34B6EFE2441C5E6000AA950 /* DetalleTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34B6EFD2441C5E6000AA950 /* DetalleTestVC.swift */; };
 		C34B6F1724423613000AA950 /* imagenes in Resources */ = {isa = PBXBuildFile; fileRef = C34B6F1624423613000AA950 /* imagenes */; };
@@ -30,7 +31,6 @@
 		C374089F24396DD100D28C13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C374089D24396DD100D28C13 /* Main.storyboard */; };
 		C37408AF24396DD300D28C13 /* nubletecuidaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37408AE24396DD300D28C13 /* nubletecuidaTests.swift */; };
 		C37408BA24396DD300D28C13 /* nubletecuidaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C37408B924396DD300D28C13 /* nubletecuidaUITests.swift */; };
-		C3E506722449420400D24540 /* DetalleNoticiasVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3E506712449420400D24540 /* DetalleNoticiasVC.swift */; };
 		C3F1A565244E3ABC0006171B /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F1A564244E3ABC0006171B /* SplashVC.swift */; };
 		C3F42A802461E9440027A591 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3F42A7F2461E9440027A591 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +63,7 @@
 		C349D132243A421300851BC6 /* NoticiasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticiasVC.swift; sourceTree = "<group>"; };
 		C349D134243A424600851BC6 /* MapaVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapaVC.swift; sourceTree = "<group>"; };
 		C349D136243A427D00851BC6 /* ContactoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactoVC.swift; sourceTree = "<group>"; };
+		C34B3C0624F65EFD00101574 /* DetalleNoticiasVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleNoticiasVC.swift; sourceTree = "<group>"; };
 		C34B6EEF24416E2D000AA950 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		C34B6EFD2441C5E6000AA950 /* DetalleTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleTestVC.swift; sourceTree = "<group>"; };
 		C34B6F1624423613000AA950 /* imagenes */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = imagenes; path = nubletecuida/imagenes; sourceTree = SOURCE_ROOT; };
@@ -84,7 +85,6 @@
 		C37408B924396DD300D28C13 /* nubletecuidaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nubletecuidaUITests.swift; sourceTree = "<group>"; };
 		C37408BB24396DD300D28C13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C38874A72460C6A70001F1FC /* nubletecuida.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = nubletecuida.entitlements; sourceTree = "<group>"; };
-		C3E506712449420400D24540 /* DetalleNoticiasVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleNoticiasVC.swift; sourceTree = "<group>"; };
 		C3F1A564244E3ABC0006171B /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 		C3F42A7F2461E9440027A591 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CB4E224978C3EC5AB6AE5256 /* Pods-nubletecuida.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-nubletecuida.debug.xcconfig"; path = "Target Support Files/Pods-nubletecuida/Pods-nubletecuida.debug.xcconfig"; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 		C34B6F272442B892000AA950 /* Detalles */ = {
 			isa = PBXGroup;
 			children = (
-				C3E506712449420400D24540 /* DetalleNoticiasVC.swift */,
+				C34B3C0624F65EFD00101574 /* DetalleNoticiasVC.swift */,
 				C34B6EFD2441C5E6000AA950 /* DetalleTestVC.swift */,
 				C3456DCC2447876D00D4C978 /* DetalleConsejoVC.swift */,
 			);
@@ -438,13 +438,13 @@
 				C3F42A802461E9440027A591 /* SceneDelegate.swift in Sources */,
 				C34B6F262442B81C000AA950 /* TestCuestionarioVC.swift in Sources */,
 				C34B6EF024416E2D000AA950 /* TableViewCell.swift in Sources */,
+				C34B3C0724F65EFD00101574 /* DetalleNoticiasVC.swift in Sources */,
 				C374089A24396DD100D28C13 /* TestVC.swift in Sources */,
 				C374089624396DD100D28C13 /* AppDelegate.swift in Sources */,
 				C349D137243A427D00851BC6 /* ContactoVC.swift in Sources */,
 				C349D133243A421300851BC6 /* NoticiasVC.swift in Sources */,
 				C349D135243A424600851BC6 /* MapaVC.swift in Sources */,
 				C3456DCD2447876D00D4C978 /* DetalleConsejoVC.swift in Sources */,
-				C3E506722449420400D24540 /* DetalleNoticiasVC.swift in Sources */,
 				C3456E1624482CAF00D4C978 /* API.swift in Sources */,
 				C34B6EFE2441C5E6000AA950 /* DetalleTestVC.swift in Sources */,
 				C3F1A565244E3ABC0006171B /* SplashVC.swift in Sources */,
@@ -616,7 +616,7 @@
 				CODE_SIGN_ENTITLEMENTS = nubletecuida/nubletecuida.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = ZRAUY54U79;
 				INFOPLIST_FILE = nubletecuida/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
@@ -641,7 +641,7 @@
 				CODE_SIGN_ENTITLEMENTS = nubletecuida/nubletecuida.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = ZRAUY54U79;
 				INFOPLIST_FILE = nubletecuida/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;

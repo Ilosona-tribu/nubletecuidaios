@@ -51,15 +51,17 @@ class ContactoVC: UIViewController {
 //texto Introductorio
         
         let textoCentral = UILabel(frame: CGRect(x: 40.0, y: imagenPrincipal.frame.maxY + valorTamaño/10.0, width: self.view.frame.width - 80.0, height: 0.0))
-        textoCentral.font = UIFont.init(name: "gobCL-Light", size: 14.0)
+        textoCentral.font = UIFont.init(name: "gobCL-Light", size: 16.0)
         
         let maximumLabelSizeTextoIntroductorio = CGSize(width: (self.view.frame.size.width - 100.0), height: 40000.0)
         textoCentral.sizeThatFits(maximumLabelSizeTextoIntroductorio)
-        textoCentral.text = "En caso de consulta o emergencia no dudes en contactarnos, ya sea a nuestro fono o wsp, canales abiertos las 24 hrs"
+        textoCentral.text = "En caso de consulta o emergencia no dudes en contactarnos por medio de nuestro fono, abierto las 24 hrs"
         textoCentral.textColor = UIColor.gray
         textoCentral.textAlignment = .justified
         textoCentral.numberOfLines = 0
-        textoCentral.sizeToFit()
+        textoCentral.sizeToFit()cbp
+        `+
+        ç
         view.addSubview(textoCentral)
 //btn wsp
         
@@ -78,12 +80,12 @@ class ContactoVC: UIViewController {
         btnWspImage.backgroundColor = UIColor.clear
         btnWsp.addSubview(btnWspImage)
         btnWsp.addTarget(self, action: #selector(accionBtnWsp(_:)), for: .touchUpInside)
-
-        view.addSubview(btnWsp)
+    //    btnWsp.isHidden = true
+     //   view.addSubview(btnWsp)
 
 //btn llamado
         
-        let btnLLamado = UIButton(frame: CGRect(x: view.center.x - 105.0 , y: btnWsp.frame.maxY + 15.0, width: 210.0, height: 60.0))
+        let btnLLamado = UIButton(frame: CGRect(x: view.center.x - 105.0 , y: textoCentral.frame.maxY + 20.0, width: 210.0, height: 60.0))
         btnLLamado.backgroundColor = UIColor.systemBlue
         btnLLamado.layer.cornerRadius = 15.0
         btnLLamado.layer.borderWidth = 1
@@ -97,7 +99,6 @@ class ContactoVC: UIViewController {
         btnLlamadoImage.image = UIImage(named: "fonoBlanco")
         btnLlamadoImage.backgroundColor = UIColor.clear
         btnLLamado.addSubview(btnLlamadoImage)
-        
         view.addSubview(btnLLamado)
 
 // ajustes y agregues
@@ -150,7 +151,7 @@ class ContactoVC: UIViewController {
 
         UIApplication.shared.open(URL(string:"https://api.whatsapp.com/send?phone=+56943404734")!)
 
-        print("wsp")
+       // print("wsp")
     }
     
     

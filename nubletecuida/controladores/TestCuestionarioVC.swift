@@ -14,10 +14,13 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
     var arrayEncabezados = Array<String>()
     var arrayIds = Array<Int>()
     var arrayRespuestas = Array<String>()
+    var arrayTituloRespuestas = Array<String>()
     var arrayAlternativas = Array<[String?]>()
     var arrayTipoDeRespuesta = Array<String>()
     var alternativasSeleccionadas = Array<Int>()
     var arrayRecorridoTest = Array<Int>()
+    var sintomasArray = Array<Int>()
+
 
     var arrayBotones = Array<UIButton>()
     var arrayOtrosComponentes = Array<UITextField>()
@@ -46,6 +49,7 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
         appSyncClient = appDelegate.appSyncClient
 
         datosTest()
+        datosRespuestas()
         
         let gradient = CAGradientLayer()
 
@@ -298,6 +302,7 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
 
                     if(sender.titleLabel?.text == "Ninguna de las anteriores"){
                         deselectAlternativas()
+                        sintomasArray.removeAll()
                     }
                     
                     print(arrayBotones[arrayBotones.count - 2].isSelected)
@@ -318,14 +323,22 @@ class TestCuestionarioVC: UIViewController,UIScrollViewDelegate {
                     
                     //se añade la respuesta al array
                     arrayRespuestas.append((sender.titleLabel?.text)!)
+                   
+                    sintomasArray.append(sender.tag)
                                 
                 }
                 else{
+
+                    if(!sintomasArray.isEmpty){
+                        sintomasArray.remove(at: 0)
+                        
+                    }
+                    
                     print(arrayBotones)
                     (sender.subviews[1] as! UIImageView).image = UIImage(named: "botonNoSeleccionado")
 
                     sender.isSelected = false
-
+                    
                     alternativasSeleccionadas.remove(at: alternativasSeleccionadas.lastIndex(of:sender.tag)!)
                     // se debería eliminar la respuesta deseleccionada ?????????????????????????*********
                 }
@@ -351,6 +364,7 @@ func deselectAlternativas(){
     
     
     func resultado(valor:Int)  {
+        print(arrayTituloRespuestas)
             let labelTextoRecomendacion = UILabel()
           //  vista.frame.size.height = view.frame.height - (vista.frame.origin.y * 2)
             vista.frame.size.height = view.frame.height
@@ -368,8 +382,8 @@ func deselectAlternativas(){
 
                // vista.backgroundColor = UIColor(red: 95.0/255.0, green: 207.0/255.0, blue: 167.0/255.0, alpha: 1.0)
             scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
-            labelEncabezado.text = "Caso Favorable"
-            labelTextoRecomendacion.text = "Aún así toma todas las medidas necesarias y los consejos de esta aplicación."
+                labelEncabezado.text = arrayTituloRespuestas[2]
+            labelTextoRecomendacion.text = arrayRespuestas[2]
                 labelTextoRecomendacion.textColor = .darkGray
     }
             
@@ -377,26 +391,34 @@ func deselectAlternativas(){
                 //sospechoso
                 vista.backgroundColor = UIColor(red: 50/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
                 scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
-                labelEncabezado.text = "Caso Sospechoso"
+                labelEncabezado.text = arrayTituloRespuestas[4]
               labelTextoRecomendacion.textColor = .lightGray
-                labelTextoRecomendacion.text = "Por favor aislate, si tus sintomas empeoran revisa los números de contacto de esta aplicación."
+                labelTextoRecomendacion.text = arrayRespuestas[4]
             }
         else if(valor == 12){
                 //contacto estrecho
             vista.backgroundColor = UIColor(red: 100/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
                 scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
-            labelEncabezado.text = "Contacto Estrecho"
+            labelEncabezado.text = arrayTituloRespuestas[1]
           labelTextoRecomendacion.textColor = .lightGray
-            labelTextoRecomendacion.text = "Por favor aislate, si tus sintomas empeoran revisa los números de contacto de esta aplicación."
+            labelTextoRecomendacion.text = arrayRespuestas[1]
         }
                 
         else if(valor == 13){
                 //crítico
             vista.backgroundColor = UIColor(red: 212/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
             scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
-            labelEncabezado.text = "Caso Grave"
+            labelEncabezado.text = arrayTituloRespuestas[0]
           labelTextoRecomendacion.textColor = .lightGray
-            labelTextoRecomendacion.text = "De acuerdo a  los síntomas que has indicado, deberías buscar ayuda inmediatamente."
+            labelTextoRecomendacion.text = arrayRespuestas[0]
+        }
+        else if(valor == 14){
+                //crítico
+            vista.backgroundColor = UIColor(red: 212/255.0, green: 68/255.0, blue: 65/255.0, alpha: 1.0)
+            scrollVista.backgroundColor = UIColor(red: 234.0/255.0, green: 239.0/255.0, blue: 242.0/255.0, alpha: 1.0)
+            labelEncabezado.text = arrayTituloRespuestas[3]
+          labelTextoRecomendacion.textColor = .lightGray
+            labelTextoRecomendacion.text = arrayRespuestas[3]
         }
 
             
@@ -467,10 +489,9 @@ func datosTest(){
                 self.labelEncabezado.frame.size.height = 1000.0
                 self.labelEncabezado.numberOfLines = 0
                 self.labelEncabezado.sizeToFit()
-
-
-
-        }
+                
+            }
+            
     }
     
     }
@@ -487,10 +508,12 @@ func datosTest(){
                     print("Error fetching data: \(error)")
                     return
                 }
-                    
-                    var its = result?.data?.listResults?.items
-                    
-                    print(its)
+                result?.data?.listResults?.items?.forEach {
+
+                    self.arrayRespuestas.append($0!.detailResult)
+                    self.arrayTituloRespuestas.append($0!.typeResult)
+
+                    }
             }
 
     }
@@ -537,17 +560,20 @@ func datosTest(){
             
         case 3:
             //ha tenido tos ...
+            
             if(alternativasSeleccionadas.last! == 12){
+               
                 
-                print(alternativasSeleccionadas.last!)
                 enumerador = 10
 }
             
             else {
+
                 enumerador = 4
             }
-            
+
         case 4:
+            
             if(alternativasSeleccionadas.last == 1){
                 
                 enumerador = 5
@@ -556,11 +582,18 @@ func datosTest(){
             }
             
             else {
-                enumerador = 11
+                if(sintomasArray.count < 2){
+                                   enumerador = 10
+
+                    
+                               }
+                               else{
+                                   enumerador = 14
+
+                               }
             }
 
         case 5:
-            
             
             if(alternativasSeleccionadas.last! == 5){
                 
@@ -570,7 +603,16 @@ func datosTest(){
             }
             
             else {
-                enumerador = 12
+                if(sintomasArray.count <= 2){
+                                       enumerador = 12
+
+                        
+                                   }
+                                   else{
+                                       enumerador = 14
+
+                                   }
+                
             }
 
             

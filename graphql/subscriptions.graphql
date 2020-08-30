@@ -418,6 +418,8 @@ subscription OnCreateAdvice {
     detail
     url_background_image
     url_thumbnail_image
+    url_detail_image
+    url_detail_image_2
     _version
     _deleted
     _lastChangedAt
@@ -431,6 +433,8 @@ subscription OnUpdateAdvice {
     detail
     url_background_image
     url_thumbnail_image
+    url_detail_image
+    url_detail_image_2
     _version
     _deleted
     _lastChangedAt
@@ -444,6 +448,8 @@ subscription OnDeleteAdvice {
     detail
     url_background_image
     url_thumbnail_image
+    url_detail_image
+    url_detail_image_2
     _version
     _deleted
     _lastChangedAt

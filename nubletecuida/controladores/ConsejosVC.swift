@@ -18,6 +18,8 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
     var arrayConsejosImagenesDetalle = Array<URL>()
     var arrayDescripcionConsejos = Array<String>()
     var arrayTituloConsejos = Array<String>()
+    var arrayUrlImagenDetalle = Array<String>()
+
     // MARK: - Controller delegates
 
     override func viewDidLoad() {
@@ -109,7 +111,10 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
         viewController.descripcionConsejo = arrayDescripcionConsejos[indexPath.row]
         viewController.urlImagenConsejo = arrayConsejos[indexPath.row]
         viewController.urlImagenConsejoChica = arrayConsejosImagenesDetalle[indexPath.row]
-        
+        viewController.tituloConsejo = arrayTituloConsejos[indexPath.row]
+        viewController.urlImagenConsejoDetalle = arrayUrlImagenDetalle[indexPath.row]
+
+            
         self.show(viewController, sender: nil)
             
         }
@@ -132,6 +137,7 @@ class ConsejosVC: UIViewController,UICollectionViewDelegate,UICollectionViewData
                 self.arrayTituloConsejos.append($0!.title)
                 self.arrayDescripcionConsejos.append($0!.detail)
 
+                self.arrayUrlImagenDetalle.append($0?.urlDetailImage ?? "")
 
                 guard let imageURL = URL(string:  ($0?.urlBackgroundImage)!) else { return }
                 guard let imageURL2 = URL(string: ($0?.urlThumbnailImage)!) else { return }

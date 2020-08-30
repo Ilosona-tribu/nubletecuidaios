@@ -50,7 +50,7 @@ class TestVC: UIViewController {
 //texto Introductorio
         
         let labelTextoIntroductorio = UILabel(frame: CGRect(x: 40.0, y: imagenPrincipal.frame.maxY + valorTamaño/10.0, width: self.view.frame.width - 80.0, height: 0.0))
-        labelTextoIntroductorio.font = UIFont.init(name: "gobCL-Light", size: 14.0)
+        labelTextoIntroductorio.font = UIFont.init(name: "gobCL-Light", size: 16.0)
         
         let maximumLabelSizeTextoIntroductorio = CGSize(width: (self.view.frame.size.width - 100.0), height: 40000.0)
         labelTextoIntroductorio.sizeThatFits(maximumLabelSizeTextoIntroductorio)

@@ -493,6 +493,8 @@ mutation CreateAdvice(
     detail
     url_background_image
     url_thumbnail_image
+    url_detail_image
+    url_detail_image_2
     _version
     _deleted
     _lastChangedAt
@@ -509,6 +511,8 @@ mutation UpdateAdvice(
     detail
     url_background_image
     url_thumbnail_image
+    url_detail_image
+    url_detail_image_2
     _version
     _deleted
     _lastChangedAt
@@ -525,6 +529,8 @@ mutation DeleteAdvice(
     detail
     url_background_image
     url_thumbnail_image
+    url_detail_image
+    url_detail_image_2
     _version
     _deleted
     _lastChangedAt
